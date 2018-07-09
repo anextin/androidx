@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.kafein.otogalerim.ilanBilgileri">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ilan Bilgilerini girin"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/ilanBaslikEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ilan basligi gir"/>
+
+    <EditText
+        android:id="@+id/ilanAciklamaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ilan acıklamasi gir"/>
+
+    <Button
+        android:id="@+id/ilanBilgisiButon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_buton_back"
+        android:text="ileri"/>
+
+    <Button
+        android:id="@+id/ilanBilgisiButonGeri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_buton_back"
+        android:text="geri"/>
+
+</LinearLayout>
