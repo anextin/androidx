@@ -101,6 +101,7 @@ public class Yakit extends AppCompatActivity {
                 {
                         Intent intent = new Intent(Yakit.this, ilanResimler.class);
                     intent.putExtra("ilan_id", response.body().getIlanId());  // ilan id yi resme yolluyoruz, resim eklerken bu id yi kullanıcıaz
+                    intent.putExtra("uye_id", (Integer) response.body().getUyeId());
                     startActivity(intent);
                     overridePendingTransition(R.anim.anim_inn, R.anim.anim_out);
                     finish();

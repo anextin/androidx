@@ -6,7 +6,7 @@ import com.example.kafein.otogalerim.Models.DogrulamaPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
-
+import com.example.kafein.otogalerim.Models.ResimEklePojo;
 import retrofit2.Call;
 
 /**
@@ -48,9 +48,17 @@ public class ManagerAll extends BaseManager{
     }
 
 
+    public Call<ResimEklePojo> resimEkle(String uye_id , String ilan_id, String image) {
+
+        Call<ResimEklePojo> x = getRestApi().resimYukle(uye_id, ilan_id, image);
+        return x;
+    }
+
+    }
 
 
 
 
 
-}
+
+
