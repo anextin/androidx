@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,7 +29,8 @@ public class ilanResimler extends AppCompatActivity {
     ImageView secilenIlanResmiImageView;
     Bitmap bitmap;
     String uye_id, ilan_id, image;
-
+  //String ilan_id, image;
+  //int uye_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,13 @@ public class ilanResimler extends AppCompatActivity {
         setContentView(R.layout.activity_ilan_resimler);
         tanimla();
         Bundle bundle = getIntent().getExtras(); //bundle olusturduk aktivite arası verileri almak ıcın
-        uye_id= String.valueOf(bundle.getInt("uye_id"));
-        ilan_id=bundle.getString("ilan_id");
+       // uye_id=bundle.getInt("uye_id");
+      //  uye_id= bundle.getString("uye_id").toString();
+       uye_id= String.valueOf(bundle.getInt("uye_id"));
+       ilan_id=String .valueOf(bundle.getInt("ilan_id"));
+      //  ilan_id=bundle.getString("ilan_id").toString();
+        Log.i("ilanid", ilan_id );
+        Log.i("uyeid", uye_id );
     }
 
 

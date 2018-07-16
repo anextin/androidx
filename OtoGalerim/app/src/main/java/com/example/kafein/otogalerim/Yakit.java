@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -100,8 +101,9 @@ public class Yakit extends AppCompatActivity {
                 if(response.body().isTf())
                 {
                         Intent intent = new Intent(Yakit.this, ilanResimler.class);
-                    intent.putExtra("ilan_id", response.body().getIlanId());  // ilan id yi resme yolluyoruz, resim eklerken bu id yi kullanıcıaz
-                    intent.putExtra("uye_id", (Integer) response.body().getUyeId());
+                    intent.putExtra("ilan_id", response.body().getIlanid());  // ilan id yi resme yolluyoruz, resim eklerken bu id yi kullanıcıaz
+                     intent.putExtra("uye_id", response.body().getUyeid());
+                    Log.i("test", response.body().getUyeid()+"    ///" + response.body().getIlanid());
                     startActivity(intent);
                     overridePendingTransition(R.anim.anim_inn, R.anim.anim_out);
                     finish();
