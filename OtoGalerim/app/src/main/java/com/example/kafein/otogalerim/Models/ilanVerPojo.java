@@ -25,6 +25,15 @@ public class ilanVerPojo {
     static String  ortalamyakit;
     static String  depohacmi;
     static String  km;
+    static String ucret;
+
+    public static String getUcret() {
+        return ucret;
+    }
+
+    public static void setUcret(String ucret) {
+        ilanVerPojo.ucret = ucret;
+    }
 
     public static String getKm() {
         return km;

@@ -41,8 +41,8 @@ public class ManagerAll extends BaseManager{
 
     }
 
-    public Call<IlanSonucPojo> ilanVer(String uye_id , String sehir,String ilce , String mahalle,String marka , String seri,String model , String yil,String ilantipi , String kimden,String baslik , String aciklama,String motortipi , String motorhacmi,String surat , String yakittipi,String ortalamyakit , String depohacmi,String km) {
-        Call<IlanSonucPojo> x= getRestApi().ilanVer(uye_id,sehir,ilce,mahalle,marka,seri,model,yil,ilantipi,kimden,baslik,aciklama,motortipi,motorhacmi,surat,yakittipi,ortalamyakit,depohacmi,km);
+    public Call<IlanSonucPojo> ilanVer(String ucret,String uye_id , String sehir,String ilce , String mahalle,String marka , String seri,String model , String yil,String ilantipi , String kimden,String baslik , String aciklama,String motortipi , String motorhacmi,String surat , String yakittipi,String ortalamyakit , String depohacmi,String km) {
+        Call<IlanSonucPojo> x= getRestApi().ilanVer(ucret,uye_id,sehir,ilce,mahalle,marka,seri,model,yil,ilantipi,kimden,baslik,aciklama,motortipi,motorhacmi,surat,yakittipi,ortalamyakit,depohacmi,km);
         return x;
 
     }

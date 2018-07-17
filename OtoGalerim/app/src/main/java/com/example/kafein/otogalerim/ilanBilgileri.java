@@ -13,7 +13,7 @@ import com.example.kafein.otogalerim.Models.ilanVerPojo;
 public class ilanBilgileri extends AppCompatActivity {
 
     Button ilanBilgisiButon,ilanBilgisiButonGeri;
-    EditText ilanBaslikEditText,ilanAciklamaEditText;
+    EditText ilanBaslikEditText,ilanAciklamaEditText, ilanFiyatEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,7 @@ public class ilanBilgileri extends AppCompatActivity {
     {
         ilanAciklamaEditText=findViewById(R.id.ilanAciklamaEditText);
         ilanBaslikEditText=findViewById(R.id.ilanBaslikEditText);
+        ilanFiyatEditText=findViewById(R.id.ilanFiyatEditText);
 
         ilanAciklamaEditText.setText(ilanVerPojo.getAciklama()); //geri dondugumuzde doldurulan bilgiler kalsın die
         ilanBaslikEditText.setText(ilanVerPojo.getBaslik());
@@ -32,11 +33,12 @@ public class ilanBilgileri extends AppCompatActivity {
         ilanBilgisiButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!ilanAciklamaEditText.getText().toString().equals("") && !ilanBaslikEditText.getText().toString().equals(""))
+                if(!ilanAciklamaEditText.getText().toString().equals("") && !ilanBaslikEditText.getText().toString().equals("") && !ilanFiyatEditText.getText().toString().equals(""))
                 {
 
                     ilanVerPojo.setAciklama(ilanAciklamaEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
                     ilanVerPojo.setBaslik(  ilanBaslikEditText.getText().toString());
+                    ilanVerPojo.setUcret(ilanFiyatEditText.getText().toString());
 
                     Intent intent = new Intent(ilanBilgileri.this, ilanTuru.class);
                     startActivity(intent);

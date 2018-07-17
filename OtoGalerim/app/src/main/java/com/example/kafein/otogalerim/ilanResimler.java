@@ -37,7 +37,8 @@ public class ilanResimler extends AppCompatActivity {
         tanimla();
         Bundle bundle = getIntent().getExtras(); //bundle olusturduk aktivite arası verileri almak ıcın
         uye_id= String.valueOf(bundle.getInt("uye_id"));
-        ilan_id=bundle.getString("ilan_id");
+        ilan_id= String.valueOf(bundle.getInt("ilan_id"));
+     //   ilan_id=bundle.getString("ilan_id").toString();
     }
 
 
@@ -52,6 +53,14 @@ public class ilanResimler extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 resimGoster();
+            }
+        });
+
+
+        resimEkleButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    yukle();
             }
         });
     }

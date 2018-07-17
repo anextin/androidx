@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,7 +67,7 @@ public class Yakit extends AppCompatActivity {
                     ilanVerPojo.setOrtalamyakit(ortalamaYakitEditText.getText().toString());
                     ilanVerPojo.setDepohacmi(depoHacmiEditText.getText().toString());
 
-                    ilaniYayinla(ilanVerPojo.getUye_id(),ilanVerPojo.getSehir(),ilanVerPojo.getIlce(),ilanVerPojo.getMahalle(),ilanVerPojo.getMarka(),ilanVerPojo.getSeri(),ilanVerPojo.getModel(),ilanVerPojo.getYil(),ilanVerPojo.getIlantipi(),ilanVerPojo.getKimden(),ilanVerPojo.getBaslik(),ilanVerPojo.getAciklama(),ilanVerPojo.getMotortipi(),ilanVerPojo.getMotorhacmi(),ilanVerPojo.getSurat(),ilanVerPojo.getYakittipi(),ilanVerPojo.getOrtalamyakit(),ilanVerPojo.getDepohacmi(),ilanVerPojo.getKm());
+                    ilaniYayinla(ilanVerPojo.getUcret(),ilanVerPojo.getUye_id(),ilanVerPojo.getSehir(),ilanVerPojo.getIlce(),ilanVerPojo.getMahalle(),ilanVerPojo.getMarka(),ilanVerPojo.getSeri(),ilanVerPojo.getModel(),ilanVerPojo.getYil(),ilanVerPojo.getIlantipi(),ilanVerPojo.getKimden(),ilanVerPojo.getBaslik(),ilanVerPojo.getAciklama(),ilanVerPojo.getMotortipi(),ilanVerPojo.getMotorhacmi(),ilanVerPojo.getSurat(),ilanVerPojo.getYakittipi(),ilanVerPojo.getOrtalamyakit(),ilanVerPojo.getDepohacmi(),ilanVerPojo.getKm());
 
                 }
 
@@ -91,17 +92,18 @@ public class Yakit extends AppCompatActivity {
 
     }
 
-    public  void ilaniYayinla(String uye_id , String sehir,String ilce , String mahalle,String marka , String seri,String model , String yil,String ilantipi , String kimden,String baslik , String aciklama,String motortipi , String motorhacmi,String surat , String yakittipi,String ortalamyakit , String depohacmi,String km)
+    public  void ilaniYayinla(String ucret,String uye_id , String sehir,String ilce , String mahalle,String marka , String seri,String model , String yil,String ilantipi , String kimden,String baslik , String aciklama,String motortipi , String motorhacmi,String surat , String yakittipi,String ortalamyakit , String depohacmi,String km)
     {
-        Call<IlanSonucPojo> request = ManagerAll.getInstance().ilanVer(uye_id,sehir,ilce,mahalle,marka,seri,model,yil,ilantipi,kimden,baslik,aciklama,motortipi,motorhacmi,surat,yakittipi,ortalamyakit,depohacmi,km);
+        Call<IlanSonucPojo> request = ManagerAll.getInstance().ilanVer(ucret,uye_id,sehir,ilce,mahalle,marka,seri,model,yil,ilantipi,kimden,baslik,aciklama,motortipi,motorhacmi,surat,yakittipi,ortalamyakit,depohacmi,km);
         request.enqueue(new Callback<IlanSonucPojo>() {
             @Override
             public void onResponse(Call<IlanSonucPojo> call, Response<IlanSonucPojo> response) {
                 if(response.body().isTf())
                 {
                         Intent intent = new Intent(Yakit.this, ilanResimler.class);
-                    intent.putExtra("ilan_id", response.body().getIlanId());  // ilan id yi resme yolluyoruz, resim eklerken bu id yi kullanıcıaz
-                    intent.putExtra("uye_id", (Integer) response.body().getUyeId());
+                    intent.putExtra("ilan_id", response.body().getIlanid());  // ilan id yi resme yolluyoruz, resim eklerken bu id yi kullanıcıaz
+                    intent.putExtra("uye_id", response.body().getuyeid());
+                    Log.i("test1",response.body().getIlanid()+" /// "+response.body().getuyeid());
                     startActivity(intent);
                     overridePendingTransition(R.anim.anim_inn, R.anim.anim_out);
                     finish();

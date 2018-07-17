@@ -30,6 +30,13 @@
         android:layout_height="wrap_content"
         android:hint="ilan acıklamasi gir"/>
 
+
+    <EditText
+        android:id="@+id/ilanFiyatEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="fiyat gir"/>
+
     <Button
         android:id="@+id/ilanBilgisiButon"
         android:layout_width="match_parent"
