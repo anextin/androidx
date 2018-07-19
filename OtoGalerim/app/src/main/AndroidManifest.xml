@@ -40,7 +40,11 @@
         <activity android:name=".MotorPerformans" />
         <activity android:name=".Yakit" />
         <activity android:name=".ilanResimler" />
-        <activity android:name=".ilanBilgileri"></activity>
+        <activity android:name=".ilanBilgileri" />
+        <activity
+            android:name=".ilanlarim"
+            android:label="@string/title_activity_ilanlarim"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

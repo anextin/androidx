@@ -4,9 +4,13 @@ package com.example.kafein.otogalerim.RestApi;
 
 import com.example.kafein.otogalerim.Models.DogrulamaPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
+import com.example.kafein.otogalerim.Models.IlanlarimPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
+
+import java.util.List;
+
 import retrofit2.Call;
 
 /**
@@ -54,6 +58,12 @@ public class ManagerAll extends BaseManager{
         return x;
     }
 
+
+    public Call<List<IlanlarimPojo>> ilanlarim(String uyeid) {
+        Call<List<IlanlarimPojo>> x= getRestApi().ilanlarim(uyeid);
+        return x;
+
+    }
     }
 
 

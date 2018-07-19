@@ -3,14 +3,19 @@ package com.example.kafein.otogalerim.RestApi;
 
 import com.example.kafein.otogalerim.Models.DogrulamaPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
+import com.example.kafein.otogalerim.Models.IlanlarimPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface RestApi {
 
@@ -35,4 +40,8 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/ilanresmiekle.php")
     Call<ResimEklePojo> resimYukle(@Field("uye_id") String uye_id, @Field("ilan_id") String ilan_id, @Field("resim") String base64StringResim);
+
+
+    @GET("/ilanlarim.php")
+    Call<List<IlanlarimPojo>> ilanlarim(@Query("uyeid") String uyeid);
 }

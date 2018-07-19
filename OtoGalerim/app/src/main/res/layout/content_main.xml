@@ -114,9 +114,10 @@
                 android:background="@drawable/menu_buton_back"
                 android:drawableTop="@drawable/ilanlarim"
                 android:paddingBottom="10dp"
+                android:id="@+id/ilanlarimMenuButon"
                 android:textStyle="bold"
                 android:textSize="15dp"
-                android:text="ilarnlarım" />
+                android:text="ilanlarım" />
 
         </LinearLayout>
     </LinearLayout>
