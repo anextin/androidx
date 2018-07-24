@@ -27,7 +27,6 @@ public class IlanlarimAdapter extends BaseAdapter{
     Context context;
     Activity activity;
     String uye_id, ilan_id;
-    AlertDialogClass alertDialogClass;
 
 
     public IlanlarimAdapter(List<IlanlarimPojo> list, Context context, Activity activity) {
@@ -56,22 +55,16 @@ public class IlanlarimAdapter extends BaseAdapter{
         convertView= LayoutInflater.from(context).inflate(R.layout.ilanlarimlayout,parent,false);
         ImageView resim;
         TextView baslik, fiyat;
-        LinearLayout linearLayout;
 
-        linearLayout=convertView.findViewById(R.id.ilanLinearLayout);
+
+
         resim = convertView.findViewById(R.id.ilanlarimIlanResim);
         baslik = convertView.findViewById(R.id.ilanlarimIlanBaslik);
         fiyat = convertView.findViewById(R.id.ilanlarimIlanFiyat);
         ilan_id=list.get(position).getIlanid();
         uye_id=list.get(position).getUyeid();
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialogClass = new AlertDialogClass();
-                alertDialogClass.ilanlarimAlertDialog(activity,ilan_id);
-            }
-        });
+
 
         baslik.setText(list.get(position).getBaslik());
         fiyat.setText(list.get(position).getFiyat());

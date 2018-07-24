@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         String navHeaderText;
         TextView navHeaderTextView;
         SharedPreferences.Editor editor;
-        Button ilanVerButon ,ilanlarimMenuButon;
+        Button ilanVerButon ,ilanlarimMenuButon,ilanButon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this,ilanlarim.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_inn,R.anim.anim_out);
+            }
+        });
+        ilanButon=findViewById(R.id.ilanButon);
+        ilanButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(MainActivity.this,Ilanlar.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_inn,R.anim.anim_out);
             }

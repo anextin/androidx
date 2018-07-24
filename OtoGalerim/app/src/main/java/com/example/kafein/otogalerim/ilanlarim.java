@@ -1,18 +1,25 @@
 package com.example.kafein.otogalerim;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.kafein.otogalerim.Adapter.IlanlarimAdapter;
 import com.example.kafein.otogalerim.Models.IlanlarimPojo;
+import com.example.kafein.otogalerim.Models.IlanlarimSilPojo;
 import com.example.kafein.otogalerim.RestApi.ManagerAll;
 
 import java.util.ArrayList;
@@ -31,6 +38,7 @@ public class ilanlarim extends AppCompatActivity {
     String uye_id;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +49,14 @@ public class ilanlarim extends AppCompatActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
         uye_id =sharedPreferences.getString("uye_id",null);
         ilanlarimigoruntule();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                ilanlarimAlertDialog(ilanlarim.this,ilanlarimPojos.get(position).getIlanid());
+            }
+        });
     }
 
 
@@ -61,10 +77,23 @@ public class ilanlarim extends AppCompatActivity {
                 if(response.isSuccessful())
                 {
                     ilanlarimPojos = response.body();
-                    ilanlarimAdapter = new IlanlarimAdapter(ilanlarimPojos, getApplicationContext(),ilanlarim.this);
-                    listView.setAdapter(ilanlarimAdapter);
-                    Toast.makeText(getApplicationContext(),response.body().get(0).getSayi()+" tane ilaniniz bulunmaktadir",Toast.LENGTH_LONG).show();
-                    progressDialog.cancel();
+
+                    if(response.body().get(0).isTf()) {
+
+                                ilanlarimAdapter = new IlanlarimAdapter(ilanlarimPojos, getApplicationContext(), ilanlarim.this);
+                        listView.setAdapter(ilanlarimAdapter);
+                        Toast.makeText(getApplicationContext(), response.body().get(0).getSayi() + " tane ilaniniz bulunmaktadir", Toast.LENGTH_LONG).show();
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+
+                        Toast.makeText(getApplicationContext(), "ilaniniz bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ilanlarim.this, MainActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.anim_inn, R.anim.anim_out);
+                        finish();
+                    }
                 }
             }
 
@@ -74,5 +103,55 @@ public class ilanlarim extends AppCompatActivity {
             }
         });
 
+    }
+    public  void ilanlarimAlertDialog(Activity activity, final String uye_id)  //silinicek olanın ilan_id sini almamız lazım
+    {
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View view= inflater.inflate(R.layout.alertlayout,null);
+
+
+
+        Button button= view.findViewById(R.id.buton);
+        Button buttonCık= view.findViewById(R.id.buton2);
+
+        AlertDialog.Builder alert= new AlertDialog.Builder(activity);
+        alert.setView(view);
+        alert.setCancelable(false);
+        final AlertDialog dialog= alert.create();
+
+        buttonCık.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sil(uye_id);
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+    }
+
+    public void sil (String ilanId)
+    {
+        Call<IlanlarimSilPojo> request = ManagerAll.getInstance().ilanlarimSil(ilanId);
+        request.enqueue(new Callback<IlanlarimSilPojo>() {
+            @Override
+            public void onResponse(Call<IlanlarimSilPojo> call, Response<IlanlarimSilPojo> response) {
+                if(response.body().isTf())
+                {
+                    ilanlarimigoruntule();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<IlanlarimSilPojo> call, Throwable t) {
+
+            }
+        });
     }
 }

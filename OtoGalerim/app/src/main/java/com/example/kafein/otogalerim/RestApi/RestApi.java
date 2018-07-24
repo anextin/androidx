@@ -2,8 +2,11 @@ package com.example.kafein.otogalerim.RestApi;
 
 
 import com.example.kafein.otogalerim.Models.DogrulamaPojo;
+import com.example.kafein.otogalerim.Models.IlanDetayPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
+import com.example.kafein.otogalerim.Models.IlanlarPojo;
 import com.example.kafein.otogalerim.Models.IlanlarimPojo;
+import com.example.kafein.otogalerim.Models.IlanlarimSilPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
@@ -44,4 +47,15 @@ public interface RestApi {
 
     @GET("/ilanlarim.php")
     Call<List<IlanlarimPojo>> ilanlarim(@Query("uyeid") String uyeid);
+
+
+    @GET("/ilanlarimdansil.php")
+    Call<IlanlarimSilPojo> ilanlarimSil(@Query("ilan_id") String ilanid);
+
+    @GET("/ilanlar.php")
+    Call<List<IlanlarPojo>> ilanlar();
+
+    @GET("/ilandetay.php")
+    Call<IlanDetayPojo> ilanDetay(@Query("ilanid") String ilanid);
+
 }

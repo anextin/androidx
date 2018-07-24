@@ -3,8 +3,11 @@ package com.example.kafein.otogalerim.RestApi;
 
 
 import com.example.kafein.otogalerim.Models.DogrulamaPojo;
+import com.example.kafein.otogalerim.Models.IlanDetayPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
+import com.example.kafein.otogalerim.Models.IlanlarPojo;
 import com.example.kafein.otogalerim.Models.IlanlarimPojo;
+import com.example.kafein.otogalerim.Models.IlanlarimSilPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
@@ -64,6 +67,28 @@ public class ManagerAll extends BaseManager{
         return x;
 
     }
+
+
+
+    public Call<IlanlarimSilPojo> ilanlarimSil(String ilanid) {
+
+        Call<IlanlarimSilPojo> x = getRestApi().ilanlarimSil(ilanid);
+        return x;
+    }
+
+    public Call<List<IlanlarPojo>> ilanlar() {
+
+        Call<List<IlanlarPojo>> x = getRestApi().ilanlar();
+        return x;
+    }
+
+    public Call<IlanDetayPojo> ilanDetay(String ilanid) {
+
+        Call<IlanDetayPojo> x = getRestApi().ilanDetay(ilanid);
+        return x;
+    }
+
+
     }
 
 

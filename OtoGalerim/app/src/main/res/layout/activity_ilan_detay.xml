@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#00587A"
+    android:layout_height="match_parent"
+    tools:context="com.example.kafein.otogalerim.IlanDetay">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ilan detay"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/ilanDetayBaslik"
+        android:padding="10dp"
+        android:background="#0F3057"/>
+
+
+    <LinearLayout
+        android:id="@+id/ilanDetaysliderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/ilanDetayBaslik"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ilanDetaySlider"
+            android:background="#728caf"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@+id/ilanDetaysliderLayout"
+        android:layout_above="@id/ilanDetayOzellik"
+        android:id="@+id/ilanDetayScrool"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Fiyat"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayFiyat"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Marka"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayMarka"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Model"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayModel"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Seri"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetaySeri"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Yil"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayYil"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="ilan tipi"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayilantipi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="kimden"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayKimden"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="motor tipi"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayMotorTipi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Motor hacmi"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayMotorHacmi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Surat"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetaySurat"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Yakit tipi"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayYakitTipi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Ortalama Yakit"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayOrtalamaYakit"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Depo hacmi"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayDepoHacmi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="km"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/ilandetayKM"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:gravity="right"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ilanDetayOzellik"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/ilanDetayAciklama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/menu_buton_back"
+            android:text="Aciklama"/>
+        <Button
+            android:id="@+id/ilanDetayFavoriyeAl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/menu_buton_back"
+            android:text="favori al"/>
+    </LinearLayout>
+
+</RelativeLayout>

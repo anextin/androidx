@@ -43,6 +43,7 @@
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:padding="8dp"
+                android:id="@+id/ilanButon"
                 android:drawableTop="@drawable/ilanlist"
                 android:text="ilanlar" />
 
