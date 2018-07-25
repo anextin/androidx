@@ -14,6 +14,7 @@ import com.example.kafein.otogalerim.RestApi.ManagerAll;
 
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +29,7 @@ public class IlanDetay extends AppCompatActivity {
     String ilanId;
     List<SliderPojo> list;
     SliderAdapter sliderAdapter;
+    CircleIndicator circleIndicator;
     
 
 
@@ -46,6 +48,7 @@ public class IlanDetay extends AppCompatActivity {
 
     public void tanimla()
     {
+        circleIndicator = findViewById(R.id.sliderNokta);
         ilanDetayBaslik= findViewById(R.id.ilanDetayBaslik);
         ilandetayFiyat= findViewById(R.id.ilandetayFiyat);
         ilandetayMarka= findViewById(R.id.ilandetayMarka);
@@ -113,7 +116,13 @@ public class IlanDetay extends AppCompatActivity {
 
                 list=response.body();
                 sliderAdapter= new SliderAdapter(list,getApplicationContext());
+
+
+
                 ilanDetaySlider.setAdapter(sliderAdapter);
+
+                circleIndicator.setViewPager(ilanDetaySlider);
+                circleIndicator.bringToFront();
             }
 
             @Override
