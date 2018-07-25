@@ -7,8 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.example.kafein.otogalerim.Adapter.SliderAdapter;
 import com.example.kafein.otogalerim.Models.IlanDetayPojo;
+import com.example.kafein.otogalerim.Models.SliderPojo;
 import com.example.kafein.otogalerim.RestApi.ManagerAll;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +26,9 @@ public class IlanDetay extends AppCompatActivity {
     private Button ilanDetayFavoriyeAl ,ilanDetayAciklama;
     private ViewPager ilanDetaySlider;
     String ilanId;
+    List<SliderPojo> list;
+    SliderAdapter sliderAdapter;
+    
 
 
     @Override
@@ -32,6 +39,7 @@ public class IlanDetay extends AppCompatActivity {
         ilanId=bundle.getString("ilanid");
         tanimla();
         getIlanDetay();
+        getResim();
     }
 
 
@@ -94,6 +102,25 @@ public class IlanDetay extends AppCompatActivity {
             });
 
 
+    }
+
+    public void getResim()
+    {
+        Call<List<SliderPojo>> request = ManagerAll.getInstance().ilanResimleri(ilanId);
+        request.enqueue(new Callback<List<SliderPojo>>() {
+            @Override
+            public void onResponse(Call<List<SliderPojo>> call, Response<List<SliderPojo>> response) {
+
+                list=response.body();
+                sliderAdapter= new SliderAdapter(list,getApplicationContext());
+                ilanDetaySlider.setAdapter(sliderAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<SliderPojo>> call, Throwable t) {
+
+            }
+        });
     }
 }
 

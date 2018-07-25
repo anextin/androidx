@@ -10,6 +10,7 @@ import com.example.kafein.otogalerim.Models.IlanlarimSilPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
+import com.example.kafein.otogalerim.Models.SliderPojo;
 
 import java.util.List;
 
@@ -57,5 +58,8 @@ public interface RestApi {
 
     @GET("/ilandetay.php")
     Call<IlanDetayPojo> ilanDetay(@Query("ilanid") String ilanid);
+
+    @GET("/ilanresimleri.php")
+    Call<List<SliderPojo>> ilanResimleri(@Query("ilanid") String ilanid);
 
 }

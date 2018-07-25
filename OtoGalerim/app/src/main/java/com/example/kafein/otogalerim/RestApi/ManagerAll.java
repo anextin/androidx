@@ -11,6 +11,7 @@ import com.example.kafein.otogalerim.Models.IlanlarimSilPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
+import com.example.kafein.otogalerim.Models.SliderPojo;
 
 import java.util.List;
 
@@ -85,6 +86,13 @@ public class ManagerAll extends BaseManager{
     public Call<IlanDetayPojo> ilanDetay(String ilanid) {
 
         Call<IlanDetayPojo> x = getRestApi().ilanDetay(ilanid);
+        return x;
+    }
+
+
+    public Call<List<SliderPojo>> ilanResimleri(String ilanid) {
+
+        Call<List<SliderPojo>> x = getRestApi().ilanResimleri(ilanid);
         return x;
     }
 
