@@ -3,6 +3,9 @@ package com.example.kafein.otogalerim.RestApi;
 
 
 import com.example.kafein.otogalerim.Models.DogrulamaPojo;
+import com.example.kafein.otogalerim.Models.FavoriIslemPojo;
+import com.example.kafein.otogalerim.Models.FavoriKontrolPojo;
+import com.example.kafein.otogalerim.Models.FavoriSliderPojo;
 import com.example.kafein.otogalerim.Models.IlanDetayPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
 import com.example.kafein.otogalerim.Models.IlanlarPojo;
@@ -96,6 +99,23 @@ public class ManagerAll extends BaseManager{
         return x;
     }
 
+    public Call<FavoriKontrolPojo> getButonText(String uyeid,String ilanid) {
+
+        Call<FavoriKontrolPojo> x = getRestApi().getButonText(uyeid,ilanid);
+        return x;
+    }
+
+    public Call<FavoriIslemPojo> favoriIslem(String uyeid, String ilanid) {
+
+        Call<FavoriIslemPojo> x = getRestApi().favoriIslem(uyeid,ilanid);
+        return x;
+    }
+
+    public Call<List<FavoriSliderPojo>> setSlider(String uyeid) {
+
+        Call<List<FavoriSliderPojo>> x = getRestApi().setSlider(uyeid);
+        return x;
+    }
 
     }
 

@@ -425,8 +425,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/menu_buton_back"
-            android:text="favori al"/>
+            android:background="@drawable/menu_buton_back"/>
     </LinearLayout>
 
 </RelativeLayout>

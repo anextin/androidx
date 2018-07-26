@@ -38,6 +38,7 @@ public class Ilanlar extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(Ilanlar.this,IlanDetay.class);
                 intent.putExtra("ilanid",ilanlarPojoList.get(i).getIlanid());
+
                 startActivity(intent);
             }
         });

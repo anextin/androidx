@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,7 +18,17 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.kafein.otogalerim.Adapter.FavoriSliderAdapter;
+import com.example.kafein.otogalerim.Models.FavoriSliderPojo;
+import com.example.kafein.otogalerim.RestApi.ManagerAll;
+
 import java.awt.font.TextAttribute;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +38,10 @@ public class MainActivity extends AppCompatActivity
         TextView navHeaderTextView;
         SharedPreferences.Editor editor;
         Button ilanVerButon ,ilanlarimMenuButon,ilanButon;
+        ViewPager mainActivitySliderFavori;
+        CircleIndicator mainActivitySliderCircle;
+        String uye_id;
+        FavoriSliderAdapter favoriSliderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +51,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
         navHeaderText=sharedPreferences.getString("uye_kullaniciAdi",null);
+        uye_id=sharedPreferences.getString("uye_id",null);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +74,15 @@ public class MainActivity extends AppCompatActivity
         navHeaderTextView=headerView.findViewById(R.id.navHeaderText);
         navHeaderTextView.setText(navHeaderText);
         tanimla();
+        getSlider();
     }
 
     public void tanimla()
     {
+
+        mainActivitySliderFavori=(ViewPager)findViewById(R.id.mainActivitySliderFavori);
+        mainActivitySliderCircle=findViewById(R.id.mainActivitySliderCircle);
+
         ilanVerButon=findViewById(R.id.ilanVerButon);
         ilanVerButon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,5 +174,34 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public void getSlider()
+    {
+        Call<List<FavoriSliderPojo>> request= ManagerAll.getInstance().setSlider(uye_id);
+
+        request.enqueue(new Callback<List<FavoriSliderPojo>>() {
+            @Override
+            public void onResponse(Call<List<FavoriSliderPojo>> call, Response<List<FavoriSliderPojo>> response) {
+                if(response.body().get(0).isTf())
+                {
+
+
+                        favoriSliderAdapter = new FavoriSliderAdapter(response.body(), MainActivity.this, MainActivity.this);
+
+                        mainActivitySliderFavori.setAdapter(favoriSliderAdapter);
+
+                        mainActivitySliderCircle.setViewPager(mainActivitySliderFavori);
+                        mainActivitySliderCircle.bringToFront();
+                    
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<FavoriSliderPojo>> call, Throwable t) {
+
+            }
+        });
     }
 }

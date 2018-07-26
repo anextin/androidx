@@ -9,8 +9,8 @@
     tools:context="com.example.kafein.otogalerim.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <LinearLayout
-        android:id="@+id/sliderLayout"
+    <RelativeLayout
+        android:id="@+id/mainActivitySlider"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical">
@@ -18,14 +18,24 @@
         <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F2F1EF"></android.support.v4.view.ViewPager>
-    </LinearLayout>
+            android:id="@+id/mainActivitySliderFavori"
+            android:background="#728caf"></android.support.v4.view.ViewPager>
+
+        <me.relex.circleindicator.CircleIndicator
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/mainActivitySliderCircle"
+            app:ci_drawable="@color/colorAccent"
+            app:ci_drawable_unselected="@color/colorPrimaryDark"
+            />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/sliderLayout"
+        android:layout_below="@+id/mainActivitySlider"
         android:orientation="vertical">
 
         <LinearLayout
