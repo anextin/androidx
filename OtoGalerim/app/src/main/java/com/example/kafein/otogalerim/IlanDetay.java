@@ -158,10 +158,12 @@ public class IlanDetay extends AppCompatActivity {
                 {
 
                     ilanDetayFavoriyeAl.setText(response.body().getText());
+                    Log.i("tttus",response.body().getText());
                 }
                 else
                 {
                     ilanDetayFavoriyeAl.setText(response.body().getText());
+                    Log.i("tttus",response.body().getText());
                 }
             }
 

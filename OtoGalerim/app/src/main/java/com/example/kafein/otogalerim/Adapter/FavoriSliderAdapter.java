@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,5 +71,11 @@ public class FavoriSliderAdapter extends PagerAdapter{
         container.addView(view);
 
         return view;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object)
+    {
+        container.removeView((View) object);
     }
 }

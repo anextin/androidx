@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -180,10 +181,12 @@ public class MainActivity extends AppCompatActivity
     public void getSlider()
     {
         Call<List<FavoriSliderPojo>> request= ManagerAll.getInstance().setSlider(uye_id);
+        Log.i("ardaaa", uye_id);
 
         request.enqueue(new Callback<List<FavoriSliderPojo>>() {
             @Override
             public void onResponse(Call<List<FavoriSliderPojo>> call, Response<List<FavoriSliderPojo>> response) {
+
                 if(response.body().get(0).isTf())
                 {
 
@@ -194,7 +197,7 @@ public class MainActivity extends AppCompatActivity
 
                         mainActivitySliderCircle.setViewPager(mainActivitySliderFavori);
                         mainActivitySliderCircle.bringToFront();
-                    
+
                 }
             }
 
@@ -203,5 +206,11 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+    }
+    //bir ilanı favoriye aldıgımızda ana ekrana gelssın yada cıkardıgımızda cıksın dıe
+    protected  void onRestart()
+    {
+        super.onRestart();
+        getSlider();
     }
 }

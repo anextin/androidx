@@ -74,6 +74,6 @@ public interface RestApi {
 
 
     @GET("/favoriilanslider.php")
-    Call<List<FavoriSliderPojo>> setSlider(@Query("uye_id") String uyeid);
+    Call<List<FavoriSliderPojo>> setSlider(@Query("uyeid") String uyeid);
 
 }
