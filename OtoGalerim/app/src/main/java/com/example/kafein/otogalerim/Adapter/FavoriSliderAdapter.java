@@ -59,12 +59,13 @@ public class FavoriSliderAdapter extends PagerAdapter{
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                Intent intent=new Intent(activity,IlanDetay.class);
-                intent.putExtra("ilanid",list.get(position).getIlanid().toString());
+            public void onClick(View view) {    //bura ile favori ilana tıklayınca ilan detayı acılıyor
+            if(list.get(position).getIlanid()!=null ) {
+                Intent intent = new Intent(activity, IlanDetay.class);
+                intent.putExtra("ilanid", list.get(position).getIlanid().toString());
 
                 activity.startActivity(intent);
+            }
             }
         });
 

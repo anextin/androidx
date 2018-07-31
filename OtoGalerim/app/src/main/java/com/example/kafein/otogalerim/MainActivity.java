@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kafein.otogalerim.Adapter.FavoriSliderAdapter;
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity
 
                 if(response.body().get(0).isTf())
                 {
-
+                    if(response.body().size()>0) {
 
                         favoriSliderAdapter = new FavoriSliderAdapter(response.body(), MainActivity.this, MainActivity.this);
 
@@ -197,8 +198,18 @@ public class MainActivity extends AppCompatActivity
 
                         mainActivitySliderCircle.setViewPager(mainActivitySliderFavori);
                         mainActivitySliderCircle.bringToFront();
-
+                    }
                 }
+                else
+                {
+                    favoriSliderAdapter = new FavoriSliderAdapter(response.body(), MainActivity.this, MainActivity.this);
+
+                    mainActivitySliderFavori.setAdapter(favoriSliderAdapter);
+
+                    mainActivitySliderCircle.setViewPager(mainActivitySliderFavori);
+                    mainActivitySliderCircle.bringToFront();
+                }
+
             }
 
             @Override
