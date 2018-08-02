@@ -46,7 +46,8 @@
             android:label="@string/title_activity_ilanlarim"
             android:theme="@style/AppTheme" />
         <activity android:name=".Ilanlar" />
-        <activity android:name=".IlanDetay"></activity>
+        <activity android:name=".IlanDetay" />
+        <activity android:name=".BilgiActivity"></activity>
     </application>
 
 </manifest>

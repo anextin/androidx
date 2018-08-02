@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         ViewPager mainActivitySliderFavori;
         CircleIndicator mainActivitySliderCircle;
         String uye_id;
+        Button iletisimBilgileri;
         FavoriSliderAdapter favoriSliderAdapter;
 
     @Override
@@ -109,6 +110,17 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this,Ilanlar.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_inn,R.anim.anim_out);
+            }
+        });
+
+        iletisimBilgileri=findViewById(R.id.iletisimBilgileri);
+        iletisimBilgileri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent= new Intent(MainActivity.this,BilgiActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_inn,R.anim.anim_out);
             }
