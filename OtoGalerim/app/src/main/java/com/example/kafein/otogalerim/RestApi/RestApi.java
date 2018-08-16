@@ -14,6 +14,7 @@ import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
 import com.example.kafein.otogalerim.Models.SliderPojo;
+import com.example.kafein.otogalerim.Models.Update;
 import com.example.kafein.otogalerim.Models.User;
 
 import java.util.List;
@@ -80,5 +81,8 @@ public interface RestApi {
 
     @GET("/bilgiler.php")
     Call<User> getInformation(@Query("uyeid") String uyeid);
+
+    @GET("/guncelle.php")
+    Call<Update> changeInformation(@Query("uyeid") String uyeid , @Query("user") String user , @Query("pass") String pass);
 
 }

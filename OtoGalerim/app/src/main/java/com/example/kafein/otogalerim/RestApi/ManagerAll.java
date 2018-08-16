@@ -15,6 +15,7 @@ import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
 import com.example.kafein.otogalerim.Models.SliderPojo;
+import com.example.kafein.otogalerim.Models.Update;
 import com.example.kafein.otogalerim.Models.User;
 
 import java.util.List;
@@ -121,6 +122,12 @@ public class ManagerAll extends BaseManager{
     public Call<User> getInformation(String uyeid) {
 
         Call<User> x = getRestApi().getInformation(uyeid);
+        return x;
+    }
+
+    public Call<Update> changeInformation(String uyeid, String user, String pass) {
+
+        Call<Update> x = getRestApi().changeInformation(uyeid,user,pass);
         return x;
     }
 
