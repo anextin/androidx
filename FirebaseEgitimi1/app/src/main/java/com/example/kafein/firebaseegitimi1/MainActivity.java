@@ -27,29 +27,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tanimla();
+        goster();
+        action();
 
 
-
-        ref1=database.getReference("adi");
-        ref1.setValue("arda");
-
-
-        ref1.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.i("value",dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     public void tanimla()
     {
         database=FirebaseDatabase.getInstance();
+        //database ait ornegi database nesnesine atıyoruz
         key=findViewById(R.id.key);
         value=findViewById(R.id.value);
         ekle=findViewById(R.id.ekle);
@@ -68,6 +56,22 @@ public class MainActivity extends AppCompatActivity {
                 ref1.setValue(valueText);
                 key.setText("");
                 value.setText("");
+
+            }
+        });
+    }
+
+    public  void goster()
+    {
+        ref1=database.getReference("adi");
+        ref1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                result.setText(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });

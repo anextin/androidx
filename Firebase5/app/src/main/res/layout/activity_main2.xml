@@ -5,27 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.kafein.firebaseegitimi1.MainActivity">
+    tools:context="com.example.kafein.firebase5.Main2Activity">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/key"/>
-    
+        android:id="@+id/parola"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/value"/>
-    
-    <TextView
+        android:id="@+id/yas"/>
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/result"/>
+        android:id="@+id/isim"/>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ekle"
-        android:text="ekle"/>
-
+        android:layout_height="match_parent"
+        android:text="kaydet"
+        android:id="@+id/kaydet"/>
 </LinearLayout>
