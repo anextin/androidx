@@ -2,11 +2,20 @@ package com.example.kafein.otogalerim.RestApi;
 
 
 import com.example.kafein.otogalerim.Models.DogrulamaPojo;
+import com.example.kafein.otogalerim.Models.FavoriIslemPojo;
+import com.example.kafein.otogalerim.Models.FavoriKontrolPojo;
+import com.example.kafein.otogalerim.Models.FavoriSliderPojo;
+import com.example.kafein.otogalerim.Models.IlanDetayPojo;
 import com.example.kafein.otogalerim.Models.IlanSonucPojo;
+import com.example.kafein.otogalerim.Models.IlanlarPojo;
 import com.example.kafein.otogalerim.Models.IlanlarimPojo;
+import com.example.kafein.otogalerim.Models.IlanlarimSilPojo;
 import com.example.kafein.otogalerim.Models.LoginPojo;
 import com.example.kafein.otogalerim.Models.RegisterPojo;
 import com.example.kafein.otogalerim.Models.ResimEklePojo;
+import com.example.kafein.otogalerim.Models.SliderPojo;
+import com.example.kafein.otogalerim.Models.Update;
+import com.example.kafein.otogalerim.Models.User;
 
 import java.util.List;
 
@@ -44,4 +53,36 @@ public interface RestApi {
 
     @GET("/ilanlarim.php")
     Call<List<IlanlarimPojo>> ilanlarim(@Query("uyeid") String uyeid);
+
+
+    @GET("/ilanlarimdansil.php")
+    Call<IlanlarimSilPojo> ilanlarimSil(@Query("ilan_id") String ilanid);
+
+    @GET("/ilanlar.php")
+    Call<List<IlanlarPojo>> ilanlar();
+
+    @GET("/ilandetay.php")
+    Call<IlanDetayPojo> ilanDetay(@Query("ilanid") String ilanid);
+
+    @GET("/ilanresimleri.php")
+    Call<List<SliderPojo>> ilanResimleri(@Query("ilanid") String ilanid);
+
+
+    @GET("/favori.php")
+    Call<FavoriKontrolPojo> getButonText(@Query("uye_id") String uyeid, @Query("ilan_id") String ilanid);
+
+    @GET("/favoriislem.php")
+    Call<FavoriIslemPojo> favoriIslem(@Query("uye_id") String uyeid, @Query("ilan_id") String ilanid);
+
+
+    @GET("/favoriilanslider.php")
+    Call<List<FavoriSliderPojo>> setSlider(@Query("uyeid") String uyeid);
+
+
+    @GET("/bilgiler.php")
+    Call<User> getInformation(@Query("uyeid") String uyeid);
+
+    @GET("/guncelle.php")
+    Call<Update> changeInformation(@Query("uyeid") String uyeid , @Query("user") String user , @Query("pass") String pass);
+
 }

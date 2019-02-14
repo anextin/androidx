@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "551730185201",
+    "firebase_url": "https://kapsamliandroidegitim-941b2.firebaseio.com",
+    "project_id": "kapsamliandroidegitim-941b2",
+    "storage_bucket": "kapsamliandroidegitim-941b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551730185201:android:7aca22251562e92a",
+        "android_client_info": {
+          "package_name": "com.example.kafein.firebaseegitimi1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551730185201-bv23ucrbo26b0dkk8gdc9bbde1cmavjf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kafein.firebaseegitimi1",
+            "certificate_hash": "faee03b5d58c6f57bc7d8c79e9cad43348e51848"
+          }
+        },
+        {
+          "client_id": "551730185201-jp90q1ltbihnrekg3gemc0i80e6158mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBilr72yXM0k2IBocHlrwEDIcQJMJFgt-k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551730185201-jp90q1ltbihnrekg3gemc0i80e6158mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

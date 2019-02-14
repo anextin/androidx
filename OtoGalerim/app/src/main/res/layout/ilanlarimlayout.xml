@@ -2,11 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#fff"
+    android:background="#EEEEEE"
     android:orientation="horizontal"
     android:padding="3dp"
     android:layout_margin="3dp"
-    android:id="@+id/ilanLinearLayout"
+
     android:layout_height="wrap_content">
 
 
