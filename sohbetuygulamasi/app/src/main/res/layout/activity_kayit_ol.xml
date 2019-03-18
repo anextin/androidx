@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ecf0f1"
     android:orientation="vertical"
-    tools:context=".KayitOlActivity">
+    tools:context=".Acitivity.KayitOlActivity">
 
 
 
