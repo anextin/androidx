@@ -65,7 +65,7 @@ public class    AnaActivity extends AppCompatActivity {
     public void cik()
     {
         auth.signOut();
-        Intent intent = new Intent(AnaActivity.this, KayitOlActivity.class);
+        Intent intent = new Intent(AnaActivity.this, GirisActivity.class);
         startActivity(intent);
         finish();
     }
@@ -81,7 +81,7 @@ public class    AnaActivity extends AppCompatActivity {
         if(user==null)
         {
 
-            Intent intent = new Intent(AnaActivity.this, KayitOlActivity.class);
+            Intent intent = new Intent(AnaActivity.this, GirisActivity.class);
             startActivity(intent);
             finish();
         }

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ext.sohbetuygulamasi.R;
@@ -21,6 +22,7 @@ public class KayitOlActivity extends AppCompatActivity {
     EditText input_email, input_password;
     Button registerButon;
     FirebaseAuth auth;
+    TextView hesapvarText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class KayitOlActivity extends AppCompatActivity {
         input_email=findViewById(R.id.input_email);
         input_password=findViewById(R.id.input_password);
         registerButon=findViewById(R.id.registerButon);
+        hesapvarText=findViewById(R.id.hesapvarText);
         auth=FirebaseAuth.getInstance();
 
         registerButon.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +60,16 @@ public class KayitOlActivity extends AppCompatActivity {
                 }
                 }
 
+        });
+
+
+        hesapvarText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(KayitOlActivity.this,GirisActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
 
     }
