@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class KayitOlActivity extends AppCompatActivity {
 
@@ -23,6 +28,8 @@ public class KayitOlActivity extends AppCompatActivity {
     Button registerButon;
     FirebaseAuth auth;
     TextView hesapvarText;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +92,18 @@ public class KayitOlActivity extends AppCompatActivity {
 
                 if(task.isSuccessful())
                 {
+                    firebaseDatabase = FirebaseDatabase.getInstance();
+                    reference=firebaseDatabase.getReference().child("Kullanicilar").child(auth.getUid());
+                    Map map = new HashMap();
+                    map.put("resim","null");
+                    map.put("isim","null");
+                    map.put("egitim","null");
+                    map.put("dogumtarih","null");
+                    map.put("hakkimda","null");
+
+                    reference.setValue(map);
+
+
                     Intent intent=new Intent(KayitOlActivity.this,AnaActivity.class);
                     startActivity(intent);
                     finish();
