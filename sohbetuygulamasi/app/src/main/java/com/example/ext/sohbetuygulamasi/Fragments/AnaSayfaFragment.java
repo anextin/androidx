@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.R;
 
 
@@ -25,11 +26,15 @@ import android.view.ViewGroup;
 
 import com.example.ext.sohbetuygulamasi.Adapters.UserAdapter;
 import com.example.ext.sohbetuygulamasi.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +48,8 @@ public class AnaSayfaFragment extends Fragment {
     RecyclerView userListRecyclerView;
     View view;
     UserAdapter userAdapter;
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +76,8 @@ public class AnaSayfaFragment extends Fragment {
 
         userAdapter= new UserAdapter(userKeysList,getActivity(),getContext());
         userListRecyclerView.setAdapter(userAdapter);
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();   //kendinin gosterilmemesi icin
 
     }
 
@@ -80,8 +89,28 @@ public class AnaSayfaFragment extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 //      Log.i( "keyler ",dataSnapshot.getKey());
-                userKeysList.add(dataSnapshot.getKey());
-                userAdapter.notifyDataSetChanged();  //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
+                reference.child("Kullanicilar").child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
+
+                        //asagıdaki sartların amacları:
+                        //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
+                        if(!k1.getIsim().equals("null") && !dataSnapshot.getKey().equals(user.getUid()))
+                        {
+                            userKeysList.add(dataSnapshot.getKey());
+                            userAdapter.notifyDataSetChanged();  //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }
 
             @Override
