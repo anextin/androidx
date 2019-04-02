@@ -31,14 +31,14 @@ public class UserProfileFragment extends Fragment {
 
     public void tanimla()
     {
-        denemeText=view.findViewById(R.id.denemeText);
+
         userId =getArguments().getString("userid");
     }
 
 
     public void action()
     {
-        denemeText.setText(userId);
+
     }
 
 }
