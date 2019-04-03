@@ -2,7 +2,6 @@ package com.example.ext.sohbetuygulamasi.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.drm.DrmStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,11 +10,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.ext.sohbetuygulamasi.Fragments.UserProfileFragment;
+import com.example.ext.sohbetuygulamasi.Fragments.OtherProfileFragment;
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.R;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,7 +82,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                @Override
                public void onClick(View v) {
                    ChangeFragment fragment= new ChangeFragment(context);
-                   fragment.changeWithParameter(new UserProfileFragment(),userKeysList.get(position));
+                   fragment.changeWithParameter(new OtherProfileFragment(),userKeysList.get(position));
                }
            });
     }

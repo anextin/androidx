@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.UserProfileFragment">
+    tools:context=".Fragments.OtherProfileFragment">
 
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -26,21 +26,33 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
+                android:id="@+id/userProfileProfileImage"
                 android:layout_width="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_height="100dp"
                 android:src="@drawable/defaultprofile"
+
                 app:civ_border_width="2dp"
                 app:civ_border_color="#FF000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Arkadas ekle"
+                android:textSize="25dp"
+                android:id="@+id/userProfileNameText2"
+                android:textColor="#4f5573"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
 
                 <ImageView
                     android:layout_width="0dp"
@@ -76,6 +88,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="50dp"
                     android:text="500 takipçi"
+                    android:id="@+id/userProfileTakipText"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -87,6 +100,7 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
+                    android:id="@+id/userProfileArkadasText"
                     android:text="500 arkadas"
                     android:textStyle="bold"
                     android:layout_marginRight="50dp"/>
@@ -99,6 +113,7 @@
                 android:layout_height="wrap_content">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
@@ -106,26 +121,29 @@
                 android:textStyle="bold"
                 android:textColor="#2b0e72"
                 android:text="Genel Bilgiler"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textColor="#353190"
                 android:layout_marginLeft="20dp"
+                android:id="@+id/userProfileNameText"
                 android:text="isim"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textColor="#353190"
+                android:id="@+id/userProfileEgitimText"
                 android:layout_marginLeft="20dp"
                 android:text="egitim"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:id="@+id/userProfileDogumText"
                 android:textColor="#353190"
                 android:layout_marginLeft="20dp"
                 android:text="dogumtarihi"/>
@@ -133,6 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:id="@+id/userProfileHakkimdaText"
                 android:textColor="#353190"
                 android:layout_marginLeft="20dp"
                 android:text="hakkında"/>
@@ -147,19 +166,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="20dp">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/arkadas_ekle_on"/>
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/userProfileArkadasImage"/>
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="50dp"
+                    android:id="@+id/userProfileMesajImage"
                     android:background="@drawable/mesaj_gonder"
                     android:layout_weight="1"/>
 
@@ -167,7 +187,8 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/userProfileTakipImage"
                     android:layout_marginRight="30dp"
                     android:background="@drawable/takip_off"/>
 
@@ -184,7 +205,7 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="25dp"
                     android:text="Arkadas ekle"
                     android:textStyle="bold"/>
 
@@ -200,8 +221,7 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="Takip et"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"/>
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
