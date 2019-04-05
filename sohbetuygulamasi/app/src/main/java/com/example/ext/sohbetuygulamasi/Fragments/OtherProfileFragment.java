@@ -14,17 +14,22 @@ import android.widget.Toast;
 
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.R;
+import com.example.ext.sohbetuygulamasi.Utils.ShowToastMessage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,7 +47,8 @@ public class OtherProfileFragment extends Fragment {
     CircleImageView userProfileProfileImage;
     FirebaseAuth auth;
     FirebaseUser user;
-    String kontrol="";
+    String kontrol="",begeniKontrol="";
+    ShowToastMessage showToastMessage;
 
 
     @Override
@@ -52,6 +58,8 @@ public class OtherProfileFragment extends Fragment {
         view= inflater.inflate(R.layout.fragment_user_profile, container, false);
         tanimla();
         action();
+        getBegeniText();
+        getArkadasText();
         return view;
     }
 
@@ -68,6 +76,8 @@ public class OtherProfileFragment extends Fragment {
 
         otherId =getArguments().getString("userid"); // bunun sayesınde tıkladıgımız profilin id sine ulasıyoruz
 
+        userProfileTakipText= view.findViewById(R.id.userProfileTakipText);
+        userProfileArkadasText= view.findViewById(R.id.userProfileArkadasText);
         userProfileNameText= view.findViewById(R.id.userProfileNameText);
         userProfileEgitimText= view.findViewById(R.id.userProfileEgitimText);
         userProfileDogumText= view.findViewById(R.id.userProfileDogumText);
@@ -119,6 +129,28 @@ public class OtherProfileFragment extends Fragment {
 
             }
         });
+
+        reference.child("Begeniler").child(otherId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(userId))
+                {
+                    begeniKontrol="begendi";
+                    userProfileTakipImage.setImageResource(R.drawable.takip_ok);
+                }
+                else
+                    {
+                        userProfileTakipImage.setImageResource(R.drawable.takip_off);
+                    }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        showToastMessage=new ShowToastMessage(getContext());
     }
 
 
@@ -165,6 +197,37 @@ public class OtherProfileFragment extends Fragment {
                 }
             }
         });
+
+        userProfileTakipImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(begeniKontrol.equals("begendi"))
+                {
+                    begeniIptal(userId,otherId);
+
+                }
+
+                else
+                {
+                    begen(userId,otherId);
+                }
+            }
+        });
+    }
+
+    private void begeniIptal(String userId, String otherId) {
+
+        reference.child("Begeniler").child(otherId).child(userId).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                userProfileTakipImage.setImageResource(R.drawable.takip_off);
+                begeniKontrol="";
+                showToastMessage.showToast("begenme iptal edildi");
+                getBegeniText();
+
+            }
+        });
     }
 
     public void arkadasTablosundanCikar(final String otherId,final String userId)
@@ -179,7 +242,8 @@ public class OtherProfileFragment extends Fragment {
 
                         kontrol="";
                         userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_on);
-                        Toast.makeText(getContext(),"arkadasliktan cıkarıldı..",Toast.LENGTH_LONG).show();
+                        showToastMessage.showToast("arkadasliktan cıkarıldı..");
+                        getArkadasText();
                     }
                 });
             }
@@ -203,10 +267,11 @@ public class OtherProfileFragment extends Fragment {
                                 kontrol="istek";
                                 Toast.makeText(getContext(),"arkadasllik istegi gonderildi",Toast.LENGTH_LONG).show();
                                 userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_off);
+
                             }
                             else
                             {
-                                Toast.makeText(getContext(),"bir problem var..",Toast.LENGTH_LONG).show();
+                                showToastMessage.showToast("bir problem var..");
                             }
 
                         }
@@ -214,7 +279,7 @@ public class OtherProfileFragment extends Fragment {
                 }
                 else
                 {
-                    Toast.makeText(getContext(),"bir problem var..",Toast.LENGTH_LONG).show();
+                    showToastMessage.showToast("bir problem var..");
                 }
 
             }
@@ -235,9 +300,61 @@ public class OtherProfileFragment extends Fragment {
 
                         kontrol="";
                         userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_on);
-                        Toast.makeText(getContext(),"arkadaslik istegi iptal edildi..",Toast.LENGTH_LONG).show();
+                        showToastMessage.showToast("arkadaslik istegi iptal edildi..");
+
                     }
                 });
+            }
+        });
+    }
+
+    public void begen(String userId,String otherId)
+    {
+        reference.child("Begeniler").child(otherId).child(userId).child("tip").setValue("begendi").addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful())
+                {
+                    showToastMessage.showToast("profili begendiniz");
+                    userProfileTakipImage.setImageResource(R.drawable.takip_ok);
+                    begeniKontrol="begendi";
+                    getBegeniText();
+                }
+            }
+        });
+    }
+
+    public void getBegeniText()
+    {
+    //    userProfileTakipText.setText("0 Begeni");
+   //     final List<String> begeniList= new ArrayList<>();
+            reference.child("Begeniler").child(otherId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    userProfileTakipText.setText(dataSnapshot.getChildrenCount()+ " Begeni");
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+    }
+
+    public void getArkadasText()
+    {
+   //     final List<String> arkList= new ArrayList<>();
+    //    userProfileTakipText.setText("0 Arkadaş");
+        reference.child("Arkadaslar").child(otherId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userProfileArkadasText.setText(dataSnapshot.getChildrenCount()+" Arkadaş");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

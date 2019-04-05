@@ -86,24 +86,26 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:layout_marginLeft="50dp"
-                    android:text="500 takipçi"
-                    android:id="@+id/userProfileTakipText"
-                    android:textStyle="bold"/>
+                    android:id="@+id/userProfileArkadasText"
+                    android:text="0 arkadas"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="50dp"/>
+
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:id="@+id/userProfileArkadasText"
-                    android:text="500 arkadas"
-                    android:textStyle="bold"
-                    android:layout_marginRight="50dp"/>
+                    android:layout_marginRight="50dp"
+                    android:text="0 takipçi"
+                    android:id="@+id/userProfileTakipText"
+                    android:textStyle="bold"/>
+
+
 
             </LinearLayout>
 
@@ -190,7 +192,7 @@
                     android:layout_marginLeft="40dp"
                     android:id="@+id/userProfileTakipImage"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/takip_off"/>
+                    />
 
             </LinearLayout>
 
