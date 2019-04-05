@@ -4,10 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ext.sohbetuygulamasi.Adapters.Friend_Req_Adapter;
 import com.example.ext.sohbetuygulamasi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +33,9 @@ public class BildirimFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     List<String> friend_req_key_list;
+    RecyclerView friend_req_recy;
+    Friend_Req_Adapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,14 +55,26 @@ public class BildirimFragment extends Fragment {
         firebaseDatabase= FirebaseDatabase.getInstance();
         reference=firebaseDatabase.getReference().child("Arkadaslik_Istek");
         friend_req_key_list= new ArrayList<>();
+        friend_req_recy = view.findViewById(R.id.friend_req_recy);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(),1);
+        friend_req_recy.setLayoutManager(layoutManager);
+        adapter= new Friend_Req_Adapter(friend_req_key_list,getActivity(),getContext());
+        friend_req_recy.setAdapter(adapter);
     }
 
     public void istekler()
     {
+
         reference.child(userId).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+
+                    String kontrol = dataSnapshot.child("tip").getValue().toString();
+                    if (kontrol.equals("aldi")) {
+                        friend_req_key_list.add(dataSnapshot.getKey());
+                        adapter.notifyDataSetChanged();
+                    }
 
             }
 
@@ -67,7 +85,8 @@ public class BildirimFragment extends Fragment {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                friend_req_key_list.remove(dataSnapshot.getKey());
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -77,7 +96,6 @@ public class BildirimFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

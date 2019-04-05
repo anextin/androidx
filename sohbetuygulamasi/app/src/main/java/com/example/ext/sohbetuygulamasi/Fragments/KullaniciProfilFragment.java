@@ -177,34 +177,34 @@ public class KullaniciProfilFragment extends Fragment {
 
     public void bilgileriGetir()
     {
-            reference.addValueEventListener(new ValueEventListener(){
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+        reference.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
-                  Log.i("bilgiler",k1.toString());
-   // alternatif alma yontemi        //    String adi = dataSnapshot.child("isim").getValue().toString();
-              //      String egitim = dataSnapshot.child("egitim").getValue().toString();
-
-
-                    kullaniciIsmi.setText(k1.getIsim());
-                    input_egitim.setText(k1.getEgitim());
-                    input_dogumtarih.setText(k1.getDogumtarih());
-                    input_hakkimda.setText(k1.getHakkimda());
-                    imageUrl=k1.getResim();
-
-                    if(!k1.getResim().equals("null"))
-                    {
-                        Picasso.get().load(k1.getResim()).into(profile_image);
-                    }
+                Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
+                Log.i("bilgiler",k1.toString());
+                // alternatif alma yontemi        //    String adi = dataSnapshot.child("isim").getValue().toString();
+                //      String egitim = dataSnapshot.child("egitim").getValue().toString();
 
 
+                kullaniciIsmi.setText(k1.getIsim());
+                input_egitim.setText(k1.getEgitim());
+                input_dogumtarih.setText(k1.getDogumtarih());
+                input_hakkimda.setText(k1.getHakkimda());
+                imageUrl=k1.getResim();
+
+                if(!k1.getResim().equals("null"))
+                {
+                    Picasso.get().load(k1.getResim()).into(profile_image);
                 }
-                @Override
-                public void onCancelled(DatabaseError databaseError){
 
-                }
-            });
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError){
+
+            }
+        });
     }
 
     public void guncelle()
@@ -246,7 +246,7 @@ public class KullaniciProfilFragment extends Fragment {
                     Toast.makeText(getContext(),"guncellenmedi..", Toast.LENGTH_LONG).show();
                 }
 
-                }
+            }
         });
     }
 }

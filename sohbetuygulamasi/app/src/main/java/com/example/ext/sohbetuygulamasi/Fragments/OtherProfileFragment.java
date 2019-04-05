@@ -85,16 +85,33 @@ public class OtherProfileFragment extends Fragment {
 
                 if(dataSnapshot.hasChild(userId))
                 {
-                    kontrol=dataSnapshot.child(userId).child("tip").getValue().toString();
+                    kontrol="istek";
 
                     userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_off);
                 }
                 else
                 {
+
                     userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_on);
                 }
 
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        reference.child("Arkadaslar").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(otherId))
+                {
+                    kontrol="arkadas";
+                    userProfileArkadasImage.setImageResource(R.drawable.deletinguser);
+                }
             }
 
             @Override
@@ -134,14 +151,37 @@ public class OtherProfileFragment extends Fragment {
         userProfileArkadasImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!kontrol.equals(""))
+                if(kontrol.equals("istek"))
                 {
                     arkadasIptalEt(otherId,userId);
+                }
+                else if(kontrol.equals("arkadas"))
+                {
+                    arkadasTablosundanCikar(otherId,userId);
                 }
                 else
                 {
                     arkadasEkle(otherId, userId);
                 }
+            }
+        });
+    }
+
+    public void arkadasTablosundanCikar(final String otherId,final String userId)
+    {
+        reference.child("Arkadaslar").child(otherId).child(userId).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                reference.child("Arkadaslar").child(userId).child(otherId).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        kontrol="";
+                        userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_on);
+                        Toast.makeText(getContext(),"arkadasliktan cıkarıldı..",Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }
@@ -160,7 +200,7 @@ public class OtherProfileFragment extends Fragment {
 
                             if(task.isSuccessful())
                             {
-                                kontrol="aldi";
+                                kontrol="istek";
                                 Toast.makeText(getContext(),"arkadasllik istegi gonderildi",Toast.LENGTH_LONG).show();
                                 userProfileArkadasImage.setImageResource(R.drawable.arkadas_ekle_off);
                             }
