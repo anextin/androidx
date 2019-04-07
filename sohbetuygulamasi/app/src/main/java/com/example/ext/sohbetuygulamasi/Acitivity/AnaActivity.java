@@ -15,6 +15,8 @@ import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.example.ext.sohbetuygulamasi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class    AnaActivity extends AppCompatActivity {
 
@@ -22,6 +24,7 @@ public class    AnaActivity extends AppCompatActivity {
     private ChangeFragment changeFragment;
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private String userId;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,22 +74,48 @@ public class    AnaActivity extends AppCompatActivity {
         Intent intent = new Intent(AnaActivity.this, GirisActivity.class);
         startActivity(intent);
         finish();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(user.getUid()).child("state").setValue(false);
     }
 
     public void tanimla()
     {
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(user.getUid()).child("state").setValue(false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(user.getUid()).child("state").setValue(true);
     }
 
     public  void kontrol()
     {
-        if(user==null)
-        {
+        if(user==null) {
 
             Intent intent = new Intent(AnaActivity.this, GirisActivity.class);
             startActivity(intent);
             finish();
         }
+            else
+                {
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+            reference.child(user.getUid()).child("state").setValue(true);
+        }
+
     }
 }

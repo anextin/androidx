@@ -51,7 +51,7 @@ public class KullaniciProfilFragment extends Fragment {
     View view;
     EditText kullaniciIsmi,input_egitim,input_dogumtarih,input_hakkimda;
     CircleImageView profile_image;
-    Button bilgiGuncelleButton;
+    Button bilgiGuncelleButton,bilgiArkadasButon,bilgiIstekButonu;
     StorageReference storageReference;
     FirebaseStorage firebaseStorage;
 
@@ -70,6 +70,9 @@ public class KullaniciProfilFragment extends Fragment {
 
     public void tanimla()
     {
+        bilgiArkadasButon=view.findViewById(R.id.bilgiArkadasButon);
+        bilgiIstekButonu=view.findViewById(R.id.bilgiIstekButonu);
+
         kullaniciIsmi= view.findViewById(R.id.kullaniciIsmi);
         input_egitim= view.findViewById(R.id.input_egitim);
         input_dogumtarih= view.findViewById(R.id.input_dogumTarihi);
@@ -99,6 +102,22 @@ public class KullaniciProfilFragment extends Fragment {
         user=auth.getCurrentUser();
         database= FirebaseDatabase.getInstance();
         reference=database.getReference().child("Kullanicilar").child(auth.getUid());
+
+        bilgiArkadasButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeFragment changeFragment= new ChangeFragment((getContext()));
+                changeFragment.change(new ArkadaslarFragment());
+            }
+        });
+
+        bilgiIstekButonu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeFragment changeFragment= new ChangeFragment((getContext()));
+                changeFragment.change(new BildirimFragment());
+            }
+        });
     }
 
 

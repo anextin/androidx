@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ext.sohbetuygulamasi.Adapters.Friend_Req_Adapter;
+import com.example.ext.sohbetuygulamasi.Adapters.FriendAdapter;
 import com.example.ext.sohbetuygulamasi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,65 +20,64 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class BildirimFragment extends Fragment {
+public class ArkadaslarFragment extends Fragment {
+
 
     View view;
-    FirebaseAuth auth;
-    FirebaseUser firebaseUser;
-    String userId;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
-    List<String> friend_req_key_list;
-    RecyclerView friend_req_recy;
-    Friend_Req_Adapter adapter;
+    RecyclerView friendrecy;
+    FriendAdapter friendAdapter;
+    List<String> keyList;
+    FirebaseUser firebaseUser;
+    FirebaseAuth auth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_bildirim, container, false);
+        view= inflater.inflate(R.layout.fragment_arkadaslar, container, false);
         tanimla();
-        istekler();
+        getArkadasList();
         return view;
     }
 
-
     public void tanimla()
     {
-        auth= FirebaseAuth.getInstance();
-        firebaseUser= auth.getCurrentUser();
-        userId= firebaseUser.getUid();
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        reference=firebaseDatabase.getReference().child("Arkadaslik_Istek");
-        friend_req_key_list= new ArrayList<>();
-        friend_req_recy = view.findViewById(R.id.friend_req_recy);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(),1);
-        friend_req_recy.setLayoutManager(layoutManager);
-        adapter= new Friend_Req_Adapter(friend_req_key_list,getActivity(),getContext());
-        friend_req_recy.setAdapter(adapter);
+        auth=FirebaseAuth.getInstance();
+        firebaseUser=auth.getCurrentUser();
+        keyList= new ArrayList<>();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference= firebaseDatabase.getReference().child("Arkadaslar");
+
+        friendrecy = view.findViewById(R.id.friend_recy);
+        RecyclerView.LayoutManager layoutManager= new GridLayoutManager(getContext(),1);
+        friendrecy.setLayoutManager(layoutManager);
+        friendAdapter = new FriendAdapter(keyList,getActivity(),getContext());
+        friendrecy.setAdapter(friendAdapter);
+
     }
 
-    public void istekler()
-    {
 
-        reference.child(userId).addChildEventListener(new ChildEventListener() {
+    public void getArkadasList()
+    {
+        reference.child(firebaseUser.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.i( "arda",dataSnapshot.getKey());
 
+                if(keyList.indexOf(dataSnapshot.getKey())==-1)
+                {
+                    keyList.add(dataSnapshot.getKey());
+                }
 
-                    String kontrol = dataSnapshot.child("tip").getValue().toString();
-                    if (kontrol.equals("aldi")) {
-                        if (friend_req_key_list.indexOf(dataSnapshot.getKey())==-1) {
-                            friend_req_key_list.add(dataSnapshot.getKey());
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-
+                friendAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -87,8 +87,7 @@ public class BildirimFragment extends Fragment {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                friend_req_key_list.remove(dataSnapshot.getKey());
-                adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -98,6 +97,7 @@ public class BildirimFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

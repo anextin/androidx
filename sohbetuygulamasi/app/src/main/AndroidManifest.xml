@@ -25,6 +25,10 @@
             android:label="@string/title_activity_giris"
             android:theme="@style/AppTheme" />
         <activity android:name=".Acitivity.AnaAcitivity" />
+        <activity
+            android:name=".Acitivity.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

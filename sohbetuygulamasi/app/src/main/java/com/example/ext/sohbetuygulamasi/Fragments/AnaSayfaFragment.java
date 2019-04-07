@@ -99,7 +99,9 @@ public class AnaSayfaFragment extends Fragment {
                         //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
                         if(!k1.getIsim().equals("null") && !dataSnapshot.getKey().equals(user.getUid()))
                         {
-                            userKeysList.add(dataSnapshot.getKey());
+                            if(userKeysList.indexOf(dataSnapshot.getKey())==-1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
                             userAdapter.notifyDataSetChanged();  //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
                         }
                     }

@@ -4,16 +4,18 @@ public class Kullanicilar {
 
 
     private  String dogumtarih,egitim,hakkimda,isim,resim;
+    private Object state;
 
     public Kullanicilar() {
     }
 
-    public Kullanicilar(String dogumtarih, String egitim, String hakkimda, String isim, String resim) {
+    public Kullanicilar(String dogumtarih, String egitim, String hakkimda, String isim, String resim, Object state) {
         this.dogumtarih = dogumtarih;
         this.egitim = egitim;
         this.hakkimda = hakkimda;
         this.isim = isim;
         this.resim = resim;
+        this.state = state;
     }
 
     public String getDogumtarih() {
@@ -56,6 +58,10 @@ public class Kullanicilar {
         this.resim = resim;
     }
 
+    public Object getState() { return state; }
+
+    public void setState(Object state) { this.state = state; }
+
     @Override
     public String toString() {
         return "Kullanicilar{" +
@@ -64,6 +70,7 @@ public class Kullanicilar {
                 ", hakkimda='" + hakkimda + '\'' +
                 ", isim='" + isim + '\'' +
                 ", resim='" + resim + '\'' +
+                ", state=" + state +
                 '}';
     }
 }
