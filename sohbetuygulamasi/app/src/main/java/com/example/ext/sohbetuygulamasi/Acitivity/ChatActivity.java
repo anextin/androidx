@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -39,7 +40,7 @@ public class   ChatActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
     FirebaseAuth auth;
-    FloatingActionButton sendMessageButton;
+    Button sendMessageButton;
     EditText mesajTextEdittext;
     List<MessageModel> messageModelList;
     RecyclerView chat_recycler_view;
