@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kafein.fileread.MainActivity2">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="app_title"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_margin="5dp"
+        android:layout_marginTop="22dp"
+        android:minLines="5">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/readButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTextContent"
+        android:layout_alignRight="@+id/editTextContent"
+        android:layout_alignTop="@+id/writeButton"
+        android:text="read_button" />
+
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextContent"
+        android:layout_alignStart="@+id/editTextContent"
+        android:layout_centerVertical="true"
+        android:text="@write_button" />
+
+</RelativeLayout>

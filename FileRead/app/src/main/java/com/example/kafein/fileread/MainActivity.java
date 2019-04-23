@@ -30,7 +30,12 @@ public class MainActivity extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.TextView01);
         checkExternalMedia();
         writeToSDFile();
-        
+        try {
+            readRaw();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = ctx.openFileInput(userEmalFileName);
+            fileInputStream = ctx.openFileInput("myData.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
