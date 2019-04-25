@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import java.util.List;
 import com.example.kafein.otogalerim.Models.IlanlarPojo;
 import com.example.kafein.otogalerim.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+
 
 /**
  * Created by Kafein on 7/23/2018.

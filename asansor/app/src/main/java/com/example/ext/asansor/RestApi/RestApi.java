@@ -2,7 +2,7 @@ package com.example.ext.asansor.RestApi;
 
 
 import com.example.ext.asansor.Models.ArizaPojo;
-
+import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 
 
 import java.util.List;
@@ -20,6 +20,7 @@ public interface RestApi {
     @POST("/ariza.php")
     Call<ArizaPojo> ariza(@Field("binaAdi") String binaAdi, @Field("arizaTuru") String arizaTuru, @Field("aciklama") String aciklama);
 
-
+    @GET("/tahsilatyapsorgula.php")
+    Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();
 
 }

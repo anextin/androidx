@@ -31,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ArizaActivity"
             android:label="@string/title_activity_ariza"
@@ -43,7 +42,8 @@
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".GirisActivity"></activity>
+        <activity android:name=".GirisActivity" />
+        <activity android:name=".TahsilatYapActivity"></activity>
     </application>
 
 </manifest>

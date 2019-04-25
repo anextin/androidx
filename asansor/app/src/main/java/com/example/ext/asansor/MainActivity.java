@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button bakimButton;
+    Button bakimButton,tahsilatYapButton;
     public JobScheduler jobScheduler;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -67,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ArizaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tahsilatYapButton = findViewById(R.id.tahsilatYapButton);
+        tahsilatYapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TahsilatYapActivity.class);
                 startActivity(intent);
             }
         });

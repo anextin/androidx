@@ -3,6 +3,7 @@ package com.example.ext.asansor.RestApi;
 
 
 import com.example.ext.asansor.Models.ArizaPojo;
+import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class ManagerAll extends BaseManager{
         Call<ArizaPojo> x= getRestApi().ariza(binaAdi,arizaTuru,aciklama);
         return x;
 
+    }
+
+    public Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula() {
+
+        Call<List<TahsilatYapSorgulaPojo>> x = getRestApi().TahsilatYapSorgula();
+        return x;
     }
 
 

@@ -45,7 +45,7 @@
             android:textStyle="bold"
             android:textSize="15dp"
             android:padding="8dp"
-            android:id="@+id/ilanButon"
+            android:id="@+id/tahsilatYapButton"
             android:text="Tahsilat Yap" />
 
         <Button
