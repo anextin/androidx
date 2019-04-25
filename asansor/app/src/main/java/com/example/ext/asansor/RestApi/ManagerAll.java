@@ -2,8 +2,11 @@ package com.example.ext.asansor.RestApi;
 
 
 
+import android.util.Log;
+
 import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
+import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 
 import java.util.List;
 
@@ -25,6 +28,13 @@ public class ManagerAll extends BaseManager{
 
     public Call<ArizaPojo> ariza(String binaAdi, String arizaTuru , String aciklama) {
         Call<ArizaPojo> x= getRestApi().ariza(binaAdi,arizaTuru,aciklama);
+        return x;
+
+    }
+
+    public Call<TahsilatYapSorgulaPostPojo> TahsilatYapSorgulaPost(String binaadi,String asansoradi,String yoneticiadi,String yoneticiTel,String kasa,String odemeTarihi,String tutar,String fis_numarasi,String aciklama) {
+        Call<TahsilatYapSorgulaPostPojo> x= getRestApi().TahsilatYapSorgulaPost(binaadi,asansoradi,yoneticiadi,yoneticiTel,kasa,odemeTarihi,tutar,fis_numarasi,aciklama);
+
         return x;
 
     }

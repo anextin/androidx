@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TahsilatYapPostActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tahsilat Ekrani"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/BinaAdiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="bina adi gir"/>
+
+    <EditText
+        android:id="@+id/AsansorAdiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AsansorAdiEditText"/>
+
+
+    <EditText
+        android:id="@+id/YoneticiAdiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="YoneticiAdiEditText"/>
+
+    <EditText
+        android:id="@+id/YoneticiTelEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="YoneticiTelEditText gir"/>
+
+    <EditText
+        android:id="@+id/KasaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="KasaEditText gir"/>
+
+    <EditText
+        android:id="@+id/OdemeTarihiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="OdemeTarihiEditText gir"/>
+
+    <EditText
+        android:id="@+id/TutarEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="TutarEditText gir"/>
+
+    <EditText
+        android:id="@+id/FisNumarasiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="FisNumarasiEditText gir"/>
+
+    <EditText
+        android:id="@+id/TahsilatYapPostAciklamaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AciklamaEditText gir"/>
+
+    <Button
+        android:id="@+id/OnayButon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_launcher_background"
+        android:text="Onay"/>
+
+
+</LinearLayout>

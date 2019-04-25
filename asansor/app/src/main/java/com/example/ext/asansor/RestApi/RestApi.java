@@ -3,6 +3,7 @@ package com.example.ext.asansor.RestApi;
 
 import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
+import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 
 
 import java.util.List;
@@ -19,6 +20,15 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/ariza.php")
     Call<ArizaPojo> ariza(@Field("binaAdi") String binaAdi, @Field("arizaTuru") String arizaTuru, @Field("aciklama") String aciklama);
+
+    @FormUrlEncoded
+    @POST("/tahsilatyapsorgulapost.php")
+    Call<TahsilatYapSorgulaPostPojo> TahsilatYapSorgulaPost(@Field("binaadi") String binaadi, @Field("asansoradi") String asansoradi, @Field("yoneticiadi") String yoneticiadi, @Field("yoneticiTel") String yoneticiTel, @Field("kasa") String kasa, @Field("odemeTarihi") String odemeTarihi, @Field("tutar") String tutar, @Field("fis_numarasi") String fis_numarasi, @Field("aciklama") String aciklama);
+
+
+
+
+
 
     @GET("/tahsilatyapsorgula.php")
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();

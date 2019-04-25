@@ -35,15 +35,15 @@ public class TahsilatYapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tahsilat_yap);
         listView=findViewById(R.id.tahsilatYapSorgulaListView);
-   //     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           // @Override
-         //   public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-     //           Intent intent=new Intent(Ilanlar.this,IlanDetay.class);
-       //         intent.putExtra("ilanid",ilanlarPojoList.get(i).getIlanid());
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(TahsilatYapActivity.this,TahsilatYapPostActivity.class);
+                intent.putExtra("ilanid",tahsilatYapSorgulaPojoList.get(i).getBinaadi());
 
-         //       startActivity(intent);
-       //     }
-       // });
+                startActivity(intent);
+            }
+        });
         ilanlarimigoruntule();
     }
 

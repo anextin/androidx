@@ -43,7 +43,8 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity android:name=".GirisActivity" />
-        <activity android:name=".TahsilatYapActivity"></activity>
+        <activity android:name=".TahsilatYapActivity" />
+        <activity android:name=".TahsilatYapPostActivity"></activity>
     </application>
 
 </manifest>
