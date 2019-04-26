@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
+import com.example.ext.asansor.Activities.YapilacakBakimlarActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         yapilacakBakimlarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ArizaTanimlamaActivity.class);
+                Intent intent = new Intent(MainActivity.this, YapilacakBakimlarActivity.class);
                 startActivity(intent);
             }
         });

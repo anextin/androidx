@@ -5,6 +5,7 @@ import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
+import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 
 
 import java.util.List;
@@ -37,5 +38,8 @@ public interface RestApi {
 
     @GET("/tahsilatyapsorgula.php")
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();
+
+    @GET("/yapilacakbakimlar.php")
+    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlar();
 
 }
