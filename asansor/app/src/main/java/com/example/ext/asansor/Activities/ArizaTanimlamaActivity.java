@@ -1,4 +1,4 @@
-package com.example.ext.asansor;
+package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,24 +7,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.ext.asansor.Adapter.TahsilatYapSorgulaAdapter;
+import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
+import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
+import com.example.ext.asansor.TahsilatYapActivity;
+import com.example.ext.asansor.TahsilatYapPostActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TahsilatYapActivity extends AppCompatActivity {
+public class ArizaTanimlamaActivity extends AppCompatActivity {
+
+
 
     ListView listView;
     List<TahsilatYapSorgulaPojo> tahsilatYapSorgulaPojoList;
@@ -33,13 +34,13 @@ public class TahsilatYapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tahsilat_yap);
-        listView=findViewById(R.id.tahsilatYapSorgulaListView);
+        setContentView(R.layout.activity_ariza_tanimlama);
+        listView=findViewById(R.id.arizaTanimlaListView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(TahsilatYapActivity.this,TahsilatYapPostActivity.class);
-                intent.putExtra("binaadi",tahsilatYapSorgulaPojoList.get(i).getBinaadi());
+                Intent intent=new Intent(ArizaTanimlamaActivity.this,ArizaTanimlamaPostActivity.class);
+                intent.putExtra("binaadi", tahsilatYapSorgulaPojoList.get(i).getBinaadi());
                 intent.putExtra("asansoradi",tahsilatYapSorgulaPojoList.get(i).getAsansoradi());
                 startActivity(intent);
             }

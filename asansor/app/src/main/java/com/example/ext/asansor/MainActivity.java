@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +25,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button bakimButton,tahsilatYapButton;
+    Button bakimButton,tahsilatYapButton,arizaTanimlaButton,yapilacakBakimlarButton;
     public JobScheduler jobScheduler;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -76,6 +77,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TahsilatYapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        arizaTanimlaButton = findViewById(R.id.arizaTanimlaButton);
+        arizaTanimlaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ArizaTanimlamaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        yapilacakBakimlarButton = findViewById(R.id.yapilacakBakimlarButton);
+        yapilacakBakimlarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ArizaTanimlamaActivity.class);
                 startActivity(intent);
             }
         });

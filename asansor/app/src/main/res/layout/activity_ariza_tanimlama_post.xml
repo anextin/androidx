@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ext.asansor.Activities.ArizaTanimlamaPostActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Arıza Tanımlama Ekrani"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/BinaAdiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="BinaAdiEditText gir"/>
+
+    <EditText
+        android:id="@+id/AsansorAdiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AsansorAdiEditText"/>
+
+
+    <EditText
+        android:id="@+id/ArayanKisiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ArayanKisiEditText"/>
+
+    <EditText
+        android:id="@+id/ArayanTelEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ArayanTelEditText gir"/>
+
+    <EditText
+        android:id="@+id/ArizaTarihiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ArizaTarihiEditText gir"/>
+
+    <EditText
+        android:id="@+id/ArizaSaatiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ArizaSaatiEditText gir"/>
+
+    <EditText
+        android:id="@+id/ArizaKonusuEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ArizaKonusuEditText gir"/>
+
+    <EditText
+        android:id="@+id/AcıklamaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AcıklamaEditText gir"/>
+
+
+
+    <Button
+        android:id="@+id/OnayButon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_launcher_background"
+        android:text="Onay"/>
+
+
+</LinearLayout>
+
+

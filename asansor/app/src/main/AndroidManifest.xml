@@ -44,7 +44,10 @@
 
         <activity android:name=".GirisActivity" />
         <activity android:name=".TahsilatYapActivity" />
-        <activity android:name=".TahsilatYapPostActivity"></activity>
+        <activity android:name=".TahsilatYapPostActivity" />
+        <activity android:name=".Activities.ArizaTanimlamaActivity" />
+        <activity android:name=".Activities.ArizaTanimlamaPostActivity" />
+        <activity android:name=".Activities.YapilacakBakimlarActivity"></activity>
     </application>
 
 </manifest>

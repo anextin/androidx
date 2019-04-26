@@ -33,6 +33,7 @@ public class Ilanlar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ilanlar);
         listView=findViewById(R.id.ilanlarListView);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -5,6 +5,7 @@ package com.example.ext.asansor.RestApi;
 import android.util.Log;
 
 import com.example.ext.asansor.Models.ArizaPojo;
+import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 
@@ -34,6 +35,13 @@ public class ManagerAll extends BaseManager{
 
     public Call<TahsilatYapSorgulaPostPojo> TahsilatYapSorgulaPost(String binaadi,String asansoradi,String yoneticiadi,String yoneticiTel,String kasa,String odemeTarihi,String tutar,String fis_numarasi,String aciklama) {
         Call<TahsilatYapSorgulaPostPojo> x= getRestApi().TahsilatYapSorgulaPost(binaadi,asansoradi,yoneticiadi,yoneticiTel,kasa,odemeTarihi,tutar,fis_numarasi,aciklama);
+
+        return x;
+
+    }
+
+    public Call<ArizaTanimlamaPostPojo> ArizaTanimlamaPost(String binaadi, String asansoradi,String arayankisi, String arayanTel, String arizatarih, String arizasaat, String arizakonu, String aciklama) {
+        Call<ArizaTanimlamaPostPojo> x= getRestApi().ArizaTanimlamaPost(binaadi,asansoradi,arayankisi,arayanTel,arizatarih,arizasaat,arizakonu,aciklama);
 
         return x;
 

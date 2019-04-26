@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class TahsilatYapPostActivity extends AppCompatActivity {
 
 
-
+    String binaadi,asansoradi;
     EditText BinaAdiEditText,AsansorAdiEditText,YoneticiAdiEditText, YoneticiTelEditText,KasaEditText,OdemeTarihiEditText,TutarEditText,FisNumarasiEditText,TahsilatYapPostAciklamaEditText;
     Button OnayButon;
     Context context;
@@ -37,16 +37,21 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tahsilat_yap_post);
+        Bundle bundle=getIntent().getExtras();
+        binaadi=bundle.getString("binaadi");
+        asansoradi=bundle.getString("asansoradi");
         isNetworkConnected();
         tanimla();
-
+        Log.i("binaaditag+",binaadi);
     }
 
 
     public void tanimla()
     {
         BinaAdiEditText = findViewById(R.id.BinaAdiEditText);
+        BinaAdiEditText.setText(binaadi);
         AsansorAdiEditText = findViewById(R.id.AsansorAdiEditText);
+        AsansorAdiEditText.setText(asansoradi);
         YoneticiAdiEditText = findViewById(R.id.YoneticiAdiEditText);
         YoneticiTelEditText = findViewById(R.id.YoneticiTelEditText);
         KasaEditText = findViewById(R.id.KasaEditText);
@@ -65,8 +70,8 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
                 {
 
                     ArizaPojo.setBinaAdi(BinaAdiEditText.getText().toString());
-                    TahsilatYapSorgulaPostPojo.setBinaadi(BinaAdiEditText.getText().toString());    //geri dondugumuzde doldurulan bilgiler kalsın die
-                    TahsilatYapSorgulaPostPojo.setAsansoradi(  AsansorAdiEditText.getText().toString());
+                    TahsilatYapSorgulaPostPojo.setBinaadi(binaadi);    //geri dondugumuzde doldurulan bilgiler kalsın die
+                    TahsilatYapSorgulaPostPojo.setAsansoradi(  asansoradi);
                     TahsilatYapSorgulaPostPojo.setYoneticiadi(  YoneticiAdiEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setYoneticiTel(  YoneticiTelEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setKasa(  KasaEditText.getText().toString());
