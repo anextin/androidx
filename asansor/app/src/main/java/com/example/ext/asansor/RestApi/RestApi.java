@@ -39,7 +39,13 @@ public interface RestApi {
     @GET("/tahsilatyapsorgula.php")
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();
 
+    @GET("/yapilacakbakimlarbugun.php")
+    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarbugun();
+
+    @GET("/yapilacakbakimlarbuay.php")
+    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarBuay();
+
     @GET("/yapilacakbakimlar.php")
-    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlar();
+    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarTumu();
 
 }

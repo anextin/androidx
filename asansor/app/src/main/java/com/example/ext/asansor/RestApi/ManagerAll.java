@@ -55,9 +55,22 @@ public class ManagerAll extends BaseManager{
     }
 
 
-    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlar() {
+    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarbugun() {
 
-        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlar();
+        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlarbugun();
+        return x;
+    }
+
+
+    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarBuay() {
+
+        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlarBuay();
+        return x;
+    }
+
+    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarTumu() {
+
+        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlarTumu();
         return x;
     }
 
