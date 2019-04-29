@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
+import com.example.ext.asansor.Models.BekleyenArizalarPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
@@ -74,6 +75,24 @@ public class ManagerAll extends BaseManager{
         return x;
     }
 
+    public Call<List<BekleyenArizalarPojo>> BekleyenArizalarbugun() {
+
+        Call<List<BekleyenArizalarPojo>> x = getRestApi().BekleyenArizalarbugun();
+        return x;
+    }
+
+
+    public Call<List<BekleyenArizalarPojo>> BekleyenArizalarBuay() {
+
+        Call<List<BekleyenArizalarPojo>> x = getRestApi().BekleyenArizalarbuay();
+        return x;
+    }
+
+    public Call<List<BekleyenArizalarPojo>> BekleyenArizalarTumu() {
+
+        Call<List<BekleyenArizalarPojo>> x = getRestApi().BekleyenArizalarTumu();
+        return x;
+    }
 
 
     }

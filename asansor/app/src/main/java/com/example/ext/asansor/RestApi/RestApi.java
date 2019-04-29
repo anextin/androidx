@@ -3,6 +3,7 @@ package com.example.ext.asansor.RestApi;
 
 import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
+import com.example.ext.asansor.Models.BekleyenArizalarPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
@@ -47,5 +48,15 @@ public interface RestApi {
 
     @GET("/yapilacakbakimlar.php")
     Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarTumu();
+
+    /////////////////////////////////////////////////7
+    @GET("/bekleyenarizalarbugun.php")
+    Call<List<BekleyenArizalarPojo>> BekleyenArizalarbugun();
+
+    @GET("/bekleyenarizalarbuay.php")
+    Call<List<BekleyenArizalarPojo>> BekleyenArizalarbuay();
+
+    @GET("/bekleyenarizalar.php")
+    Call<List<BekleyenArizalarPojo>> BekleyenArizalarTumu();
 
 }

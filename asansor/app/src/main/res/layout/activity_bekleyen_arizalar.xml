@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.ext.asansor.Activities.BekleyenArizalarActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bekleyen Arizalar Ekrani"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/bekleyenArizalarBugunButton"
+            android:text="Bugün"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/bekleyenArizalarBuayButton"
+            android:text="Bu Ay"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/bekleyenArizalarTumuButton"
+            android:text="Tümü"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bekleyen Arizalar"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/bekleyenArizalarListView"
+
+        android:background="#00587A"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>
