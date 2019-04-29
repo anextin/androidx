@@ -62,8 +62,8 @@ public class OnConnection {
             String arizaTuru= parts[1];
             String aciklama= parts[2];
 
-                ArizaActivity arizaActivity = new ArizaActivity();
-                arizaActivity.ilaniYayinla(binaAdi, arizaTuru, aciklama);
+                com.example.ext.asansor.BakimActivity bakimActivity = new com.example.ext.asansor.BakimActivity();
+            bakimActivity.ilaniYayinla(binaAdi, arizaTuru, aciklama);
 
             Uri uri;
             File file= new File("externaldir/externalfile.txt");

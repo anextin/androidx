@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ext.asansor.Models.ArizaPojo;
+import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.R;
@@ -68,7 +68,7 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
                 if(!BinaAdiEditText.getText().toString().equals(""))
                 {
 
-                    ArizaPojo.setBinaAdi(BinaAdiEditText.getText().toString());
+                    BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
                     ArizaTanimlamaPostPojo.setBinaadi(binaadi);    //geri dondugumuzde doldurulan bilgiler kalsın die
                     ArizaTanimlamaPostPojo.setAsansoradi(  asansoradi);
                     ArizaTanimlamaPostPojo.setArayankisi(  ArayanKisiEditText.getText().toString());

@@ -4,36 +4,15 @@ import android.content.Context;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.example.ext.asansor.Models.ArizaPojo;
-import com.example.ext.asansor.Schedule.MyJobService;
+import com.example.ext.asansor.Models.BakimPojo;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.File;
-import android.os.Bundle;
-import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.charset.Charset;
-
-import static com.example.ext.asansor.Schedule.MyJobService.*;
 
 public class NoConnection {
 
@@ -70,9 +49,9 @@ public class NoConnection {
     //    x = true;
 
 
-        binaAdi  = ArizaPojo.getBinaAdi().toString();
-        arizaTuru = ArizaPojo.getArizaTuru().toString();
-        Aciklama = ArizaPojo.getAciklama().toString();
+        binaAdi  = BakimPojo.getBinaAdi().toString();
+        arizaTuru = BakimPojo.getArizaTuru().toString();
+        Aciklama = BakimPojo.getAciklama().toString();
         try {
 
             FileOutputStream fos= new FileOutputStream(new File(context.getExternalFilesDir(DIR_NAME), FILE_NAME));

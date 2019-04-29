@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BakimActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bakim Ekrani"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/BinaAdiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="bina adi gir"/>
+
+    <EditText
+        android:id="@+id/ArizaTuruEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ariza turu gir"/>
+
+
+    <EditText
+        android:id="@+id/AcıklamaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="aciklama gir"/>
+
+    <Button
+        android:id="@+id/OnayButon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_launcher_background"
+        android:text="Onay"/>
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/kontrolEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="kontrol"/>
+</LinearLayout>

@@ -1,22 +1,15 @@
 package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.ext.asansor.Adapter.TahsilatYapSorgulaAdapter;
 import com.example.ext.asansor.Adapter.YapilacakBakimlarAdapter;
-import com.example.ext.asansor.Models.ArizaPojo;
-import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
-import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
-import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;

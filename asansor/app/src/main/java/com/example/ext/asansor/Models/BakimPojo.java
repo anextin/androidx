@@ -1,6 +1,6 @@
 package com.example.ext.asansor.Models;
 
-public class ArizaPojo {
+public class BakimPojo {
 
     static String  binaAdi;
     static String  arizaTuru;
@@ -21,7 +21,7 @@ public class ArizaPojo {
     }
 
     public static void setBinaAdi(String binaAdi) {
-        ArizaPojo.binaAdi = binaAdi;
+        BakimPojo.binaAdi = binaAdi;
     }
 
     public static String getArizaTuru() {
@@ -29,7 +29,7 @@ public class ArizaPojo {
     }
 
     public static void setArizaTuru(String arizaTuru) {
-        ArizaPojo.arizaTuru = arizaTuru;
+        BakimPojo.arizaTuru = arizaTuru;
     }
 
     public static String getAciklama() {
@@ -37,7 +37,7 @@ public class ArizaPojo {
     }
 
     public static void setAciklama(String aciklama) {
-        ArizaPojo.aciklama = aciklama;
+        BakimPojo.aciklama = aciklama;
     }
 
 

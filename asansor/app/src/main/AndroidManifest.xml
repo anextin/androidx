@@ -48,7 +48,8 @@
         <activity android:name=".Activities.ArizaTanimlamaActivity" />
         <activity android:name=".Activities.ArizaTanimlamaPostActivity" />
         <activity android:name=".Activities.YapilacakBakimlarActivity" />
-        <activity android:name=".Activities.BekleyenArizalarActivity"></activity>
+        <activity android:name=".Activities.BekleyenArizalarActivity" />
+        <activity android:name=".Activities.BakimActivity"></activity>
     </application>
 
 </manifest>

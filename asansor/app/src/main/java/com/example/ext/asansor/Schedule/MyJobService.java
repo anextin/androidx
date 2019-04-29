@@ -13,7 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 import android.widget.Toast;
 
-import com.example.ext.asansor.ArizaActivity;
+
 import com.example.ext.asansor.OnConnection;
 import com.example.ext.asansor.internetConnectionActivity;
 

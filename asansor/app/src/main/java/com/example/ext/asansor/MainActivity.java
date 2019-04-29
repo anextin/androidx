@@ -19,6 +19,7 @@ import android.widget.Button;
 import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
 import com.example.ext.asansor.Activities.BekleyenArizalarActivity;
 import com.example.ext.asansor.Activities.YapilacakBakimlarActivity;
+import com.example.ext.asansor.Activities.BakimActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         bakimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ArizaActivity.class);
+                Intent intent = new Intent(MainActivity.this, BakimActivity.class);
                 startActivity(intent);
             }
         });
@@ -111,14 +112,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        arizaButton = findViewById(R.id.arizaButton);
-        arizaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ArizaActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 

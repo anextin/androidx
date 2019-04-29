@@ -10,8 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ext.asansor.Models.ArizaPojo;
-import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
+import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
@@ -28,7 +27,7 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
     EditText BinaAdiEditText,AsansorAdiEditText,YoneticiAdiEditText, YoneticiTelEditText,KasaEditText,OdemeTarihiEditText,TutarEditText,FisNumarasiEditText,TahsilatYapPostAciklamaEditText;
     Button OnayButon;
     Context context;
-    List<ArizaPojo> list;
+    List<BakimPojo> list;
     List<TahsilatYapSorgulaPostPojo> tahsilatYapSorgulaPostPojo;
     public static final String FILE_NAME = "externalfileTahsilatYapPostActivity.txt";
     public static final String DIR_NAME = "externaldir";
@@ -69,7 +68,7 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
                 if(!BinaAdiEditText.getText().toString().equals(""))
                 {
 
-                    ArizaPojo.setBinaAdi(BinaAdiEditText.getText().toString());
+                    BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setBinaadi(binaadi);    //geri dondugumuzde doldurulan bilgiler kalsın die
                     TahsilatYapSorgulaPostPojo.setAsansoradi(  asansoradi);
                     TahsilatYapSorgulaPostPojo.setYoneticiadi(  YoneticiAdiEditText.getText().toString());
