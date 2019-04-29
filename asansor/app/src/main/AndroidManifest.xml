@@ -49,7 +49,10 @@
         <activity android:name=".Activities.ArizaTanimlamaPostActivity" />
         <activity android:name=".Activities.YapilacakBakimlarActivity" />
         <activity android:name=".Activities.BekleyenArizalarActivity" />
-        <activity android:name=".Activities.BakimActivity"></activity>
+        <activity android:name=".Activities.BakimActivity" />
+        <activity android:name=".Activities.ArizaActivity" />
+        <activity android:name=".Activities.BakimSecActivity" />
+        <activity android:name=".Activities.QRCodeActivity"></activity>
     </application>
 
 </manifest>

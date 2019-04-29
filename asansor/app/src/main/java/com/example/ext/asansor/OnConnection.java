@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.ext.asansor.Activities.BakimActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 
 import java.io.File;
@@ -62,7 +63,7 @@ public class OnConnection {
             String arizaTuru= parts[1];
             String aciklama= parts[2];
 
-                com.example.ext.asansor.BakimActivity bakimActivity = new com.example.ext.asansor.BakimActivity();
+                BakimActivity bakimActivity = new BakimActivity();
             bakimActivity.ilaniYayinla(binaAdi, arizaTuru, aciklama);
 
             Uri uri;

@@ -26,7 +26,7 @@ public class BakimActivity extends AppCompatActivity {
     Button OnayButon;
     Context context;
     List<BakimPojo> list;
-    public static final String FILE_NAME = "externalfile.txt";
+    public static final String FILE_NAME = "bakim.txt";
     public static final String DIR_NAME = "externaldir";
 
     @Override
@@ -71,15 +71,6 @@ public class BakimActivity extends AppCompatActivity {
                         noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
 
 
-
-
-                        //            OnConnection onConnection= new OnConnection();
-                        //            onConnection.readfromStorage(getApplicationContext());
-                        //   read();
-
-
-                        //        Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
-                        //       startActivity(intent);
                     }
                 }
                 else

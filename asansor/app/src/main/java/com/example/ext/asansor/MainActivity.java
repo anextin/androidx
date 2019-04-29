@@ -1,16 +1,10 @@
 package com.example.ext.asansor;
 
-import android.app.AlarmManager;
 import android.app.job.JobInfo;
-import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.annotation.TargetApi;
-import android.os.PersistableBundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,8 +17,6 @@ import com.example.ext.asansor.Activities.BakimActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
