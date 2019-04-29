@@ -4,52 +4,174 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BakimActivity"
+    tools:context=".Activities.BakimActivity"
     android:orientation="vertical">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Bakim Ekrani"
+        android:id="@+id/bakimEkrani"
         android:textSize="20dp"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:gravity="center"/>
 
-    <EditText
-        android:id="@+id/BinaAdiEditText"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="bina adi gir"/>
+        android:hint="baslik"
+        android:layout_below="@id/bakimEkrani"
+        android:id="@+id/baslikBakim"
+        android:textSize="28dp"/>
 
-    <EditText
-        android:id="@+id/ArizaTuruEditText"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ariza turu gir"/>
-
-
-    <EditText
-        android:id="@+id/AcıklamaEditText"
+        android:hint="binaadi"
+        android:id="@+id/binaadiBakim"
+        android:layout_below="@id/baslikBakim"
+        android:textSize="28dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="aciklama gir"/>
-
-    <Button
-        android:id="@+id/OnayButon"
+        android:hint="secilibakim: Tarih"
+        android:layout_below="@id/binaadiBakim"
+        android:textSize="20dp"/>
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_launcher_background"
-        android:text="Onay"/>
+        android:id="@+id/BakimEkraniScrool"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:hint="Yapılması Gereken İşlemler"/>
+        <EditText
+            android:id="@+id/YapilmaliEditText"
+            android:layout_width="match_parent"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:background="#fff"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_height="wrap_content"
+            android:hint="yapilmasıgerekenislemlerhint"
+            android:textColorHint="@color/colorPrimaryDark"/>
 
-    <EditText
-        android:layout_marginTop="10dp"
-        android:id="@+id/kontrolEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="kontrol"/>
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tutar"/>
+            <EditText
+                android:id="@+id/TutarEditText"
+                android:layout_width="match_parent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:hint="Tutarhint"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="BinaYetkilisi"/>
+            <EditText
+                android:id="@+id/BinaYetkilisiEditText"
+                android:layout_width="match_parent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:hint="Bina Yetkilisi hint"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"/>
+            <EditText
+                android:id="@+id/AcıklamaEditText"
+                android:layout_width="match_parent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama hint"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tel"/>
+            <EditText
+                android:id="@+id/TelEditText"
+                android:layout_width="match_parent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:hint="Tel hint"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-posta"/>
+            <EditText
+                android:id="@+id/EpostaEditText"
+                android:layout_width="match_parent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:hint="E-posta hint"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mesaj"/>
+            <EditText
+                android:id="@+id/MesajEditText"
+                android:layout_width="match_parent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:hint="Mesaj hint"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+
+
+            <Button
+                android:id="@+id/OnayButon"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/ic_launcher_background"
+                android:text="Onay"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

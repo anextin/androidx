@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ext.asansor.Models.BakimPojo;
@@ -22,9 +23,12 @@ import retrofit2.Response;
 
 public class BakimActivity extends AppCompatActivity {
 
-    EditText BinaAdiEditText,ArizaTuruEditText,AcıklamaEditText, kontrolEditText;
+    EditText YapilmaliEditText,TutarEditText,BinaYetkilisiEditText, AcıklamaEditText,TelEditText,EpostaEditText,MesajEditText;
+    TextView bakimEkrani,baslikBakim,binaadiBakim;
+
     Button OnayButon;
     Context context;
+    String asansorserino;
     List<BakimPojo> list;
     public static final String FILE_NAME = "bakim.txt";
     public static final String DIR_NAME = "externaldir";
@@ -41,17 +45,27 @@ public class BakimActivity extends AppCompatActivity {
 
     public void tanimla()
     {
-        BinaAdiEditText = findViewById(R.id.BinaAdiEditText);
-        ArizaTuruEditText = findViewById(R.id.ArizaTuruEditText);
-        AcıklamaEditText = findViewById(R.id.AcıklamaEditText);
-        OnayButon = findViewById(R.id.OnayButon);
-        kontrolEditText = findViewById(R.id.kontrolEditText);
+        bakimEkrani = findViewById(R.id.bakimEkrani);
+        baslikBakim = findViewById(R.id.baslikBakim);
+        binaadiBakim = findViewById(R.id.binaadiBakim);
 
+        YapilmaliEditText = findViewById(R.id.YapilmaliEditText);
+        TutarEditText = findViewById(R.id.TutarEditText);
+        BinaYetkilisiEditText = findViewById(R.id.BinaYetkilisiEditText);
+        AcıklamaEditText = findViewById(R.id.AcıklamaEditText);
+        TelEditText = findViewById(R.id.TelEditText);
+        EpostaEditText = findViewById(R.id.EpostaEditText);
+        MesajEditText = findViewById(R.id.MesajEditText);
+        OnayButon = findViewById(R.id.OnayButon);
+
+
+        Bundle bundle=getIntent().getExtras();
+        asansorserino=bundle.getString("asansorserino");
 
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!BinaAdiEditText.getText().toString().equals("") && !ArizaTuruEditText.getText().toString().equals("") && !AcıklamaEditText.getText().toString().equals(""))
+                if(!YapilmaliEditText.getText().toString().equals(""))
                 {
 
                     BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
@@ -79,7 +93,6 @@ public class BakimActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
 
@@ -117,6 +130,44 @@ public class BakimActivity extends AppCompatActivity {
 
 
         });
+    }
+
+
+    public void getIlanDetay()
+    {
+
+
+        Call<IlanDetayPojo> request= ManagerAll.getInstance().ilanDetay(ilanId);
+        request.enqueue(new Callback<IlanDetayPojo>() {
+            @Override
+            public void onResponse(Call<IlanDetayPojo> call, Response<IlanDetayPojo> response) {
+
+
+                ilanDetayBaslik.setText(response.body().getBaslik());
+                ilandetayFiyat.setText(response.body().getUcret());
+                ilandetayMarka.setText(response.body().getMarka());
+                ilandetayModel.setText(response.body().getModel());
+                ilandetaySeri.setText(response.body().getSeri());
+                ilandetayYil.setText(response.body().getYil());
+                ilandetayilantipi.setText(response.body().getIlantipi());
+                ilandetayKimden.setText(response.body().getKimden());
+                ilandetayMotorTipi.setText(response.body().getMotortipi());
+                ilandetayMotorHacmi.setText(response.body().getMotorhacmi());
+                ilandetaySurat.setText(response.body().getSurat());
+                ilandetayYakitTipi.setText(response.body().getYakittipi());
+                ilandetayOrtalamaYakit.setText(response.body().getOrtalamyakit());
+                ilandetayDepoHacmi.setText(response.body().getDepohacmi());
+                ilandetayKM.setText(response.body().getKm());
+
+            }
+
+            @Override
+            public void onFailure(Call<IlanDetayPojo> call, Throwable t) {
+
+            }
+        });
+
+
     }
 
 }

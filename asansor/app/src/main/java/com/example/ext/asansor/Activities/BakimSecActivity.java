@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ext.asansor.MainActivity;
 import com.example.ext.asansor.R;
@@ -26,8 +27,10 @@ public class BakimSecActivity extends AppCompatActivity {
 
     public void tanimla() {
 
-
+        manualgirisEditText= findViewById(R.id.manualgirisEditText);
         QRCodeBakim = findViewById(R.id.QRCodeBakim);
+        manualgirisOnayButton= findViewById(R.id.manualgirisOnayButton);
+
         QRCodeBakim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,34 +42,21 @@ public class BakimSecActivity extends AppCompatActivity {
         manualgirisOnayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!manualgirisEditText.getText().toString().equals("") )
-                {
+                if (!manualgirisEditText.getText().toString().equals("")) {
 
-        //            BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
+                    Intent intent = new Intent(BakimSecActivity.this, BakimActivity.class);
+                    intent.putExtra("asansorserino", manualgirisEditText.getText());
+                    startActivity(intent);
+                    //            BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
 
-
-                    if(isNetworkConnected()==true) {    //bunu duzelt
-                        Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
-                        ilaniYayinla(BakimPojo.getBinaAdi(), BakimPojo.getArizaTuru(), BakimPojo.getAciklama());
-
-                        finish();
-                    }
-
-                    else
-                    {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
-                        NoConnection noConnection = new NoConnection();
-                        noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
-
-
-                    }
                 }
                 else
-                {
-                    Toast.makeText(getApplicationContext(),"Tum bilgileri doldur",Toast.LENGTH_LONG).show();
+                    {
+                        Toast.makeText(getApplicationContext(), "Tum bilgileri doldur", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+                });
 
-    }
+            }
 
 }

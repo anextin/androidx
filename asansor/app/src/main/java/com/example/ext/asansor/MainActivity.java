@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
+import com.example.ext.asansor.Activities.BakimSecActivity;
 import com.example.ext.asansor.Activities.BekleyenArizalarActivity;
 import com.example.ext.asansor.Activities.YapilacakBakimlarActivity;
 import com.example.ext.asansor.Activities.BakimActivity;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         bakimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BakimActivity.class);
+                Intent intent = new Intent(MainActivity.this, BakimSecActivity.class);
                 startActivity(intent);
             }
         });
