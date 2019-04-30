@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:id="@+id/bekleyenArizalarListView"
 
-        android:background="#00587A"
+        android:background="#fff"
         android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

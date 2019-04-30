@@ -59,9 +59,9 @@ public class BekleyenArizalarAdapter extends BaseAdapter {
 
         BekleyenArizalarbaslik.setText(bekleyenArizalarPojoList.get(position).getBaslik());
         BekleyenArizalarkonu.setText(bekleyenArizalarPojoList.get(position).getArizakonusu());
-        BekleyenArizalaryetkili.setText(bekleyenArizalarPojoList.get(position).getYetkili());
-        BekleyenArizalartel.setText(bekleyenArizalarPojoList.get(position).getTel());
-        BekleyenArizalardonemtarihi.setText(bekleyenArizalarPojoList.get(position).getDonemtarihi());
+        BekleyenArizalaryetkili.setText("Yetkili: "+bekleyenArizalarPojoList.get(position).getYetkili());
+        BekleyenArizalartel.setText("Tel: "+bekleyenArizalarPojoList.get(position).getTel());
+        BekleyenArizalardonemtarihi.setText("Dönem Tarihi: "+bekleyenArizalarPojoList.get(position).getDonemtarihi());
 
 
 

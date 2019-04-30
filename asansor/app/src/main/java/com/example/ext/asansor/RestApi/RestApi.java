@@ -16,6 +16,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface RestApi {
 
@@ -34,7 +35,8 @@ public interface RestApi {
 
 
 
-
+    @GET("/bakim.php")
+    Call<BakimPojo> bakim(@Query("asansorserino") String asansorserino);
 
     @GET("/tahsilatyapsorgula.php")
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();

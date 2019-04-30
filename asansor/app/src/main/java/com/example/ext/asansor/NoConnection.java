@@ -49,9 +49,9 @@ public class NoConnection {
     //    x = true;
 
 
-        binaAdi  = BakimPojo.getBinaAdi().toString();
-        arizaTuru = BakimPojo.getArizaTuru().toString();
-        Aciklama = BakimPojo.getAciklama().toString();
+    //    binaAdi  = BakimPojo.getBinaAdi().toString();
+     //   arizaTuru = BakimPojo.getArizaTuru().toString();
+     //   Aciklama = BakimPojo.getAciklama().toString();
         try {
 
             FileOutputStream fos= new FileOutputStream(new File(context.getExternalFilesDir(DIR_NAME), FILE_NAME));

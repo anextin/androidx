@@ -59,9 +59,7 @@ public class TahsilatYapSorgulaAdapter extends BaseAdapter {
 
         TahsilatYapBinaAdi.setText(tahsilatYapPojoList.get(position).getBinaadi());
         TahsilatYapAsansorAdi.setText(tahsilatYapPojoList.get(position).getAsansoradi());
-        TahsilatYapYoneticiAdi.setText(tahsilatYapPojoList.get(position).getYoneticiadi());
-        Log.i("tattt","tatt"+TahsilatYapYoneticiAdi );
-        Log.i("tattt","tatt"+tahsilatYapPojoList.get(position).getBinaadi() );
+        TahsilatYapYoneticiAdi.setText("Yetkili: "+tahsilatYapPojoList.get(position).getYoneticiadi());
 
         return converView;
 

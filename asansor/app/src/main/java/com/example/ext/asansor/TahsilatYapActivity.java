@@ -41,6 +41,7 @@ public class TahsilatYapActivity extends AppCompatActivity {
                 Intent intent=new Intent(TahsilatYapActivity.this,TahsilatYapPostActivity.class);
                 intent.putExtra("binaadi",tahsilatYapSorgulaPojoList.get(i).getBinaadi());
                 intent.putExtra("asansoradi",tahsilatYapSorgulaPojoList.get(i).getAsansoradi());
+                intent.putExtra("yoneticiadi",tahsilatYapSorgulaPojoList.get(i).getYoneticiadi());
                 startActivity(intent);
             }
         });

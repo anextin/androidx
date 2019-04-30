@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ext.asansor.Models.BakimPojo;
@@ -25,7 +26,8 @@ import retrofit2.Response;
 public class ArizaTanimlamaPostActivity extends AppCompatActivity {
 
     String binaadi,asansoradi;
-    EditText BinaAdiEditText,AsansorAdiEditText,ArayanKisiEditText, ArayanTelEditText,ArizaTarihiEditText,ArizaSaatiEditText,ArizaKonusuEditText,AcıklamaEditText;
+    TextView BinaAdiEditText,AsansorAdiEditText;
+    EditText ArayanKisiEditText, ArayanTelEditText,ArizaTarihiEditText,ArizaSaatiEditText,ArizaKonusuEditText,AcıklamaEditText;
     Button OnayButon;
     Context context;
     List<ArizaTanimlamaPostPojo> list;
@@ -49,9 +51,9 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
     public void tanimla()
     {
         BinaAdiEditText = findViewById(R.id.BinaAdiEditText);
-        BinaAdiEditText.setText(binaadi);
+        BinaAdiEditText.setText("Bina Adı: "+binaadi);
         AsansorAdiEditText = findViewById(R.id.AsansorAdiEditText);
-        AsansorAdiEditText.setText(asansoradi);
+        AsansorAdiEditText.setText("Asansör Adı: "+asansoradi);
         ArayanKisiEditText = findViewById(R.id.ArayanKisiEditText);
         ArayanTelEditText = findViewById(R.id.ArayanTelEditText);
         ArizaTarihiEditText = findViewById(R.id.ArizaTarihiEditText);
@@ -68,7 +70,7 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
                 if(!BinaAdiEditText.getText().toString().equals(""))
                 {
 
-                    BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
+  //   bunu duzelt     //          BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
                     ArizaTanimlamaPostPojo.setBinaadi(binaadi);    //geri dondugumuzde doldurulan bilgiler kalsın die
                     ArizaTanimlamaPostPojo.setAsansoradi(  asansoradi);
                     ArizaTanimlamaPostPojo.setArayankisi(  ArayanKisiEditText.getText().toString());

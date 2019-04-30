@@ -33,6 +33,12 @@ public class ManagerAll extends BaseManager{
 
     }
 
+    public Call<BakimPojo> bakim(String asansorserino) {
+        Call<BakimPojo> x= getRestApi().bakim(asansorserino);
+        return x;
+
+    }
+
     public Call<TahsilatYapSorgulaPostPojo> TahsilatYapSorgulaPost(String binaadi,String asansoradi,String yoneticiadi,String yoneticiTel,String kasa,String odemeTarihi,String tutar,String fis_numarasi,String aciklama) {
         Call<TahsilatYapSorgulaPostPojo> x= getRestApi().TahsilatYapSorgulaPost(binaadi,asansoradi,yoneticiadi,yoneticiTel,kasa,odemeTarihi,tutar,fis_numarasi,aciklama);
 

@@ -60,9 +60,9 @@ public class YapilacakBakimlarAdapter extends BaseAdapter {
 
         YapilacakBakimlarbaslik.setText(yapilacakBakimlarPojoList.get(position).getBaslik());
         YapilacakBakimlarbinaadi.setText(yapilacakBakimlarPojoList.get(position).getBinaadi());
-        YapilacakBakimlaryetkili.setText(yapilacakBakimlarPojoList.get(position).getYetkili());
-        YapilacakBakimlartel.setText(yapilacakBakimlarPojoList.get(position).getTel());
-        YapilacakBakimlardonemtarihi.setText(yapilacakBakimlarPojoList.get(position).getDonemtarihi());
+        YapilacakBakimlaryetkili.setText("Yetkili: "+yapilacakBakimlarPojoList.get(position).getYetkili());
+        YapilacakBakimlartel.setText("Tel: "+yapilacakBakimlarPojoList.get(position).getTel());
+        YapilacakBakimlardonemtarihi.setText("Dönem Tarihi: "+yapilacakBakimlarPojoList.get(position).getDonemtarihi());
 
 
 

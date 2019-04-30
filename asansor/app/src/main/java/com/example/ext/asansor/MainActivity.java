@@ -19,6 +19,8 @@ import com.example.ext.asansor.Schedule.MyJobService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class MainActivity extends AppCompatActivity {
 
     Button bakimButton,tahsilatYapButton,arizaTanimlaButton,yapilacakBakimlarButton,bekleyenArizalarButton,arizaButton,revizyonButton;
@@ -48,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
     public void tanimla() {

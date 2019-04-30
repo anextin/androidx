@@ -4,12 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.ext.asansor.Activities.ArizaTanimlamaActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Arıza Tanımlama Ekrani"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Arıza Tanımlama"
+        android:background="#37474F"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
 
     <ListView
         android:layout_width="match_parent"
         android:id="@+id/arizaTanimlaListView"
-        android:background="#00587A"
+        android:background="#263238"
         android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

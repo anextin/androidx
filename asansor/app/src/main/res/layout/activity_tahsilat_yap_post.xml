@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="vertical"
     tools:context=".TahsilatYapPostActivity">
 
@@ -13,75 +15,185 @@
         android:layout_height="wrap_content"
         android:text="Tahsilat Ekrani"
         android:textSize="20dp"
+
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tahsilat Yap"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
 
-    <EditText
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/BinaAdiEditText"
+        android:textColor="#fff"
+        android:textSize="16dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="bina adi gir"/>
-
-    <EditText
         android:id="@+id/AsansorAdiEditText"
+        android:textColor="#fff"
+        android:textSize="16dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="AsansorAdiEditText"/>
-
-
-    <EditText
+        android:textColor="#fff"
         android:id="@+id/YoneticiAdiEditText"
+        android:textSize="16dp"/>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="YoneticiAdiEditText"/>
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
 
-    <EditText
-        android:id="@+id/YoneticiTelEditText"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="YoneticiTelEditText gir"/>
+        android:id="@+id/BakimEkraniScrool"
 
-    <EditText
-        android:id="@+id/KasaEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="KasaEditText gir"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
 
-    <EditText
-        android:id="@+id/OdemeTarihiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="OdemeTarihiEditText gir"/>
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/TutarEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="TutarEditText gir"/>
 
-    <EditText
-        android:id="@+id/FisNumarasiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="FisNumarasiEditText gir"/>
 
-    <EditText
-        android:id="@+id/TahsilatYapPostAciklamaEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="AciklamaEditText gir"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Yönetici Tel"/>
+            <EditText
+                android:id="@+id/YoneticiTelEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
 
-    <Button
-        android:id="@+id/OnayButon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_launcher_background"
-        android:text="Onay"/>
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kasa"/>
+            <EditText
+                android:id="@+id/KasaEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ödeme Tarihi"/>
+            <EditText
+                android:id="@+id/OdemeTarihiEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tutar"/>
+            <EditText
+                android:id="@+id/TutarEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fiş Numarası"/>
+            <EditText
+                android:id="@+id/FisNumarasiEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Açıklama"/>
+            <EditText
+                android:id="@+id/TahsilatYapPostAciklamaEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <Button
+                android:id="@+id/OnayButon"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/mybutton"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Onay"/>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

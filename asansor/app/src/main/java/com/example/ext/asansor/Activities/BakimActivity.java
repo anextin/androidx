@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +24,8 @@ import retrofit2.Response;
 
 public class BakimActivity extends AppCompatActivity {
 
-    EditText YapilmaliEditText,TutarEditText,BinaYetkilisiEditText, AcıklamaEditText,TelEditText,EpostaEditText,MesajEditText;
-    TextView bakimEkrani,baslikBakim,binaadiBakim;
+    private EditText YapilmaliEditText,TutarEditText,BinaYetkilisiEditText, AcıklamaEditText,TelEditText,EpostaEditText,MesajEditText;
+    private TextView bakimEkrani,baslikBakim,binaadiBakim,tarihBakim;
 
     Button OnayButon;
     Context context;
@@ -39,6 +40,7 @@ public class BakimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bakim);
         isNetworkConnected();
         tanimla();
+        getBakimDetay();
 
     }
 
@@ -48,6 +50,7 @@ public class BakimActivity extends AppCompatActivity {
         bakimEkrani = findViewById(R.id.bakimEkrani);
         baslikBakim = findViewById(R.id.baslikBakim);
         binaadiBakim = findViewById(R.id.binaadiBakim);
+        tarihBakim=findViewById(R.id.tarihBakim);
 
         YapilmaliEditText = findViewById(R.id.YapilmaliEditText);
         TutarEditText = findViewById(R.id.TutarEditText);
@@ -61,6 +64,7 @@ public class BakimActivity extends AppCompatActivity {
 
         Bundle bundle=getIntent().getExtras();
         asansorserino=bundle.getString("asansorserino");
+        Log.i("asansorserino","asansorserino"+asansorserino);
 
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,24 +72,7 @@ public class BakimActivity extends AppCompatActivity {
                 if(!YapilmaliEditText.getText().toString().equals(""))
                 {
 
-                    BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
-                    BakimPojo.setArizaTuru(  ArizaTuruEditText.getText().toString());
-                    BakimPojo.setAciklama(AcıklamaEditText.getText().toString());
 
-                    if(isNetworkConnected()==true) {    //bunu duzelt
-                        Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
-                        ilaniYayinla(BakimPojo.getBinaAdi(), BakimPojo.getArizaTuru(), BakimPojo.getAciklama());
-
-                        finish();
-                    }
-
-                    else
-                    {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
-                        NoConnection noConnection = new NoConnection();
-                        noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
-
-
-                    }
                 }
                 else
                 {
@@ -96,12 +83,41 @@ public class BakimActivity extends AppCompatActivity {
     }
 
 
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        return cm.getActiveNetworkInfo() != null;
+    public void getBakimDetay()
+    {
+
+
+        Call<BakimPojo> request= ManagerAll.getInstance().bakim(asansorserino);
+        request.enqueue(new Callback<BakimPojo>() {
+            @Override
+            public void onResponse(Call<BakimPojo> call, Response<BakimPojo> response) {
+
+
+                YapilmaliEditText.setText(response.body().getYapilacak());
+                TutarEditText.setText(response.body().getTutar());
+                BinaYetkilisiEditText.setText(response.body().getYetkili());
+                AcıklamaEditText.setText(response.body().getAciklama());
+                TelEditText.setText(response.body().getTel());
+                EpostaEditText.setText(response.body().getEposta());
+                MesajEditText.setText(response.body().getMesaj());
+
+                baslikBakim.setText(response.body().getBaslik());
+                binaadiBakim.setText(response.body().getBinaadi());
+                tarihBakim.setText(response.body().getDonemtarihi());
+
+                Log.i("basliiikk","basliiikk"+baslikBakim);
+
+            }
+
+            @Override
+            public void onFailure(Call<BakimPojo> call, Throwable t) {
+
+            }
+        });
+
+
     }
-
 
     public  void ilaniYayinla(String binaAdi,String arizaTuru , String aciklama)
     {
@@ -132,44 +148,11 @@ public class BakimActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-    public void getIlanDetay()
-    {
-
-
-        Call<IlanDetayPojo> request= ManagerAll.getInstance().ilanDetay(ilanId);
-        request.enqueue(new Callback<IlanDetayPojo>() {
-            @Override
-            public void onResponse(Call<IlanDetayPojo> call, Response<IlanDetayPojo> response) {
-
-
-                ilanDetayBaslik.setText(response.body().getBaslik());
-                ilandetayFiyat.setText(response.body().getUcret());
-                ilandetayMarka.setText(response.body().getMarka());
-                ilandetayModel.setText(response.body().getModel());
-                ilandetaySeri.setText(response.body().getSeri());
-                ilandetayYil.setText(response.body().getYil());
-                ilandetayilantipi.setText(response.body().getIlantipi());
-                ilandetayKimden.setText(response.body().getKimden());
-                ilandetayMotorTipi.setText(response.body().getMotortipi());
-                ilandetayMotorHacmi.setText(response.body().getMotorhacmi());
-                ilandetaySurat.setText(response.body().getSurat());
-                ilandetayYakitTipi.setText(response.body().getYakittipi());
-                ilandetayOrtalamaYakit.setText(response.body().getOrtalamyakit());
-                ilandetayDepoHacmi.setText(response.body().getDepohacmi());
-                ilandetayKM.setText(response.body().getKm());
-
-            }
-
-            @Override
-            public void onFailure(Call<IlanDetayPojo> call, Throwable t) {
-
-            }
-        });
-
-
+        return cm.getActiveNetworkInfo() != null;
     }
-
 }
 
 

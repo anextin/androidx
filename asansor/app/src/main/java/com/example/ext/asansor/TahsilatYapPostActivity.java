@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ext.asansor.Models.BakimPojo;
@@ -23,14 +24,13 @@ import retrofit2.Response;
 public class TahsilatYapPostActivity extends AppCompatActivity {
 
 
-    String binaadi,asansoradi;
-    EditText BinaAdiEditText,AsansorAdiEditText,YoneticiAdiEditText, YoneticiTelEditText,KasaEditText,OdemeTarihiEditText,TutarEditText,FisNumarasiEditText,TahsilatYapPostAciklamaEditText;
+    String binaadi,asansoradi,yoneticiadi;
+    TextView BinaAdiEditText,AsansorAdiEditText,YoneticiAdiEditText;
+    EditText  YoneticiTelEditText,KasaEditText,OdemeTarihiEditText,TutarEditText,FisNumarasiEditText,TahsilatYapPostAciklamaEditText;
     Button OnayButon;
     Context context;
     List<BakimPojo> list;
     List<TahsilatYapSorgulaPostPojo> tahsilatYapSorgulaPostPojo;
-    public static final String FILE_NAME = "externalfileTahsilatYapPostActivity.txt";
-    public static final String DIR_NAME = "externaldir";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         binaadi=bundle.getString("binaadi");
         asansoradi=bundle.getString("asansoradi");
+        yoneticiadi=bundle.getString("yoneticiadi");
         isNetworkConnected();
         tanimla();
         Log.i("binaaditag+",binaadi);
@@ -48,10 +49,12 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
     public void tanimla()
     {
         BinaAdiEditText = findViewById(R.id.BinaAdiEditText);
-        BinaAdiEditText.setText(binaadi);
+        BinaAdiEditText.setText("Bina Adı: "+binaadi);
         AsansorAdiEditText = findViewById(R.id.AsansorAdiEditText);
-        AsansorAdiEditText.setText(asansoradi);
-        YoneticiAdiEditText = findViewById(R.id.YoneticiAdiEditText);
+        AsansorAdiEditText.setText("Asansör Adı: "+ asansoradi);
+        YoneticiAdiEditText=findViewById(R.id.YoneticiAdiEditText);
+        YoneticiAdiEditText.setText("Yönetici Adı: "+  yoneticiadi);
+
         YoneticiTelEditText = findViewById(R.id.YoneticiTelEditText);
         KasaEditText = findViewById(R.id.KasaEditText);
         OdemeTarihiEditText = findViewById(R.id.OdemeTarihiEditText);
@@ -68,10 +71,10 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
                 if(!BinaAdiEditText.getText().toString().equals(""))
                 {
 
-                    BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
+        //            BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setBinaadi(binaadi);    //geri dondugumuzde doldurulan bilgiler kalsın die
-                    TahsilatYapSorgulaPostPojo.setAsansoradi(  asansoradi);
-                    TahsilatYapSorgulaPostPojo.setYoneticiadi(  YoneticiAdiEditText.getText().toString());
+                    TahsilatYapSorgulaPostPojo.setAsansoradi(asansoradi);
+                    TahsilatYapSorgulaPostPojo.setYoneticiadi(yoneticiadi);
                     TahsilatYapSorgulaPostPojo.setYoneticiTel(  YoneticiTelEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setKasa(  KasaEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setOdemeTarihi(  OdemeTarihiEditText.getText().toString());
@@ -126,12 +129,12 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
 
     public  void TahsilatYapPost(String binaadi,String asansoradi , String yoneticiadi,String yoneticiTel,String kasa,String odemeTarihi,String tutar,String fis_numarasi,String aciklama)
     {
-        Log.i("feguli","feguli"+binaadi+asansoradi+yoneticiadi+yoneticiTel+kasa+odemeTarihi+tutar+fis_numarasi+aciklama);
+
         Call<TahsilatYapSorgulaPostPojo> request = ManagerAll.getInstance().TahsilatYapSorgulaPost(binaadi, asansoradi, yoneticiadi,yoneticiTel,kasa,odemeTarihi,tutar,fis_numarasi,aciklama);
         request.enqueue(new Callback<TahsilatYapSorgulaPostPojo>() {
             @Override
             public void onResponse(Call<TahsilatYapSorgulaPostPojo> call, Response<TahsilatYapSorgulaPostPojo> response) {
-                Log.i("tfne", "tfne" + response.body().isTf());
+
                 if (response.body().isTf()) {
                     //               Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
                     //             startActivity(intent);

@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical"
     tools:context="com.example.ext.asansor.Activities.ArizaTanimlamaPostActivity">
 
 
@@ -13,73 +15,169 @@
         android:layout_height="wrap_content"
         android:text="Arıza Tanımlama Ekrani"
         android:textSize="20dp"
+
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Arıza Tanımlama"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
 
-    <EditText
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/BinaAdiEditText"
+        android:textColor="#fff"
+        android:textSize="16dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="BinaAdiEditText gir"/>
-
-    <EditText
         android:id="@+id/AsansorAdiEditText"
+        android:textColor="#fff"
+        android:textSize="16dp"/>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="AsansorAdiEditText"/>
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#fff" />
 
-
-    <EditText
-        android:id="@+id/ArayanKisiEditText"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ArayanKisiEditText"/>
+        android:id="@+id/BakimEkraniScrool"
 
-    <EditText
-        android:id="@+id/ArayanTelEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ArayanTelEditText gir"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
 
-    <EditText
-        android:id="@+id/ArizaTarihiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ArizaTarihiEditText gir"/>
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/ArizaSaatiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ArizaSaatiEditText gir"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Arayan Kişi"/>
+            <EditText
+                android:id="@+id/ArayanKisiEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
 
-    <EditText
-        android:id="@+id/ArizaKonusuEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ArizaKonusuEditText gir"/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Arayan Tel"/>
+            <EditText
+                android:id="@+id/ArayanTelEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
 
-    <EditText
-        android:id="@+id/AcıklamaEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="AcıklamaEditText gir"/>
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arıza Tarihi"/>
+            <EditText
+                android:id="@+id/ArizaTarihiEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ariza Saati"/>
+            <EditText
+                android:id="@+id/ArizaSaatiEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arıza Konusu"/>
+            <EditText
+                android:id="@+id/ArizaKonusuEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Açıklama"/>
+            <EditText
+                android:id="@+id/AcıklamaEditText"
+                android:layout_width="280dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+
+                android:textColorHint="@color/colorPrimaryDark"/>
 
 
+            <Button
+                android:id="@+id/OnayButon"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/mybutton"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Onay"/>
 
-    <Button
-        android:id="@+id/OnayButon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_launcher_background"
-        android:text="Onay"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
-
-

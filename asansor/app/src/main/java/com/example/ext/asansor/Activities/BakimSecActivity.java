@@ -3,6 +3,7 @@ package com.example.ext.asansor.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,7 +46,8 @@ public class BakimSecActivity extends AppCompatActivity {
                 if (!manualgirisEditText.getText().toString().equals("")) {
 
                     Intent intent = new Intent(BakimSecActivity.this, BakimActivity.class);
-                    intent.putExtra("asansorserino", manualgirisEditText.getText());
+                    Log.i("zzzzz","zzzzz"+manualgirisEditText.getText().toString());
+                    intent.putExtra("asansorserino", manualgirisEditText.getText().toString());
                     startActivity(intent);
                     //            BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
 

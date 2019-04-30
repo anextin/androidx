@@ -1,6 +1,7 @@
 package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,6 +80,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
 
     public void ilanlarimigoruntulebugun()
     {
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("ilanlar");
         progressDialog.setMessage("ilanlar yukleniyor ...");
@@ -95,13 +97,24 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         yapilacakBakimlarPojoList=response.body();
-                        Log.i("kakkk","kakkk"+yapilacakBakimlarPojoList);
+
                         yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
-                        Toast.makeText(getApplicationContext(),"ilanlarimigoruntule",Toast.LENGTH_LONG).show();
+
                         listView.setAdapter(yapilacakBakimlarAdapter);
                         progressDialog.cancel();
                     }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "bugun yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        yapilacakBakimlarPojoList=response.body();
+
+                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
+
+                        listView.setAdapter(null);
+                        progressDialog.cancel();
+                    }
                 }
+
             }
 
             @Override
@@ -131,10 +144,14 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         yapilacakBakimlarPojoList=response.body();
-                        Log.i("kakkk","kakkk"+yapilacakBakimlarPojoList);
+
                         yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
-                        Toast.makeText(getApplicationContext(),"ilanlarimigoruntuleBuay",Toast.LENGTH_LONG).show();
                         listView.setAdapter(yapilacakBakimlarAdapter);
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "bu ay yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
                         progressDialog.cancel();
                     }
                 }
@@ -170,6 +187,11 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                         yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
                         Toast.makeText(getApplicationContext(),"ilanlarimigoruntuleTumu",Toast.LENGTH_LONG).show();
                         listView.setAdapter(yapilacakBakimlarAdapter);
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
                         progressDialog.cancel();
                     }
                 }

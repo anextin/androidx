@@ -97,10 +97,15 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         bekleyenArizalarPojoList=response.body();
-                        Log.i("kakkk","kakkk"+bekleyenArizalarPojoList);
+
                         bekleyenArizalarAdapter= new BekleyenArizalarAdapter(bekleyenArizalarPojoList,getApplicationContext());
-                        Toast.makeText(getApplicationContext(),"ilanlarimigoruntule",Toast.LENGTH_LONG).show();
+
                         listView.setAdapter(bekleyenArizalarAdapter);
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "bugun bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
                         progressDialog.cancel();
                     }
                 }
@@ -133,10 +138,15 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         bekleyenArizalarPojoList=response.body();
-                        Log.i("kakkk","kakkk"+bekleyenArizalarPojoList);
+
                         bekleyenArizalarAdapter= new BekleyenArizalarAdapter(bekleyenArizalarPojoList,getApplicationContext());
-                        Toast.makeText(getApplicationContext(),"ilanlarimigoruntuleBuay",Toast.LENGTH_LONG).show();
+
                         listView.setAdapter(bekleyenArizalarAdapter);
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "bu ay bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
                         progressDialog.cancel();
                     }
                 }
@@ -168,10 +178,15 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         bekleyenArizalarPojoList=response.body();
-                        Log.i("kakkk","kakkk"+bekleyenArizalarPojoList);
+
                         bekleyenArizalarAdapter= new BekleyenArizalarAdapter(bekleyenArizalarPojoList,getApplicationContext());
-                        Toast.makeText(getApplicationContext(),"ilanlarimigoruntuleTumu",Toast.LENGTH_LONG).show();
+
                         listView.setAdapter(bekleyenArizalarAdapter);
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
                         progressDialog.cancel();
                     }
                 }
