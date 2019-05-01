@@ -10,12 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ext.asansor.Adapter.TahsilatYapSorgulaAdapter;
-import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
-import com.example.ext.asansor.TahsilatYapActivity;
-import com.example.ext.asansor.TahsilatYapPostActivity;
 
 import java.util.List;
 

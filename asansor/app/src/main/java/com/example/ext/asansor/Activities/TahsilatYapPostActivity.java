@@ -1,4 +1,4 @@
-package com.example.ext.asansor;
+package com.example.ext.asansor.Activities;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ext.asansor.Activities.ArizaTanimlamaPostActivity;
 import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
+import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
 import java.util.Calendar;

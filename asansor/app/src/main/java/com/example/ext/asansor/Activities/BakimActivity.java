@@ -40,7 +40,6 @@ public class BakimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bakim);
         Bundle bundle=getIntent().getExtras();
         asansorserino=bundle.getString("asansorserino");
-        Log.i("ilkintullah","ilkintullah"+asansorserino);
         isNetworkConnected();
         tanimla();
         getBakimDetay();
@@ -73,8 +72,23 @@ public class BakimActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!YapilmaliEditText.getText().toString().equals(""))
                 {
-                    ilaniYayinla(binaadiBakim.getText().toString(),YapilmaliEditText.getText().toString(),AcıklamaEditText.getText().toString());
-                    Log.i("mugeanli"+"mugeanli"+binaadiBakim.getText().toString(),YapilmaliEditText.getText().toString());
+                    if(isNetworkConnected()==true) {
+                        Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
+                        ilaniYayinla(ArizaPojo.getBinaAdi(), ArizaPojo.getArizaTuru(), ArizaPojo.getAciklama());
+
+                        finish();
+                    }
+
+                    else
+                    {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
+                        NoConnection noConnection = new NoConnection();
+                        noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
+                        read();
+
+
+                        //        Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
+                        //       startActivity(intent);
+                    }
 
                 }
                 else
@@ -109,7 +123,6 @@ public class BakimActivity extends AppCompatActivity {
                 binaadiBakim.setText(response.body().getBinaadi());
                 tarihBakim.setText(response.body().getDonemtarihi());
 
-                Log.i("basliiikk","basliiikk"+baslikBakim);
 
             }
 
@@ -133,7 +146,6 @@ public class BakimActivity extends AppCompatActivity {
         request.enqueue(new Callback<BakimPojo>() {
             @Override
             public void onResponse(Call<BakimPojo> call, Response<BakimPojo> response) {
-                Log.i("deniz","deniz"+response.body().isTf());
                 if (response.body().isTf()) {
                     //               Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
                     //             startActivity(intent);

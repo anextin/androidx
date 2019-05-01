@@ -13,13 +13,11 @@ import android.widget.Button;
 import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
 import com.example.ext.asansor.Activities.BakimSecActivity;
 import com.example.ext.asansor.Activities.BekleyenArizalarActivity;
+import com.example.ext.asansor.Activities.TahsilatYapActivity;
 import com.example.ext.asansor.Activities.YapilacakBakimlarActivity;
-import com.example.ext.asansor.Activities.BakimActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 

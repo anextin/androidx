@@ -7,7 +7,7 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:orientation="vertical"
-    tools:context=".TahsilatYapPostActivity">
+    tools:context=".Activities.TahsilatYapPostActivity">
 
 
     <TextView

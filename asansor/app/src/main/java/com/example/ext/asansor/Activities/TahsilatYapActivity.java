@@ -1,4 +1,4 @@
-package com.example.ext.asansor;
+package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,17 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.ext.asansor.Adapter.TahsilatYapSorgulaAdapter;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
+import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
