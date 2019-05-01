@@ -9,6 +9,7 @@ import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,7 +47,7 @@ public class ManagerAll extends BaseManager{
 
     }
 
-    public Call<ArizaTanimlamaPostPojo> ArizaTanimlamaPost(String binaadi, String asansoradi,String arayankisi, String arayanTel, String arizatarih, String arizasaat, String arizakonu, String aciklama) {
+    public Call<ArizaTanimlamaPostPojo> ArizaTanimlamaPost(String binaadi, String asansoradi, String arayankisi, String arayanTel, String arizatarih, String arizasaat, String arizakonu, String aciklama) {
         Call<ArizaTanimlamaPostPojo> x= getRestApi().ArizaTanimlamaPost(binaadi,asansoradi,arayankisi,arayanTel,arizatarih,arizasaat,arizakonu,aciklama);
 
         return x;
@@ -60,22 +61,22 @@ public class ManagerAll extends BaseManager{
     }
 
 
-    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarbugun() {
+    public Call<List<BakimPojo>> YapilacakBakimlarbugun() {
 
-        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlarbugun();
+        Call<List<BakimPojo>> x = getRestApi().YapilacakBakimlarbugun();
         return x;
     }
 
 
-    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarBuay() {
+    public Call<List<BakimPojo>> YapilacakBakimlarBuay() {
 
-        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlarBuay();
+        Call<List<BakimPojo>> x = getRestApi().YapilacakBakimlarBuay();
         return x;
     }
 
-    public Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarTumu() {
+    public Call<List<BakimPojo>> YapilacakBakimlarTumu() {
 
-        Call<List<YapilacakBakimlarPojo>> x = getRestApi().YapilacakBakimlarTumu();
+        Call<List<BakimPojo>> x = getRestApi().YapilacakBakimlarTumu();
         return x;
     }
 

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.ext.asansor.Adapter.YapilacakBakimlarAdapter;
+import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 public class YapilacakBakimlarActivity extends AppCompatActivity {
 
     ListView listView;
-    List<YapilacakBakimlarPojo> yapilacakBakimlarPojoList;
+    List<BakimPojo> BakimPojoPojoList;
     YapilacakBakimlarAdapter yapilacakBakimlarAdapter;
     Button yapilacakBakimlarBugunButton,yapilacakBakimlarBuayButton,yapilacakBakimlarTumuButton;
 
@@ -39,7 +40,8 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(YapilacakBakimlarActivity.this,BakimActivity.class);
-                intent.putExtra("asansorserino", yapilacakBakimlarPojoList.get(i).getBinaadi());
+                intent.putExtra("asansorserino", BakimPojoPojoList.get(i).getAsansorserino());
+
                 startActivity(intent);
             }
         });
@@ -58,7 +60,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         yapilacakBakimlarBugunButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("bugun","bugun"+yapilacakBakimlarPojoList);
+                Log.i("bugun","bugun"+BakimPojoPojoList);
                 Toast.makeText(getApplicationContext(),"bugun",Toast.LENGTH_LONG).show();
                 ilanlarimigoruntulebugun();
             }
@@ -67,7 +69,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         yapilacakBakimlarBuayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Buay","Buay"+yapilacakBakimlarPojoList);
+                Log.i("Buay","Buay"+BakimPojoPojoList);
                 Toast.makeText(getApplicationContext(),"Buay",Toast.LENGTH_LONG).show();
                 ilanlarimigoruntuleBuay();
             }
@@ -76,7 +78,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         yapilacakBakimlarTumuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Tumu","Tumu"+yapilacakBakimlarPojoList);
+                Log.i("Tumu","Tumu"+BakimPojoPojoList);
                 Toast.makeText(getApplicationContext(),"Tumu",Toast.LENGTH_LONG).show();
                 ilanlarimigoruntuleTumu();
             }
@@ -98,17 +100,17 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        Call<List<YapilacakBakimlarPojo>> request = ManagerAll.getInstance().YapilacakBakimlarbugun();
-        request.enqueue(new Callback<List<YapilacakBakimlarPojo>>() {
+        Call<List<BakimPojo>> request = ManagerAll.getInstance().YapilacakBakimlarbugun();
+        request.enqueue(new Callback<List<BakimPojo>>() {
             @Override
-            public void onResponse(Call<List<YapilacakBakimlarPojo>> call, Response<List<YapilacakBakimlarPojo>> response) {
+            public void onResponse(Call<List<BakimPojo>> call, Response<List<BakimPojo>> response) {
                 if(response.isSuccessful())
                 {
                     if(response.body().get(0).isTf())
                     {
-                        yapilacakBakimlarPojoList=response.body();
+                        BakimPojoPojoList=response.body();
 
-                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
+                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
 
                         listView.setAdapter(yapilacakBakimlarAdapter);
                         progressDialog.cancel();
@@ -116,9 +118,9 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "bugun yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
-                        yapilacakBakimlarPojoList=response.body();
+                        BakimPojoPojoList=response.body();
 
-                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
+                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
 
                         listView.setAdapter(null);
                         progressDialog.cancel();
@@ -128,7 +130,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<YapilacakBakimlarPojo>> call, Throwable t) {
+            public void onFailure(Call<List<BakimPojo>> call, Throwable t) {
 
             }
         });
@@ -145,17 +147,17 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        Call<List<YapilacakBakimlarPojo>> request = ManagerAll.getInstance().YapilacakBakimlarBuay();
-        request.enqueue(new Callback<List<YapilacakBakimlarPojo>>() {
+        Call<List<BakimPojo>> request = ManagerAll.getInstance().YapilacakBakimlarBuay();
+        request.enqueue(new Callback<List<BakimPojo>>() {
             @Override
-            public void onResponse(Call<List<YapilacakBakimlarPojo>> call, Response<List<YapilacakBakimlarPojo>> response) {
+            public void onResponse(Call<List<BakimPojo>> call, Response<List<BakimPojo>> response) {
                 if(response.isSuccessful())
                 {
                     if(response.body().get(0).isTf())
                     {
-                        yapilacakBakimlarPojoList=response.body();
+                        BakimPojoPojoList=response.body();
 
-                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
+                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
                         listView.setAdapter(yapilacakBakimlarAdapter);
                         progressDialog.cancel();
                     }
@@ -168,7 +170,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<YapilacakBakimlarPojo>> call, Throwable t) {
+            public void onFailure(Call<List<BakimPojo>> call, Throwable t) {
 
             }
         });
@@ -184,17 +186,17 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        Call<List<YapilacakBakimlarPojo>> request = ManagerAll.getInstance().YapilacakBakimlarTumu();
-        request.enqueue(new Callback<List<YapilacakBakimlarPojo>>() {
+        Call<List<BakimPojo>> request = ManagerAll.getInstance().YapilacakBakimlarTumu();
+        request.enqueue(new Callback<List<BakimPojo>>() {
             @Override
-            public void onResponse(Call<List<YapilacakBakimlarPojo>> call, Response<List<YapilacakBakimlarPojo>> response) {
+            public void onResponse(Call<List<BakimPojo>> call, Response<List<BakimPojo>> response) {
                 if(response.isSuccessful())
                 {
                     if(response.body().get(0).isTf())
                     {
-                        yapilacakBakimlarPojoList=response.body();
-                        Log.i("kakkk","kakkk"+yapilacakBakimlarPojoList);
-                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(yapilacakBakimlarPojoList,getApplicationContext());
+                        BakimPojoPojoList=response.body();
+                        Log.i("kakkk","kakkk"+BakimPojoPojoList);
+                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
                         Toast.makeText(getApplicationContext(),"ilanlarimigoruntuleTumu",Toast.LENGTH_LONG).show();
                         listView.setAdapter(yapilacakBakimlarAdapter);
                         progressDialog.cancel();
@@ -208,7 +210,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<YapilacakBakimlarPojo>> call, Throwable t) {
+            public void onFailure(Call<List<BakimPojo>> call, Throwable t) {
 
             }
         });

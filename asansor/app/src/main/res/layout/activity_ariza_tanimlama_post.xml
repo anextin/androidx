@@ -83,7 +83,7 @@
                 android:shadowColor="@color/colorPrimaryDark"
                 android:background="#fff"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
 
             <TextView
@@ -98,41 +98,45 @@
                 android:shadowColor="@color/colorPrimaryDark"
                 android:background="#fff"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
 
+
             <TextView
-                android:layout_marginTop="12dp"
+
+                android:layout_marginTop="20dp"
                 android:textColor="#fff"
+                android:id="@+id/tarihTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Arıza Tarihi"/>
-            <EditText
-                android:id="@+id/ArizaTarihiEditText"
-                android:layout_width="280dp"
-                android:shadowColor="@color/colorPrimaryDark"
-                android:background="#fff"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/colorPrimaryDark"/>
+            <Button
+
+                android:layout_width="wrap_content"
+                android:text="ariza tarihi seç"
+                android:id="@+id/tarihButton"
+                android:layout_height="wrap_content" />
+
 
             <TextView
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:textColor="#fff"
+                android:id="@+id/saatTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ariza Saati"/>
-            <EditText
-                android:id="@+id/ArizaSaatiEditText"
-                android:layout_width="280dp"
-                android:shadowColor="@color/colorPrimaryDark"
-                android:background="#fff"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/colorPrimaryDark"/>
+                android:text="Arıza saati"/>
+            <Button
+
+                android:layout_width="wrap_content"
+                android:text="ariza saati seç"
+                android:id="@+id/saatButton"
+                android:layout_height="wrap_content" />
+
+
 
             <TextView
-                android:layout_marginTop="12dp"
+
+                android:layout_marginTop="20dp"
                 android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,11 +147,11 @@
                 android:shadowColor="@color/colorPrimaryDark"
                 android:background="#fff"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:textColorHint="@color/colorPrimaryDark"/>
 
             <TextView
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,7 +162,7 @@
                 android:shadowColor="@color/colorPrimaryDark"
                 android:background="#fff"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
 
                 android:textColorHint="@color/colorPrimaryDark"/>
 

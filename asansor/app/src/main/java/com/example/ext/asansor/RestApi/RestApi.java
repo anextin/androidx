@@ -9,6 +9,7 @@ import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,13 +43,13 @@ public interface RestApi {
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();
 
     @GET("/yapilacakbakimlarbugun.php")
-    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarbugun();
+    Call<List<BakimPojo>> YapilacakBakimlarbugun();
 
     @GET("/yapilacakbakimlarbuay.php")
-    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarBuay();
+    Call<List<BakimPojo>> YapilacakBakimlarBuay();
 
     @GET("/yapilacakbakimlar.php")
-    Call<List<YapilacakBakimlarPojo>> YapilacakBakimlarTumu();
+    Call<List<BakimPojo>> YapilacakBakimlarTumu();
 
     /////////////////////////////////////////////////7
     @GET("/bekleyenarizalarbugun.php")

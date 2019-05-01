@@ -1,7 +1,6 @@
 package com.example.ext.asansor.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
+import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 import com.example.ext.asansor.R;
 
@@ -20,22 +19,22 @@ import java.util.List;
  */
 
 public class YapilacakBakimlarAdapter extends BaseAdapter {
-    List<YapilacakBakimlarPojo> yapilacakBakimlarPojoList;
+    List<BakimPojo> BakimPojoPojoList;
     Context context;
 
-    public YapilacakBakimlarAdapter(List<YapilacakBakimlarPojo> yapilacakBakimlarPojoList, Context context) {
-        this.yapilacakBakimlarPojoList = yapilacakBakimlarPojoList;
+    public YapilacakBakimlarAdapter(List<BakimPojo> BakimPojoPojoList, Context context) {
+        this.BakimPojoPojoList = BakimPojoPojoList;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return yapilacakBakimlarPojoList.size();
+        return BakimPojoPojoList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return yapilacakBakimlarPojoList.get(position);
+        return BakimPojoPojoList.get(position);
     }
 
     @Override
@@ -58,11 +57,11 @@ public class YapilacakBakimlarAdapter extends BaseAdapter {
 
 
 
-        YapilacakBakimlarbaslik.setText(yapilacakBakimlarPojoList.get(position).getBaslik());
-        YapilacakBakimlarbinaadi.setText(yapilacakBakimlarPojoList.get(position).getBinaadi());
-        YapilacakBakimlaryetkili.setText("Yetkili: "+yapilacakBakimlarPojoList.get(position).getYetkili());
-        YapilacakBakimlartel.setText("Tel: "+yapilacakBakimlarPojoList.get(position).getTel());
-        YapilacakBakimlardonemtarihi.setText("Dönem Tarihi: "+yapilacakBakimlarPojoList.get(position).getDonemtarihi());
+        YapilacakBakimlarbaslik.setText(BakimPojoPojoList.get(position).getBaslik());
+        YapilacakBakimlarbinaadi.setText(BakimPojoPojoList.get(position).getBinaadi());
+        YapilacakBakimlaryetkili.setText("Yetkili: "+BakimPojoPojoList.get(position).getYetkili());
+        YapilacakBakimlartel.setText("Tel: "+BakimPojoPojoList.get(position).getTel());
+        YapilacakBakimlardonemtarihi.setText("Dönem Tarihi: "+BakimPojoPojoList.get(position).getDonemtarihi());
 
 
 

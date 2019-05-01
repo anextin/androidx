@@ -38,6 +38,9 @@ public class BakimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bakim);
+        Bundle bundle=getIntent().getExtras();
+        asansorserino=bundle.getString("asansorserino");
+        Log.i("ilkintullah","ilkintullah"+asansorserino);
         isNetworkConnected();
         tanimla();
         getBakimDetay();
@@ -47,6 +50,8 @@ public class BakimActivity extends AppCompatActivity {
 
     public void tanimla()
     {
+
+
         bakimEkrani = findViewById(R.id.bakimEkrani);
         baslikBakim = findViewById(R.id.baslikBakim);
         binaadiBakim = findViewById(R.id.binaadiBakim);
@@ -62,16 +67,14 @@ public class BakimActivity extends AppCompatActivity {
         OnayButon = findViewById(R.id.OnayButon);
 
 
-        Bundle bundle=getIntent().getExtras();
-        asansorserino=bundle.getString("asansorserino");
-        Log.i("asansorserino","asansorserino"+asansorserino);
 
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!YapilmaliEditText.getText().toString().equals(""))
                 {
-
+                    ilaniYayinla(binaadiBakim.getText().toString(),YapilmaliEditText.getText().toString(),AcıklamaEditText.getText().toString());
+                    Log.i("mugeanli"+"mugeanli"+binaadiBakim.getText().toString(),YapilmaliEditText.getText().toString());
 
                 }
                 else
@@ -130,6 +133,7 @@ public class BakimActivity extends AppCompatActivity {
         request.enqueue(new Callback<BakimPojo>() {
             @Override
             public void onResponse(Call<BakimPojo> call, Response<BakimPojo> response) {
+                Log.i("deniz","deniz"+response.body().isTf());
                 if (response.body().isTf()) {
                     //               Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
                     //             startActivity(intent);

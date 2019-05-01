@@ -1,5 +1,7 @@
 package com.example.ext.asansor.Models;
 
+import java.sql.Date;
+
 /**
  * Created by Kafein on 4/26/2019.
  */
@@ -10,7 +12,7 @@ public class ArizaTanimlamaPostPojo {
     static String  asansoradi;
     static String  arayankisi;
     static String  arayanTel;
-    static String  arizatarih;
+    static String arizatarih;
     static String  arizasaat;
     static String  arizakonu;
     static String  aciklama;

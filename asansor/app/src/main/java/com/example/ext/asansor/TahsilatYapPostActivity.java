@@ -1,5 +1,6 @@
 package com.example.ext.asansor;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
@@ -7,14 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ext.asansor.Activities.ArizaTanimlamaPostActivity;
 import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,9 +29,9 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
 
 
     String binaadi,asansoradi,yoneticiadi;
-    TextView BinaAdiEditText,AsansorAdiEditText,YoneticiAdiEditText;
+    TextView BinaAdiEditText,AsansorAdiEditText,YoneticiAdiEditText,tarihTextView;
     EditText  YoneticiTelEditText,KasaEditText,OdemeTarihiEditText,TutarEditText,FisNumarasiEditText,TahsilatYapPostAciklamaEditText;
-    Button OnayButon;
+    Button OnayButon,tarihButton;
     Context context;
     List<BakimPojo> list;
     List<TahsilatYapSorgulaPostPojo> tahsilatYapSorgulaPostPojo;
@@ -48,6 +52,9 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
 
     public void tanimla()
     {
+        tarihButton=findViewById(R.id.tarihButton);
+        tarihTextView=findViewById(R.id.tarihTextView);
+
         BinaAdiEditText = findViewById(R.id.BinaAdiEditText);
         BinaAdiEditText.setText("Bina Adı: "+binaadi);
         AsansorAdiEditText = findViewById(R.id.AsansorAdiEditText);
@@ -57,7 +64,6 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
 
         YoneticiTelEditText = findViewById(R.id.YoneticiTelEditText);
         KasaEditText = findViewById(R.id.KasaEditText);
-        OdemeTarihiEditText = findViewById(R.id.OdemeTarihiEditText);
         TutarEditText = findViewById(R.id.TutarEditText);
         FisNumarasiEditText = findViewById(R.id.FisNumarasiEditText);
         TahsilatYapPostAciklamaEditText = findViewById(R.id.TahsilatYapPostAciklamaEditText);
@@ -77,7 +83,7 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
                     TahsilatYapSorgulaPostPojo.setYoneticiadi(yoneticiadi);
                     TahsilatYapSorgulaPostPojo.setYoneticiTel(  YoneticiTelEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setKasa(  KasaEditText.getText().toString());
-                    TahsilatYapSorgulaPostPojo.setOdemeTarihi(  OdemeTarihiEditText.getText().toString());
+                    TahsilatYapSorgulaPostPojo.setOdemeTarihi(  tarihTextView.getText().toString());
                     TahsilatYapSorgulaPostPojo.setTutar(  TutarEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setFis_numarasi(FisNumarasiEditText.getText().toString());
                     TahsilatYapSorgulaPostPojo.setAciklama(TahsilatYapPostAciklamaEditText.getText().toString());
@@ -111,6 +117,38 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Tum bilgileri doldur",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        tarihButton.setOnClickListener(new View.OnClickListener() {//tarihButona Click Listener ekliyoruz
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int year = mcurrentTime.get(Calendar.YEAR);//Güncel Yılı alıyoruz
+                int month = mcurrentTime.get(Calendar.MONTH);//Güncel Ayı alıyoruz
+                int day = mcurrentTime.get(Calendar.DAY_OF_MONTH);//Güncel Günü alıyoruz
+
+                DatePickerDialog datePicker;//Datepicker objemiz
+                datePicker = new DatePickerDialog(TahsilatYapPostActivity.this, new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+
+                        int ay= monthOfYear+1;
+                        // TODO Auto-generated method stub
+                        tarihTextView.setText( dayOfMonth + "/" + ay+ "/"+year);//Ayarla butonu tıklandığında textview'a yazdırıyoruz
+
+                    }
+                },year,month,day);//başlarken set edilcek değerlerimizi atıyoruz
+                datePicker.setTitle("Tarih Seçiniz");
+                datePicker.setButton(DatePickerDialog.BUTTON_POSITIVE, "Ayarla", datePicker);
+                datePicker.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", datePicker);
+
+                datePicker.show();
+
             }
         });
 
