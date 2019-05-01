@@ -9,12 +9,17 @@ public class BekleyenArizalarPojo {
     private String  baslik;
     private String  binaadi;
     private String  asansoradi;
-    private String  arizakonusu;
+    private String  arizakonu;
     private String  yetkili;
     private String  arayankisi;
+    private String  arayanTel;
     private String  tel;
+    private String  arizatarih;
+    private String  arizasaat;
+    private String  aciklama;
     private String  personel;
     private String  donemtarihi;
+    private String  asansorserino;
     private boolean tf;
 
     public String getBaslik() {
@@ -41,12 +46,20 @@ public class BekleyenArizalarPojo {
         this.asansoradi = asansoradi;
     }
 
-    public String getArizakonusu() {
-        return arizakonusu;
+    public String getArizakonu() {
+        return arizakonu;
     }
 
-    public void setArizakonusu(String arizakonusu) {
-        this.arizakonusu = arizakonusu;
+    public void setArizakonu(String arizakonu) {
+        this.arizakonu = arizakonu;
+    }
+
+    public String getYetkili() {
+        return yetkili;
+    }
+
+    public void setYetkili(String yetkili) {
+        this.yetkili = yetkili;
     }
 
     public String getArayankisi() {
@@ -57,12 +70,44 @@ public class BekleyenArizalarPojo {
         this.arayankisi = arayankisi;
     }
 
+    public String getArayanTel() {
+        return arayanTel;
+    }
+
+    public void setArayanTel(String arayanTel) {
+        this.arayanTel = arayanTel;
+    }
+
     public String getTel() {
         return tel;
     }
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getArizatarih() {
+        return arizatarih;
+    }
+
+    public void setArizatarih(String arizatarih) {
+        this.arizatarih = arizatarih;
+    }
+
+    public String getArizasaat() {
+        return arizasaat;
+    }
+
+    public void setArizasaat(String arizasaat) {
+        this.arizasaat = arizasaat;
+    }
+
+    public String getAciklama() {
+        return aciklama;
+    }
+
+    public void setAciklama(String aciklama) {
+        this.aciklama = aciklama;
     }
 
     public String getPersonel() {
@@ -81,12 +126,12 @@ public class BekleyenArizalarPojo {
         this.donemtarihi = donemtarihi;
     }
 
-    public String getYetkili() {
-        return yetkili;
+    public String getAsansorserino() {
+        return asansorserino;
     }
 
-    public void setYetkili(String yetkili) {
-        this.yetkili = yetkili;
+    public void setAsansorserino(String asansorserino) {
+        this.asansorserino = asansorserino;
     }
 
     public boolean isTf() {

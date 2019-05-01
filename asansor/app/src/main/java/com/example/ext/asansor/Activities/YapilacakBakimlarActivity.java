@@ -1,11 +1,13 @@
 package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -33,6 +35,14 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yapilacak_bakimlar);
         listView=findViewById(R.id.yapilacakBakimlarListView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(YapilacakBakimlarActivity.this,BakimActivity.class);
+                intent.putExtra("asansorserino", yapilacakBakimlarPojoList.get(i).getBinaadi());
+                startActivity(intent);
+            }
+        });
 
         tanimla();
         ilanlarimigoruntulebugun();
