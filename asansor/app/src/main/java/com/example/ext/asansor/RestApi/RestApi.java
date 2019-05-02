@@ -23,7 +23,10 @@ public interface RestApi {
 
     @FormUrlEncoded
     @POST("/ariza.php")
-    Call<BakimPojo> ariza(@Field("binaAdi") String binaAdi, @Field("arizaTuru") String arizaTuru, @Field("aciklama") String aciklama);
+    Call<BakimPojo> ariza(@Field("baslik") String baslik, @Field("binaadi") String binaadi, @Field("donemtarihi") String donemtarihi, @Field("yapilacak") String yapilacak,
+            @Field("tutar") String tutar, @Field("yetkili") String yetkili, @Field("aciklama") String aciklama, @Field("tel") String tel
+            , @Field("eposta") String eposta, @Field("mesaj") String mesaj, @Field("asansorserino") String asansorserino, @Field("bakimbasla") String bakimbasla
+            , @Field("bakimbitir") String bakimbitir, @Field("bakimdurum") String bakimdurum);
 
     @FormUrlEncoded
     @POST("/tahsilatyapsorgulapost.php")
@@ -39,6 +42,12 @@ public interface RestApi {
     @GET("/bakim.php")
     Call<BakimPojo> bakim(@Query("asansorserino") String asansorserino);
 
+
+    @GET("/yapilacakbakimlar.php")
+    Call<List<BakimPojo>> YapilacakBakimlarTumu();
+
+    //////////////////////////////////////////////////////
+
     @GET("/tahsilatyapsorgula.php")
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();
 
@@ -48,10 +57,9 @@ public interface RestApi {
     @GET("/yapilacakbakimlarbuay.php")
     Call<List<BakimPojo>> YapilacakBakimlarBuay();
 
-    @GET("/yapilacakbakimlar.php")
-    Call<List<BakimPojo>> YapilacakBakimlarTumu();
 
-    /////////////////////////////////////////////////7
+
+    /////////////////////////////////////////////////
     @GET("/bekleyenarizalarbugun.php")
     Call<List<BekleyenArizalarPojo>> BekleyenArizalarbugun();
 

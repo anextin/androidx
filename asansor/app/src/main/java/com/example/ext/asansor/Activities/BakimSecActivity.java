@@ -13,6 +13,9 @@ import com.example.ext.asansor.MainActivity;
 import com.example.ext.asansor.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BakimSecActivity extends AppCompatActivity {
 
     Button QRCodeBakim , manualgirisOnayButton;
@@ -45,9 +48,10 @@ public class BakimSecActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!manualgirisEditText.getText().toString().equals("")) {
 
+                    String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
                     Intent intent = new Intent(BakimSecActivity.this, BakimActivity.class);
-                    Log.i("zzzzz","zzzzz"+manualgirisEditText.getText().toString());
                     intent.putExtra("asansorserino", manualgirisEditText.getText().toString());
+                    intent.putExtra("bakimbasla", date);
                     startActivity(intent);
                     //            BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());  //geri dondugumuzde doldurulan bilgiler kalsın die
 

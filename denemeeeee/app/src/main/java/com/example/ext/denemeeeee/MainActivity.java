@@ -2,12 +2,16 @@ package com.example.ext.denemeeeee;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +22,8 @@ import android.widget.TimePicker;
 
 public class MainActivity extends Activity {
     Button saatButton,tarihButton;
-    TextView saatTextView,tarihTextView,denemeTextView;
+    TextView saatTextView,tarihTextView,denemeTextView,ardatextview;
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,12 @@ public class MainActivity extends Activity {
         saatTextView = (TextView) findViewById(R.id.textView1);
         tarihTextView = (TextView) findViewById(R.id.textView2);
         denemeTextView=findViewById(R.id.denemeTextView);
+
+
+
+        ardatextview=findViewById(R.id.ardatextview);
+        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        ardatextview.setText(date);
 
 
         saatButton.setOnClickListener(new View.OnClickListener() {//saatButona Click Listener ekliyoruz

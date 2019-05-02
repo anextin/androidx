@@ -16,6 +16,8 @@ import com.example.ext.asansor.NoConnection;
 import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,7 +31,7 @@ public class BakimActivity extends AppCompatActivity {
 
     Button OnayButon;
     Context context;
-    String asansorserino;
+    String asansorserino,bakimbasla;
     List<BakimPojo> list;
     public static final String FILE_NAME = "bakim.txt";
     public static final String DIR_NAME = "externaldir";
@@ -40,9 +42,11 @@ public class BakimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bakim);
         Bundle bundle=getIntent().getExtras();
         asansorserino=bundle.getString("asansorserino");
+        bakimbasla=bundle.getString("bakimbasla");
         isNetworkConnected();
-        tanimla();
         getBakimDetay();
+        tanimla();
+
 
     }
 
@@ -73,8 +77,17 @@ public class BakimActivity extends AppCompatActivity {
                 if(!YapilmaliEditText.getText().toString().equals(""))
                 {
                     if(isNetworkConnected()==true) {
+                        String dateHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                         Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
-                        ilaniYayinla(ArizaPojo.getBinaAdi(), ArizaPojo.getArizaTuru(), ArizaPojo.getAciklama());
+                        ilaniYayinla(baslikBakim.getText().toString(),binaadiBakim.getText().toString(),date,YapilmaliEditText.getText().toString()
+                                ,TutarEditText.getText().toString()
+                                ,BinaYetkilisiEditText.getText().toString()
+                                ,AcıklamaEditText.getText().toString()
+                                ,TelEditText.getText().toString()
+                                ,EpostaEditText.getText().toString()
+                                ,MesajEditText.getText().toString()
+                                ,asansorserino,bakimbasla,dateHour,"1");
 
                         finish();
                     }
@@ -82,8 +95,8 @@ public class BakimActivity extends AppCompatActivity {
                     else
                     {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
                         NoConnection noConnection = new NoConnection();
-                        noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
-                        read();
+//                        noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
+  //                      read();
 
 
                         //        Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
@@ -135,14 +148,16 @@ public class BakimActivity extends AppCompatActivity {
 
     }
 
-    public  void ilaniYayinla(String binaAdi,String arizaTuru , String aciklama)
+    public  void ilaniYayinla(String baslik,String binaadi , String donemtarihi,String yapilacak,String tutar,String yetkili,String aciklama,String tel,String eposta,
+                              String mesaj,String asansorserino,String bakimbasla,String bakimbitir,String bakimdurum)
     {
 
 
 
 
 
-        Call<BakimPojo> request = ManagerAll.getInstance().ariza(binaAdi, arizaTuru, aciklama);
+        Call<BakimPojo> request = ManagerAll.getInstance().ariza( baslik, binaadi ,  donemtarihi, yapilacak, tutar, yetkili, aciklama, tel, eposta,
+                 mesaj, asansorserino, bakimbasla, bakimbitir, bakimdurum);
         request.enqueue(new Callback<BakimPojo>() {
             @Override
             public void onResponse(Call<BakimPojo> call, Response<BakimPojo> response) {

@@ -64,7 +64,7 @@ public class OnConnection {
             String aciklama= parts[2];
 
                 BakimActivity bakimActivity = new BakimActivity();
-            bakimActivity.ilaniYayinla(binaAdi, arizaTuru, aciklama);
+     //       bakimActivity.ilaniYayinla(binaAdi, arizaTuru, aciklama);
 
             Uri uri;
             File file= new File("externaldir/externalfile.txt");

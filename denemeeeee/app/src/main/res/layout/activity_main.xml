@@ -37,14 +37,16 @@
         android:layout_marginTop="13dp"
         android:text="Tarih"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
     <TextView
-        android:id="@+id/denemeTextView"
+        android:id="@+id/ardatextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/denemeTextView"
         android:layout_marginTop="13dp"
-        android:text="Tarih"
+        android:text="deneme"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 

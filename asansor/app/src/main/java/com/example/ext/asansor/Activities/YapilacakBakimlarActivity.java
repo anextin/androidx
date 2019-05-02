@@ -60,7 +60,6 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         yapilacakBakimlarBugunButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("bugun","bugun"+BakimPojoPojoList);
                 Toast.makeText(getApplicationContext(),"bugun",Toast.LENGTH_LONG).show();
                 ilanlarimigoruntulebugun();
             }
@@ -69,7 +68,6 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         yapilacakBakimlarBuayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Buay","Buay"+BakimPojoPojoList);
                 Toast.makeText(getApplicationContext(),"Buay",Toast.LENGTH_LONG).show();
                 ilanlarimigoruntuleBuay();
             }
@@ -78,7 +76,6 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
         yapilacakBakimlarTumuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Tumu","Tumu"+BakimPojoPojoList);
                 Toast.makeText(getApplicationContext(),"Tumu",Toast.LENGTH_LONG).show();
                 ilanlarimigoruntuleTumu();
             }
@@ -94,8 +91,8 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
     {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("ilanlar");
-        progressDialog.setMessage("ilanlar yukleniyor ...");
+        progressDialog.setTitle("Bakımlar");
+        progressDialog.setMessage("Bakımlar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -118,9 +115,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "bugun yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
-                        BakimPojoPojoList=response.body();
 
-                        yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
 
                         listView.setAdapter(null);
                         progressDialog.cancel();
@@ -164,6 +159,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "bu ay yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        listView.setAdapter(null);
                         progressDialog.cancel();
                     }
                 }
@@ -195,7 +191,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         BakimPojoPojoList=response.body();
-                        Log.i("kakkk","kakkk"+BakimPojoPojoList);
+
                         yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
                         Toast.makeText(getApplicationContext(),"ilanlarimigoruntuleTumu",Toast.LENGTH_LONG).show();
                         listView.setAdapter(yapilacakBakimlarAdapter);
@@ -204,6 +200,7 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "Yapılacak bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        listView.setAdapter(null);
                         progressDialog.cancel();
                     }
                 }
