@@ -28,9 +28,9 @@ public class ManagerAll extends BaseManager{
 
 
 
-    public Call<BakimPojo> ariza(String baslik, String binaadi , String donemtarihi, String yapilacak, String tutar, String yetkili, String aciklama, String tel
+    public Call<BakimPojo> bakimpost(String baslik, String binaadi , String donemtarihi, String yapilacak, String tutar, String yetkili, String aciklama, String tel
             , String eposta, String mesaj, String asansorserino, String bakimbasla, String bakimbitir, String bakimdurum) {
-        Call<BakimPojo> x= getRestApi().ariza( baslik, binaadi ,  donemtarihi, yapilacak, tutar, yetkili, aciklama, tel, eposta,
+        Call<BakimPojo> x= getRestApi().bakimpost( baslik, binaadi ,  donemtarihi, yapilacak, tutar, yetkili, aciklama, tel, eposta,
                 mesaj, asansorserino, bakimbasla, bakimbitir, bakimdurum);
         return x;
 

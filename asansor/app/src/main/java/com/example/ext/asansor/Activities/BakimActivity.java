@@ -1,6 +1,7 @@
 package com.example.ext.asansor.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ext.asansor.MainActivity;
 import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.NoConnection;
 import com.example.ext.asansor.R;
@@ -33,8 +35,7 @@ public class BakimActivity extends AppCompatActivity {
     Context context;
     String asansorserino,bakimbasla;
     List<BakimPojo> list;
-    public static final String FILE_NAME = "bakim.txt";
-    public static final String DIR_NAME = "externaldir";
+    public static String dateHour,date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class BakimActivity extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         asansorserino=bundle.getString("asansorserino");
         bakimbasla=bundle.getString("bakimbasla");
+
         isNetworkConnected();
         getBakimDetay();
         tanimla();
@@ -77,8 +79,8 @@ public class BakimActivity extends AppCompatActivity {
                 if(!YapilmaliEditText.getText().toString().equals(""))
                 {
                     if(isNetworkConnected()==true) {
-                        String dateHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                        dateHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                        date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                         Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
                         ilaniYayinla(baslikBakim.getText().toString(),binaadiBakim.getText().toString(),date,YapilmaliEditText.getText().toString()
                                 ,TutarEditText.getText().toString()
@@ -95,12 +97,25 @@ public class BakimActivity extends AppCompatActivity {
                     else
                     {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
                         NoConnection noConnection = new NoConnection();
-//                        noConnection.write(getApplicationContext(), BinaAdiEditText.getText().toString(),ArizaTuruEditText.getText().toString(),AcıklamaEditText.getText().toString());
-  //                      read();
+                       noConnection.write(getApplicationContext(), baslikBakim.getText().toString()
+                               ,binaadiBakim.getText().toString()
+                               ,date
+                               ,YapilmaliEditText.getText().toString()
+                            ,TutarEditText.getText().toString()
+                            ,BinaYetkilisiEditText.getText().toString()
+                            ,AcıklamaEditText.getText().toString()
+                            ,TelEditText.getText().toString()
+                            ,EpostaEditText.getText().toString()
+                            ,MesajEditText.getText().toString()
+                            ,asansorserino
+                               ,bakimbasla
+                               ,dateHour
+                               ,"1");
+         //              read();
 
 
-                        //        Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
-                        //       startActivity(intent);
+                               Intent intent = new Intent(BakimActivity.this, MainActivity.class);
+                               startActivity(intent);
                     }
 
                 }
@@ -156,7 +171,7 @@ public class BakimActivity extends AppCompatActivity {
 
 
 
-        Call<BakimPojo> request = ManagerAll.getInstance().ariza( baslik, binaadi ,  donemtarihi, yapilacak, tutar, yetkili, aciklama, tel, eposta,
+        Call<BakimPojo> request = ManagerAll.getInstance().bakimpost( baslik, binaadi ,  donemtarihi, yapilacak, tutar, yetkili, aciklama, tel, eposta,
                  mesaj, asansorserino, bakimbasla, bakimbitir, bakimdurum);
         request.enqueue(new Callback<BakimPojo>() {
             @Override

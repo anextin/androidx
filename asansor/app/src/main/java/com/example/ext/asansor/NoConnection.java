@@ -43,19 +43,15 @@ public class NoConnection {
     }
 
 
-    public void write(Context context,String binaAdi,String arizaTuru, String Aciklama)
+    public void write(Context context, String baslik, String binaadi,String date, String yapilacak, String tutar, String yetkili, String aciklama, String tel
+            , String eposta, String mesaj, String asansorserino, String bakimbasla, String bakimbitir, String bakimdurum)
     {
 
-    //    x = true;
 
-
-    //    binaAdi  = BakimPojo.getBinaAdi().toString();
-     //   arizaTuru = BakimPojo.getArizaTuru().toString();
-     //   Aciklama = BakimPojo.getAciklama().toString();
         try {
 
             FileOutputStream fos= new FileOutputStream(new File(context.getExternalFilesDir(DIR_NAME), FILE_NAME));
-            String s = (binaAdi+"/"+arizaTuru+"/"+Aciklama);
+            String s = (baslik+"/"+binaadi+"/"+date+"/"+yapilacak+"/"+tutar+"/"+yetkili+"/"+aciklama+"/"+tel+"/"+eposta+"/"+mesaj+"/"+asansorserino+"/"+bakimbasla+"/"+bakimbitir+"/"+bakimdurum);
       //      PrintWriter printWriter = new PrintWriter(new FileOutputStream("hagi"+binaAdi));
             fos.write(s.getBytes(Charset.forName("UTF-8")));
             fos.close();

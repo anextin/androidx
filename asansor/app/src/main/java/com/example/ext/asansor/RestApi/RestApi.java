@@ -21,9 +21,12 @@ import retrofit2.http.Query;
 
 public interface RestApi {
 
+    @GET("/bakim.php")
+    Call<BakimPojo> bakim(@Query("asansorserino") String asansorserino);
+
     @FormUrlEncoded
-    @POST("/ariza.php")
-    Call<BakimPojo> ariza(@Field("baslik") String baslik, @Field("binaadi") String binaadi, @Field("donemtarihi") String donemtarihi, @Field("yapilacak") String yapilacak,
+    @POST("/bakimpost.php")
+    Call<BakimPojo> bakimpost(@Field("baslik") String baslik, @Field("binaadi") String binaadi, @Field("donemtarihi") String donemtarihi, @Field("yapilacak") String yapilacak,
             @Field("tutar") String tutar, @Field("yetkili") String yetkili, @Field("aciklama") String aciklama, @Field("tel") String tel
             , @Field("eposta") String eposta, @Field("mesaj") String mesaj, @Field("asansorserino") String asansorserino, @Field("bakimbasla") String bakimbasla
             , @Field("bakimbitir") String bakimbitir, @Field("bakimdurum") String bakimdurum);
@@ -39,14 +42,12 @@ public interface RestApi {
 
 
 
-    @GET("/bakim.php")
-    Call<BakimPojo> bakim(@Query("asansorserino") String asansorserino);
 
+/////////////////////////////////////////////
 
     @GET("/yapilacakbakimlar.php")
     Call<List<BakimPojo>> YapilacakBakimlarTumu();
 
-    //////////////////////////////////////////////////////
 
     @GET("/tahsilatyapsorgula.php")
     Call<List<TahsilatYapSorgulaPojo>> TahsilatYapSorgula();

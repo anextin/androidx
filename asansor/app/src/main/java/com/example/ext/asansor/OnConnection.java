@@ -59,12 +59,24 @@ public class OnConnection {
         public void DbYaz(String message)
         {
             String parts[] = message.split("/");
-            String binaAdi= parts[0];
-            String arizaTuru= parts[1];
-            String aciklama= parts[2];
+            String baslik= parts[0];
+            String binaadi= parts[1];
+            String donemtarihi= parts[2];
+            String yapilacak= parts[3];
+            String tutar= parts[4];
+            String yetkili= parts[5];
+            String aciklama= parts[6];
+            String tel= parts[7];
+            String eposta= parts[8];
+            String mesaj= parts[9];
+            String asansorserino= parts[10];
+            String bakimbasla= parts[11];
+            String bakimbitir= parts[12];
+            String bakimdurum= parts[13];
 
                 BakimActivity bakimActivity = new BakimActivity();
-     //       bakimActivity.ilaniYayinla(binaAdi, arizaTuru, aciklama);
+           bakimActivity.ilaniYayinla( baslik, binaadi ,  donemtarihi, yapilacak, tutar, yetkili, aciklama, tel, eposta,
+                   mesaj, asansorserino, bakimbasla, bakimbitir, bakimdurum);
 
             Uri uri;
             File file= new File("externaldir/externalfile.txt");
