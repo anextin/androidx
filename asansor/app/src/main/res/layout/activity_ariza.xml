@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="12dp"
+
     tools:context=".Activities.ArizaActivity"
     android:orientation="vertical">
     <TextView
@@ -172,7 +174,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/mybutton"
-                android:text="Onay"/>
+                android:text="Onarım Başlat"/>
 
 
 
