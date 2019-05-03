@@ -34,6 +34,7 @@ public interface RestApi {
             @Field("eposta") String eposta, @Field("tel") String tel, @Field("mesaj") String mesaj, @Field("donemtarihi") String donemtarihi, @Field("asansorserino") String asansorserino, @Field("arizaonarbasla") String arizaonarbasla
             , @Field("arizaonarbitir") String arizaonarbitir, @Field("arizadurum") String arizadurum);
 
+    @FormUrlEncoded
     @POST("/bakimpost.php")
     Call<BakimPojo> bakimpost(@Field("baslik") String baslik, @Field("binaadi") String binaadi, @Field("donemtarihi") String donemtarihi, @Field("yapilacak") String yapilacak,
                               @Field("tutar") String tutar, @Field("yetkili") String yetkili, @Field("aciklama") String aciklama, @Field("tel") String tel

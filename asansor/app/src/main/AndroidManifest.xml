@@ -52,7 +52,10 @@
         <activity android:name=".Activities.BakimActivity" />
         <activity android:name=".Activities.ArizaActivity" />
         <activity android:name=".Activities.BakimSecActivity" />
-        <activity android:name=".Activities.QRCodeActivity"></activity>
+        <activity android:name=".Activities.QRCodeArizaActivity" />
+        <activity android:name=".Activities.BakimDurumActivity" />
+        <activity android:name=".Activities.ArizaSecActivity" />
+        <activity android:name=".Activities.QRCodeBakimActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.ext.asansor.Activities.ArizaSecActivity;
 import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
 import com.example.ext.asansor.Activities.BakimSecActivity;
 import com.example.ext.asansor.Activities.BekleyenArizalarActivity;
@@ -56,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user= auth.getCurrentUser();
 
+
+        arizaButton = findViewById(R.id.arizaButton);
+        arizaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ArizaSecActivity.class);
+                startActivity(intent);
+            }
+        });
 
         bakimButton = findViewById(R.id.bakimButton);
         bakimButton.setOnClickListener(new View.OnClickListener() {

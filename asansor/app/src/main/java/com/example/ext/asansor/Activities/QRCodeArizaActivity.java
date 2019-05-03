@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.ext.asansor.R;
 
-public class QRCodeActivity extends AppCompatActivity {
+public class QRCodeArizaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qrcode);
+        setContentView(R.layout.activity_qrcodeariza);
     }
 }

@@ -13,7 +13,7 @@ import com.example.ext.asansor.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class BakimSecActivity extends AppCompatActivity {
+public class ArizaSecActivity  extends AppCompatActivity {
 
     Button QRCodeBakim , manualgirisOnayButton;
     EditText manualgirisEditText;
@@ -35,7 +35,7 @@ public class BakimSecActivity extends AppCompatActivity {
         QRCodeBakim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BakimSecActivity.this, QRCodeBakimActivity.class);
+                Intent intent = new Intent(ArizaSecActivity.this, QRCodeArizaActivity.class);
                 startActivity(intent);
             }
         });
@@ -46,7 +46,7 @@ public class BakimSecActivity extends AppCompatActivity {
                 if (!manualgirisEditText.getText().toString().equals("")) {
 
                     String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                    Intent intent = new Intent(BakimSecActivity.this, BakimActivity.class);
+                    Intent intent = new Intent(ArizaSecActivity.this, ArizaActivity.class);
                     intent.putExtra("asansorserino", manualgirisEditText.getText().toString());
                     intent.putExtra("bakimbasla", date);
                     startActivity(intent);
@@ -54,12 +54,12 @@ public class BakimSecActivity extends AppCompatActivity {
 
                 }
                 else
-                    {
-                        Toast.makeText(getApplicationContext(), "Tum bilgileri doldur", Toast.LENGTH_LONG).show();
-                    }
+                {
+                    Toast.makeText(getApplicationContext(), "Tum bilgileri doldur", Toast.LENGTH_LONG).show();
                 }
-                });
-
             }
+        });
+
+    }
 
 }

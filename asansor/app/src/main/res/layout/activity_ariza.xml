@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bakim Ekrani"
+        android:text="Arıza Ekrani"
         android:id="@+id/arizaEkrani"
         android:textSize="20dp"
         android:layout_marginBottom="15dp"
@@ -174,7 +174,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/mybutton"
-                android:text="Onarım Başlat"/>
+                android:text="Onarım Bitir"/>
 
 
 
