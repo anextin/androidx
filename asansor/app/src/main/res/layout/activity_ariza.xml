@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:text="Arıza Kodu"/>
             <EditText
-                android:id="@+id/ArızaKoduEditText"
+                android:id="@+id/ArizaKoduEditText"
                 android:layout_width="280dp"
                 android:shadowColor="@color/colorPrimaryDark"
                 android:background="#fff"

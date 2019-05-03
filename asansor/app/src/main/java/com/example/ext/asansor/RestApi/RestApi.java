@@ -1,6 +1,7 @@
 package com.example.ext.asansor.RestApi;
 
 
+import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.BekleyenArizalarPojo;
@@ -24,10 +25,18 @@ public interface RestApi {
     @GET("/bakim.php")
     Call<BakimPojo> bakim(@Query("asansorserino") String asansorserino);
 
+    @GET("/ariza.php")
+    Call<ArizaPojo> ariza(@Query("asansorserino") String asansorserino);
+
     @FormUrlEncoded
+    @POST("/arizapost.php")
+    Call<ArizaPojo> arizapost(@Field("yetkili") String yetkili, @Field("arizakonu") String arizakonu, @Field("arizakodu") String arizakodu, @Field("degisenparca") String degisenparca,
+            @Field("eposta") String eposta, @Field("tel") String tel, @Field("mesaj") String mesaj, @Field("donemtarihi") String donemtarihi, @Field("asansorserino") String asansorserino, @Field("arizaonarbasla") String arizaonarbasla
+            , @Field("arizaonarbitir") String arizaonarbitir, @Field("arizadurum") String arizadurum);
+
     @POST("/bakimpost.php")
     Call<BakimPojo> bakimpost(@Field("baslik") String baslik, @Field("binaadi") String binaadi, @Field("donemtarihi") String donemtarihi, @Field("yapilacak") String yapilacak,
-            @Field("tutar") String tutar, @Field("yetkili") String yetkili, @Field("aciklama") String aciklama, @Field("tel") String tel
+                              @Field("tutar") String tutar, @Field("yetkili") String yetkili, @Field("aciklama") String aciklama, @Field("tel") String tel
             , @Field("eposta") String eposta, @Field("mesaj") String mesaj, @Field("asansorserino") String asansorserino, @Field("bakimbasla") String bakimbasla
             , @Field("bakimbitir") String bakimbitir, @Field("bakimdurum") String bakimdurum);
 

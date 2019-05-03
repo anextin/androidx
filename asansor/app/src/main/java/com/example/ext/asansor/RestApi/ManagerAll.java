@@ -2,14 +2,13 @@ package com.example.ext.asansor.RestApi;
 
 
 
+import com.example.ext.asansor.Models.ArizaPojo;
 import com.example.ext.asansor.Models.BakimPojo;
 import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.BekleyenArizalarPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
-import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -36,10 +35,24 @@ public class ManagerAll extends BaseManager{
 
     }
 
+    public Call<ArizaPojo> arizapost(String yetkili, String arizakonu , String arizakodu, String degisenparca, String eposta, String tel, String mesaj,String donemtarihi, String asansorserino
+            , String arizaonarbasla, String arizaonarbitir, String arizadurum) {
+        Call<ArizaPojo> x= getRestApi().arizapost( yetkili, arizakonu ,  arizakodu, degisenparca, eposta, tel, mesaj, donemtarihi,asansorserino, arizaonarbasla,
+                arizaonarbitir, arizadurum);
+        return x;
+
+    }
+
     public Call<BakimPojo> bakim(String asansorserino) {
         Call<BakimPojo> x= getRestApi().bakim(asansorserino);
         return x;
 
+    }
+
+    public Call<ArizaPojo> ariza(String asansorserino) {
+
+        Call<ArizaPojo> x = getRestApi().ariza(asansorserino);
+        return x;
     }
 
     public Call<TahsilatYapSorgulaPostPojo> TahsilatYapSorgulaPost(String binaadi,String asansoradi,String yoneticiadi,String yoneticiTel,String kasa,String odemeTarihi,String tutar,String fis_numarasi,String aciklama) {
@@ -62,6 +75,7 @@ public class ManagerAll extends BaseManager{
         return x;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////777
 
     public Call<List<BakimPojo>> YapilacakBakimlarbugun() {
 
@@ -75,6 +89,7 @@ public class ManagerAll extends BaseManager{
         Call<List<BakimPojo>> x = getRestApi().YapilacakBakimlarBuay();
         return x;
     }
+
 
     public Call<List<BakimPojo>> YapilacakBakimlarTumu() {
 

@@ -97,7 +97,7 @@ public class BakimActivity extends AppCompatActivity {
                     else
                     {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
                         NoConnection noConnection = new NoConnection();
-                       noConnection.write(getApplicationContext(), baslikBakim.getText().toString()
+                       noConnection.Bakimwrite(getApplicationContext(), baslikBakim.getText().toString()
                                ,binaadiBakim.getText().toString()
                                ,date
                                ,YapilmaliEditText.getText().toString()

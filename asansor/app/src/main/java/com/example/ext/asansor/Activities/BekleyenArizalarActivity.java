@@ -18,6 +18,8 @@ import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -41,6 +43,9 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(BekleyenArizalarActivity.this,ArizaActivity.class);
                 intent.putExtra("asansorserino", bekleyenArizalarPojoList.get(i).getAsansorserino());
+                intent.putExtra("donemtarihi", bekleyenArizalarPojoList.get(i).getDonemtarihi());
+                String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                intent.putExtra("arizaonarbasla", date);
 
                 startActivity(intent);
             }
