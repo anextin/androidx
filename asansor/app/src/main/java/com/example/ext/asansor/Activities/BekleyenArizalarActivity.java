@@ -1,10 +1,12 @@
 package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -34,6 +36,15 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bekleyen_arizalar);
         listView=findViewById(R.id.bekleyenArizalarListView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(BekleyenArizalarActivity.this,ArizaActivity.class);
+                intent.putExtra("asansorserino", bekleyenArizalarPojoList.get(i).getAsansorserino());
+
+                startActivity(intent);
+            }
+        });
 
         tanimla();
         ilanlarimigoruntulebugun();
@@ -82,8 +93,8 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
     public void ilanlarimigoruntulebugun()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("ilanlar");
-        progressDialog.setMessage("ilanlar yukleniyor ...");
+        progressDialog.setTitle("Arızalar");
+        progressDialog.setMessage("Arızalar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -123,8 +134,8 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
     public void ilanlarimigoruntuleBuay()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("ilanlar");
-        progressDialog.setMessage("ilanlar yukleniyor ...");
+        progressDialog.setTitle("Arızalar");
+        progressDialog.setMessage("Arızalar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -163,8 +174,8 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
     public void ilanlarimigoruntuleTumu()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("ilanlar");
-        progressDialog.setMessage("ilanlar yukleniyor ...");
+        progressDialog.setTitle("Arızalar");
+        progressDialog.setMessage("Arızalar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 

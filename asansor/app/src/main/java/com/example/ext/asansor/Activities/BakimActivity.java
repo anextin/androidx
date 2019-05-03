@@ -35,7 +35,7 @@ public class BakimActivity extends AppCompatActivity {
     Context context;
     String asansorserino,bakimbasla;
     List<BakimPojo> list;
-    public static String dateHour,date;
+    public  String dateHour,date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
