@@ -171,7 +171,7 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
 
                         int ay= monthOfYear+1;
                         // TODO Auto-generated method stub
-                        tarihTextView.setText( dayOfMonth + "/" + ay+ "/"+year);//Ayarla butonu tıklandığında textview'a yazdırıyoruz
+                        tarihTextView.setText( year + "/" + ay+ "/"+dayOfMonth);//Ayarla butonu tıklandığında textview'a yazdırıyoruz
 
                     }
                 },year,month,day);//başlarken set edilcek değerlerimizi atıyoruz

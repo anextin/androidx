@@ -21,7 +21,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="baslik"
+        android:text="baslik"
+        android:textColor="#fff"
         android:layout_below="@id/bakimEkrani"
         android:id="@+id/baslikBakim"
         android:textSize="28dp"/>
@@ -29,7 +30,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="binaadi"
+        android:text="binaadi"
+        android:textColor="#fff"
         android:id="@+id/binaadiBakim"
         android:layout_below="@id/baslikBakim"
         android:textSize="28dp"/>
@@ -40,7 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tarihBakim"
-        android:hint="secilibakim: Tarih"
+        android:textColor="#fff"
+        android:text="secilibakim: Tarih"
         android:layout_below="@id/binaadiBakim"
         android:textSize="20dp"/>
     <ScrollView
@@ -56,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#fff"
-            android:hint="Yapılması Gereken İşlemler"/>
+            android:text="Yapılması Gereken İşlemler"/>
         <EditText
             android:id="@+id/YapilmaliEditText"
             android:layout_width="280dp"
@@ -70,7 +73,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tutar"/>
+                android:text="Tutar"/>
             <EditText
                 android:id="@+id/TutarEditText"
                 android:layout_width="280dp"
@@ -85,7 +88,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="BinaYetkilisi"/>
+                android:textColor="#fff"
+                android:text="BinaYetkilisi"/>
             <EditText
                 android:id="@+id/BinaYetkilisiEditText"
                 android:layout_width="280dp"
@@ -93,14 +97,14 @@
                 android:background="#fff"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_height="40dp"
-                android:hint="Bina Yetkilisi hint"
                 android:textColorHint="@color/colorPrimaryDark"/>
 
             <TextView
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
+                android:textColor="#fff"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"/>
+                android:text="Açıklama"/>
             <EditText
                 android:id="@+id/AcıklamaEditText"
                 android:layout_width="280dp"
@@ -108,14 +112,14 @@
                 android:background="#fff"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_height="40dp"
-                android:hint="..."
                 android:textColorHint="@color/colorPrimaryDark"/>
 
             <TextView
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tel"/>
+                android:textColor="#fff"
+                android:text="Tel"/>
             <EditText
                 android:id="@+id/TelEditText"
                 android:layout_width="280dp"
@@ -130,7 +134,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-posta"/>
+                android:textColor="#fff"
+                android:text="E-posta"/>
             <EditText
                 android:id="@+id/EpostaEditText"
                 android:layout_width="280dp"
@@ -145,7 +150,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mesaj"/>
+                android:textColor="#fff"
+                android:text="Mesaj"/>
             <EditText
                 android:id="@+id/MesajEditText"
                 android:layout_width="280dp"

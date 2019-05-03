@@ -20,7 +20,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="baslik"
+        android:text="baslik"
+        android:textColor="#fff"
         android:layout_below="@id/arizaEkrani"
         android:id="@+id/baslikAriza"
         android:textSize="28dp"/>
@@ -28,7 +29,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="binaadi"
+        android:text="binaadi"
+        android:textColor="#fff"
         android:id="@+id/binaadiAriza"
         android:layout_below="@id/baslikAriza"
         android:textSize="28dp"/>
@@ -39,7 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seciliArizaAriza"
-        android:hint="Seçili arıza: Tarih"
+        android:text="Seçili arıza: Tarih"
+        android:textColor="#fff"
         android:layout_below="@id/binaadiAriza"
         android:textSize="20dp"/>
     <ScrollView
@@ -83,6 +86,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#fff"
                 android:text="Arıza Kodu"/>
             <EditText
                 android:id="@+id/ArizaKoduEditText"
@@ -97,6 +101,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#fff"
                 android:text="Değişen Parçalar"/>
             <EditText
                 android:id="@+id/DegisenParcalar"
@@ -111,7 +116,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tel"/>
+                android:textColor="#fff"
+                android:text="Tel"/>
             <EditText
                 android:id="@+id/TelEditText"
                 android:layout_width="280dp"
@@ -125,8 +131,9 @@
             <TextView
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
+                android:textColor="#fff"
                 android:layout_height="wrap_content"
-                android:hint="E-posta"/>
+                android:text="E-posta"/>
             <EditText
                 android:id="@+id/EpostaEditText"
                 android:layout_width="280dp"
@@ -141,7 +148,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mesaj"/>
+                android:textColor="#fff"
+                android:text="Mesaj"/>
             <EditText
                 android:id="@+id/MesajEditText"
                 android:layout_width="280dp"

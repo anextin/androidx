@@ -178,6 +178,7 @@ public class ArizaActivity extends AppCompatActivity {
                 EpostaEditText.setText(response.body().getEposta());
                 MesajEditText.setText(response.body().getMesaj());
 
+                baslikAriza.setText(response.body().getBaslik());
                 arizaEkrani.setText(response.body().getBaslik());
                binaadiAriza.setText(response.body().getBinaadi());
                 seciliArizaAriza.setText(response.body().getDonemtarihi());
