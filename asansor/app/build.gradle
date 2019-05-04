@@ -38,6 +38,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
+
+
+
     implementation 'me.relex:circleindicator:1.2.1@aar'
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.okhttp3:okhttp:3.4.2'

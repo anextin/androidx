@@ -11,6 +11,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,8 +23,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class MainActivity extends Activity {
-    Button saatButton,tarihButton;
-    TextView saatTextView,tarihTextView,denemeTextView,ardatextview;
+    Button saatButton,tarihButton,arda;
+    TextView saatTextView,tarihTextView,denemeTextView,ardatextview,ardatextttt;
     @TargetApi(Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class MainActivity extends Activity {
         saatTextView = (TextView) findViewById(R.id.textView1);
         tarihTextView = (TextView) findViewById(R.id.textView2);
         denemeTextView=findViewById(R.id.denemeTextView);
-
+        arda = (Button) findViewById(R.id.arda);
 
 
         ardatextview=findViewById(R.id.ardatextview);
@@ -107,6 +109,50 @@ public class MainActivity extends Activity {
 
             }
         });
+
+
+        arda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+
+                    Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                    intent.putExtra("SCAN_MODE", "QR_CODE_MODE"); // "PRODUCT_MODE for bar codes
+
+                    startActivityForResult(intent, 0);
+
+                } catch (Exception e) {
+
+                    Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
+                    Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
+                    startActivity(marketIntent);
+
+                }
+
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String contents;
+        if (requestCode == 0) {
+
+            if (resultCode == RESULT_OK) {
+                 contents = data.getStringExtra("SCAN_RESULT");
+                ardatextttt=findViewById(R.id.ardatextttt);
+                ardatextttt.setText(contents);
+            }
+            if(resultCode == RESULT_CANCELED){
+                //handle cancel
+
+
+
+            }
+        }
     }
 
 }

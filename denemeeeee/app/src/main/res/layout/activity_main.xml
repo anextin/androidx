@@ -49,6 +49,23 @@
         android:text="deneme"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <Button
+        android:layout_below="@+id/ardatextview"
+        android:id="@+id/arda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" arda" />
+
+    <TextView
+        android:id="@+id/ardatextttt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/arda"
+        android:layout_marginTop="13dp"
+        android:text="deneme"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 
 
 
