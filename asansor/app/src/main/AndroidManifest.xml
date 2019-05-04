@@ -30,11 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.ArizaActivity"
-            android:label="@string/title_activity_ariza"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".internetConnectionActivity" />
 
         <service
             android:name=".Schedule.MyJobService"
@@ -53,7 +48,9 @@
         <activity android:name=".Activities.QRCodeArizaActivity" />
         <activity android:name=".Activities.BakimDurumActivity" />
         <activity android:name=".Activities.ArizaSecActivity" />
+        <activity android:name=".Activities.ArizaActivity" />
         <activity android:name=".Activities.QRCodeBakimActivity" />
+        <activity android:name=".BarcodeActivity"></activity>
     </application>
 
 </manifest>

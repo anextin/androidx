@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ext.asansor.BarcodeActivity;
 import com.example.ext.asansor.R;
 
 import java.text.SimpleDateFormat;
@@ -35,7 +36,7 @@ public class ArizaSecActivity  extends AppCompatActivity {
         QRCodeBakim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ArizaSecActivity.this, QRCodeArizaActivity.class);
+                Intent intent = new Intent(ArizaSecActivity.this, BarcodeActivity.class);
                 startActivity(intent);
             }
         });
