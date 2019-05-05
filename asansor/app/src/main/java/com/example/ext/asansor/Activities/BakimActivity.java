@@ -33,7 +33,7 @@ public class BakimActivity extends AppCompatActivity {
 
     Button OnayButon;
     Context context;
-    String asansorserino,bakimbasla;
+    String asansorserino,bakimbasla,donemtarihi,yetkili,tel;
     List<BakimPojo> list;
     public  String dateHour,date;
 
@@ -44,6 +44,9 @@ public class BakimActivity extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         asansorserino=bundle.getString("asansorserino");
         bakimbasla=bundle.getString("bakimbasla");
+        donemtarihi=bundle.getString("donemtarihi");
+        yetkili=bundle.getString("yetkili");
+        tel=bundle.getString("tel");
 
         isNetworkConnected();
         getBakimDetay();
@@ -144,15 +147,15 @@ public class BakimActivity extends AppCompatActivity {
 
                 YapilmaliEditText.setText(response.body().getYapilacak());
                 TutarEditText.setText(response.body().getTutar());
-                BinaYetkilisiEditText.setText(response.body().getYetkili());
+                BinaYetkilisiEditText.setText(yetkili);
                 AcıklamaEditText.setText(response.body().getAciklama());
-                TelEditText.setText(response.body().getTel());
+                TelEditText.setText(tel);
                 EpostaEditText.setText(response.body().getEposta());
                 MesajEditText.setText(response.body().getMesaj());
 
                 baslikBakim.setText(response.body().getBaslik());
                 binaadiBakim.setText(response.body().getBinaadi());
-                tarihBakim.setText(response.body().getDonemtarihi());
+                tarihBakim.setText(donemtarihi);
 
 
             }

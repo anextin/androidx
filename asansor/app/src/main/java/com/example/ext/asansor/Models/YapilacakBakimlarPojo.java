@@ -11,6 +11,7 @@ public class YapilacakBakimlarPojo {
     private String  yetkili;
     private String  tel;
     private String  donemtarihi;
+    private String  asansorserino;
     private boolean tf;
 
     public String getBaslik() {
@@ -59,5 +60,13 @@ public class YapilacakBakimlarPojo {
 
     public void setTf(boolean tf) {
         this.tf = tf;
+    }
+
+    public String getAsansorserino() {
+        return asansorserino;
+    }
+
+    public void setAsansorserino(String asansorserino) {
+        this.asansorserino = asansorserino;
     }
 }

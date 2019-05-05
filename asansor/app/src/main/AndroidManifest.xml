@@ -52,6 +52,8 @@
         <activity android:name=".Activities.QRCodeBakimActivity" />
         <activity android:name=".BarcodeActivity" />
         <activity android:name=".Activities.ArizaOnarimDonemTarihiSecActivity"></activity>
+        <activity android:name=".Activities.BakimDonemTarihiSecActivity"></activity>
+        BakimDonemTarihiSecActivity
     </application>
 
 </manifest>

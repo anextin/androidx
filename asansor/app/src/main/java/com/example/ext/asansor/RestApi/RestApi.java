@@ -82,5 +82,8 @@ public interface RestApi {
     @GET("/arizaonarimdonemtarihisec.php")
     Call<List<BekleyenArizalarPojo>> ArizaOnarimDonemTarihiSec(@Query("asansorserino") String asansorserino);
 
+    @GET("/bakimdonemtarihisec.php")
+    Call<List<BakimPojo>> BakimDonemTarihiSec(@Query("asansorserino") String asansorserino);
+
 
 }

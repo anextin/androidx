@@ -8,6 +8,7 @@ import com.example.ext.asansor.Models.ArizaTanimlamaPostPojo;
 import com.example.ext.asansor.Models.BekleyenArizalarPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPojo;
 import com.example.ext.asansor.Models.TahsilatYapSorgulaPostPojo;
+import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 
 import java.util.List;
 
@@ -119,6 +120,12 @@ public class ManagerAll extends BaseManager{
     public Call<List<BekleyenArizalarPojo>> ArizaOnarimDonemTarihiSec(String asansorserino) {
 
         Call<List<BekleyenArizalarPojo>> x = getRestApi().ArizaOnarimDonemTarihiSec(asansorserino);
+        return x;
+    }
+
+    public Call<List<BakimPojo>> BakimDonemTarihiSec(String asansorserino) {
+
+        Call<List<BakimPojo>> x = getRestApi().BakimDonemTarihiSec(asansorserino);
         return x;
     }
 
