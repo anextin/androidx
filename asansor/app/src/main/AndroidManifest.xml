@@ -50,7 +50,8 @@
         <activity android:name=".Activities.ArizaSecActivity" />
         <activity android:name=".Activities.ArizaActivity" />
         <activity android:name=".Activities.QRCodeBakimActivity" />
-        <activity android:name=".BarcodeActivity"></activity>
+        <activity android:name=".BarcodeActivity" />
+        <activity android:name=".Activities.ArizaOnarimDonemTarihiSecActivity"></activity>
     </application>
 
 </manifest>

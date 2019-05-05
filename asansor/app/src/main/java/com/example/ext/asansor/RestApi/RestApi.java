@@ -26,7 +26,7 @@ public interface RestApi {
     Call<BakimPojo> bakim(@Query("asansorserino") String asansorserino);
 
     @GET("/ariza.php")
-    Call<ArizaPojo> ariza(@Query("asansorserino") String asansorserino);
+    Call<ArizaPojo> ariza(@Query("asansorserino") String asansorserino,@Query("donemtarihi") String donemtarihi);
 
     @FormUrlEncoded
     @POST("/arizapost.php")
@@ -77,5 +77,10 @@ public interface RestApi {
 
     @GET("/bekleyenarizalar.php")
     Call<List<BekleyenArizalarPojo>> BekleyenArizalarTumu();
+
+    ////////////////////////////////////////////
+    @GET("/arizaonarimdonemtarihisec.php")
+    Call<List<BekleyenArizalarPojo>> ArizaOnarimDonemTarihiSec(@Query("asansorserino") String asansorserino);
+
 
 }

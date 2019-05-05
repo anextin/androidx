@@ -122,6 +122,7 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "bugun bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        listView.setAdapter(null);
                         progressDialog.cancel();
                     }
                 }
@@ -163,6 +164,7 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "bu ay bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        listView.setAdapter(null);
                         progressDialog.cancel();
                     }
                 }
@@ -203,6 +205,7 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
                     else
                     {
                         Toast.makeText(getApplicationContext(), "bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        listView.setAdapter(null);
                         progressDialog.cancel();
                     }
                 }

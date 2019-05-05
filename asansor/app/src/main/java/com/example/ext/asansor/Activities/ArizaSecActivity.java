@@ -53,7 +53,7 @@ public class ArizaSecActivity  extends AppCompatActivity implements View.OnClick
                 if (!manualgirisEditText.getText().toString().equals("")) {
 
                     String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                    Intent intent = new Intent(ArizaSecActivity.this, ArizaActivity.class);
+                    Intent intent = new Intent(ArizaSecActivity.this, ArizaOnarimDonemTarihiSecActivity.class);
                     intent.putExtra("asansorserino", manualgirisEditText.getText().toString());
                     intent.putExtra("bakimbasla", date);
                     startActivity(intent);

@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.ext.asansor.Activities.ArizaActivity;
 import com.example.ext.asansor.Activities.BakimActivity;
 import com.example.ext.asansor.Schedule.MyJobService;
 
@@ -18,28 +19,29 @@ public class OnConnection {
 
 
     String binaAdi, arizaTuru , aciklama;
-    public static final String FILE_NAME = "externalfile.txt";
+    public static final String bakimFILE_NAME = "bakimfile.txt";
+    public static final String arizaFILE_NAME = "arizafile.txt";
     public static final String DIR_NAME = "externaldir";
 
 
 
 
-    public void readfromStorage(Context context)
+    public void readfromStoragebakim(Context context)
     {
 
         try {
             String message = "";
 
             FileInputStream fis = new FileInputStream(
-                    new File(context.getExternalFilesDir(DIR_NAME), FILE_NAME));
+                    new File(context.getExternalFilesDir(DIR_NAME), bakimFILE_NAME));
             int c;
             while ((c = fis.read()) != -1) {
                 message += String.valueOf((char) c);
             }
-            DbYaz(message);
+            DbYazbakim(message);
             fis.close();
 
-            File file = new File(context.getExternalFilesDir(DIR_NAME), FILE_NAME);
+            File file = new File(context.getExternalFilesDir(DIR_NAME), bakimFILE_NAME);
             file.getPath();
             file.exists();
             file.getName();
@@ -56,7 +58,7 @@ public class OnConnection {
 
     }
 
-        public void DbYaz(String message)
+        public void DbYazbakim(String message)
         {
             String parts[] = message.split("/");
             String baslik= parts[0];
@@ -85,6 +87,66 @@ public class OnConnection {
 
 
         }
+
+    public void readfromStorageariza(Context context)
+    {
+
+        try {
+            String message = "";
+
+            FileInputStream fis = new FileInputStream(
+                    new File(context.getExternalFilesDir(DIR_NAME), arizaFILE_NAME));
+            int c;
+            while ((c = fis.read()) != -1) {
+                message += String.valueOf((char) c);
+            }
+            DbYazariza(message);
+            fis.close();
+
+            File file = new File(context.getExternalFilesDir(DIR_NAME), arizaFILE_NAME);
+            file.getPath();
+            file.exists();
+            file.getName();
+            file.delete();
+
+
+
+
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void DbYazariza(String message)
+    {
+        String parts[] = message.split("/");
+        String yetkili= parts[0];
+        String arizakonu= parts[1];
+        String arizakodu= parts[2];
+        String degisenparca= parts[3];
+        String eposta= parts[4];
+        String tel= parts[5];
+        String mesaj= parts[6];
+        String donemtarihi= parts[7];
+        String asansorserino= parts[8];
+        String arizaonarbasla= parts[9];
+        String arizaonarbitir= parts[10];
+        String arizadurum= parts[11];
+
+        ArizaActivity arizaActivity = new ArizaActivity();
+        arizaActivity.ilaniYayinla( yetkili, arizakonu ,  arizakodu, degisenparca, eposta, tel, mesaj, donemtarihi, asansorserino,
+                arizaonarbasla, arizaonarbitir, arizadurum);
+
+        Uri uri;
+        File file= new File("externaldir/arizafile.txt");
+        file.delete();
+
+
+
+    }
 
 
 

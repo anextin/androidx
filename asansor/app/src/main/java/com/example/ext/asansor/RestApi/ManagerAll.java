@@ -49,9 +49,9 @@ public class ManagerAll extends BaseManager{
 
     }
 
-    public Call<ArizaPojo> ariza(String asansorserino) {
+    public Call<ArizaPojo> ariza(String asansorserino, String donemtarihi) {
 
-        Call<ArizaPojo> x = getRestApi().ariza(asansorserino);
+        Call<ArizaPojo> x = getRestApi().ariza(asansorserino,donemtarihi);
         return x;
     }
 
@@ -115,6 +115,14 @@ public class ManagerAll extends BaseManager{
         Call<List<BekleyenArizalarPojo>> x = getRestApi().BekleyenArizalarTumu();
         return x;
     }
+
+    public Call<List<BekleyenArizalarPojo>> ArizaOnarimDonemTarihiSec(String asansorserino) {
+
+        Call<List<BekleyenArizalarPojo>> x = getRestApi().ArizaOnarimDonemTarihiSec(asansorserino);
+        return x;
+    }
+
+
 
 
     }

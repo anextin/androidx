@@ -48,7 +48,8 @@ public class MyJobService extends JobService {
 
         if(ilk_online_durum=="1" && x==true) {
             OnConnection onConnection = new OnConnection();
-            onConnection.readfromStorage(getApplicationContext());
+            onConnection.readfromStorageariza(getApplicationContext());
+            onConnection.readfromStoragebakim(getApplicationContext());
             ilk_online_durum="2";
             x = true;
         }

@@ -126,7 +126,11 @@ public class ArizaActivity extends AppCompatActivity {
                     }
 
                     else
-                    {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
+
+                    {
+                        arizabitir = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                        date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                        Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
                         NoConnection noConnection = new NoConnection();
                         noConnection.Arizawrite(getApplicationContext()
                                 ,binayetkiliEditText.getText().toString()
@@ -163,7 +167,7 @@ public class ArizaActivity extends AppCompatActivity {
     {
 
 
-        Call<ArizaPojo> request= ManagerAll.getInstance().ariza(asansorserino);
+        Call<ArizaPojo> request= ManagerAll.getInstance().ariza(asansorserino,donemtarihi);
         request.enqueue(new Callback<ArizaPojo>() {
             @Override
             public void onResponse(Call<ArizaPojo> call, Response<ArizaPojo> response) {

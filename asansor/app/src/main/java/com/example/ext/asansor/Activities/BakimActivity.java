@@ -95,7 +95,10 @@ public class BakimActivity extends AppCompatActivity {
                     }
 
                     else
-                    {Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
+
+                    {dateHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                        date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                        Toast.makeText(getApplicationContext(),"internet yok",Toast.LENGTH_LONG).show();
                         NoConnection noConnection = new NoConnection();
                        noConnection.Bakimwrite(getApplicationContext(), baslikBakim.getText().toString()
                                ,binaadiBakim.getText().toString()
