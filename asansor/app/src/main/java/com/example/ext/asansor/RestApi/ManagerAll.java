@@ -117,6 +117,31 @@ public class ManagerAll extends BaseManager{
         return x;
     }
 
+
+
+    ///////////////////////////////////////////////////////////////
+
+    public Call<List<BakimPojo>> BeklemedeBakimlar() {
+
+        Call<List<BakimPojo>> x = getRestApi().BeklemedeBakimlar();
+        return x;
+    }
+
+
+    public Call<List<BakimPojo>> BaslatilmisBakimlar() {
+
+        Call<List<BakimPojo>> x = getRestApi().BaslatilmisBakimlar();
+        return x;
+    }
+
+
+    public Call<List<BakimPojo>> TamamlananBakimlar() {
+
+        Call<List<BakimPojo>> x = getRestApi().TamamlananBakimlar();
+        return x;
+    }
+    ///////////////////////////////////////////////////////////////
+
     public Call<List<BekleyenArizalarPojo>> ArizaOnarimDonemTarihiSec(String asansorserino) {
 
         Call<List<BekleyenArizalarPojo>> x = getRestApi().ArizaOnarimDonemTarihiSec(asansorserino);

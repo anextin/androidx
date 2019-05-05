@@ -56,8 +56,6 @@ public class ArizaTanimlamaAdapter extends BaseAdapter {
         TahsilatYapBinaAdi.setText(tahsilatYapPojoList.get(position).getBinaadi());
         TahsilatYapAsansorAdi.setText(tahsilatYapPojoList.get(position).getAsansoradi());
         TahsilatYapYoneticiAdi.setText(tahsilatYapPojoList.get(position).getYoneticiadi());
-        Log.i("tattt","tatt"+TahsilatYapYoneticiAdi );
-        Log.i("tattt","tatt"+tahsilatYapPojoList.get(position).getBinaadi() );
 
         return converView;
 

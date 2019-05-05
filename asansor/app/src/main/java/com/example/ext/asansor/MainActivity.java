@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.example.ext.asansor.Activities.ArizaSecActivity;
 import com.example.ext.asansor.Activities.ArizaTanimlamaActivity;
+import com.example.ext.asansor.Activities.BakimEksiklikleriActivity;
 import com.example.ext.asansor.Activities.BakimSecActivity;
 import com.example.ext.asansor.Activities.BekleyenArizalarActivity;
 import com.example.ext.asansor.Activities.TahsilatYapActivity;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button bakimButton,tahsilatYapButton,arizaTanimlaButton,yapilacakBakimlarButton,bekleyenArizalarButton,arizaButton,revizyonButton;
+    Button bakimButton,tahsilatYapButton,arizaTanimlaButton,yapilacakBakimlarButton,bekleyenArizalarButton,arizaButton,bakimEksikleriButton;
     public JobScheduler jobScheduler;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         //kullanıcı işleri
         auth = FirebaseAuth.getInstance();
-        user= auth.getCurrentUser();
+        user = auth.getCurrentUser();
 
 
         arizaButton = findViewById(R.id.arizaButton);
@@ -113,8 +114,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bakimEksikleriButton = findViewById(R.id.bakimEksikleriButton);
+        bakimEksikleriButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, BakimEksiklikleriActivity.class);
+                startActivity(intent);
 
-
+            }
+        });
     }
 
 

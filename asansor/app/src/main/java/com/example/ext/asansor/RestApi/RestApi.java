@@ -66,6 +66,18 @@ public interface RestApi {
     @GET("/yapilacakbakimlarbuay.php")
     Call<List<BakimPojo>> YapilacakBakimlarBuay();
 
+    ////////////////////////////////////////////////////
+
+    @GET("/beklemedebakimlar.php")
+    Call<List<BakimPojo>> BeklemedeBakimlar();
+
+
+    @GET("/baslatilmisbakimlar.php")
+    Call<List<BakimPojo>> BaslatilmisBakimlar();
+
+    @GET("/tamamlananbakimlar.php")
+    Call<List<BakimPojo>> TamamlananBakimlar();
+
 
 
     /////////////////////////////////////////////////

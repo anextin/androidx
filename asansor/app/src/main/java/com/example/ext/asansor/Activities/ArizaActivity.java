@@ -102,7 +102,11 @@ public class ArizaActivity extends AppCompatActivity {
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ArizaSebebiEditText.getText().toString().equals(""))
+                if(!binayetkiliEditText.getText().toString().equals("")&&!ArizaSebebiEditText.getText().toString().equals("")&&!ArizaKoduEditText.getText().toString().equals("")
+                        &&!DegisenParcalar.getText().toString().equals("")
+                        &&!EpostaEditText.getText().toString().equals("")
+                        &&!TelEditText.getText().toString().equals("")
+                        &&!MesajEditText.getText().toString().equals(""))
                 {
                     if(isNetworkConnected()==true) {
                         arizabitir = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
@@ -171,7 +175,7 @@ public class ArizaActivity extends AppCompatActivity {
         request.enqueue(new Callback<ArizaPojo>() {
             @Override
             public void onResponse(Call<ArizaPojo> call, Response<ArizaPojo> response) {
-                Log.i("figen","figen"+response.body().getBinaadi());
+
 
 
                 binayetkiliEditText.setText(response.body().getYetkili());

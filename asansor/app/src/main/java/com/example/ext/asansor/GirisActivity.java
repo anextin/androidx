@@ -57,7 +57,7 @@ public class GirisActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"bos girme ilkos..",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"alanlari dolduruz..",Toast.LENGTH_LONG).show();
                 }
             }
         });

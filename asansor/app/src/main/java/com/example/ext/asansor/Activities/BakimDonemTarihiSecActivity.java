@@ -88,7 +88,7 @@ public class BakimDonemTarihiSecActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(getApplicationContext(), "bekleyen arıza bulunmamaktadir", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "bekleyen bakım bulunmamaktadir", Toast.LENGTH_LONG).show();
                         listView.setAdapter(null);
                         progressDialog.cancel();
                     }

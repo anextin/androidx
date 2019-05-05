@@ -15,6 +15,7 @@ public class BakimPojo {
     private String  asansorserino;
     private String  bakimbasla;
     private String  bakimbitir;
+    private String  bakimdurum;
     private boolean tf;
 
 
@@ -128,5 +129,13 @@ public class BakimPojo {
 
     public void setTf(boolean tf) {
         this.tf = tf;
+    }
+
+    public String getBakimdurum() {
+        return bakimdurum;
+    }
+
+    public void setBakimdurum(String bakimdurum) {
+        this.bakimdurum = bakimdurum;
     }
 }

@@ -55,7 +55,6 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
         asansoradi=bundle.getString("asansoradi");
         isNetworkConnected();
         tanimla();
-        Log.i("binaaditag+",binaadi);
     }
 
 
@@ -81,7 +80,10 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!BinaAdiEditText.getText().toString().equals(""))
+                if(!ArayanKisiEditText.getText().toString().equals("")&&!ArayanTelEditText.getText().toString().equals("")&&!tarihTextView.getText().toString().equals("")&&
+                        !saatTextView.getText().toString().equals("")&&
+                        !ArizaKonusuEditText.getText().toString().equals("")&&
+                        !AcıklamaEditText.getText().toString().equals(""))
                 {
 
   //   bunu duzelt     //          BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
@@ -95,8 +97,6 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
                     ArizaTanimlamaPostPojo.setAciklama(AcıklamaEditText.getText().toString());
 
                     if(isNetworkConnected()==true) {    //bunu duzelt
-                        Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
-                        Log.i("hop123","hop123"+TahsilatYapSorgulaPostPojo.getBinaadi());
                         ArizaTanimlamaPost(ArizaTanimlamaPostPojo.getBinaadi(), ArizaTanimlamaPostPojo.getAsansoradi(),ArizaTanimlamaPostPojo.getArayankisi(), ArizaTanimlamaPostPojo.getArayanTel(),ArizaTanimlamaPostPojo.getArizatarih(),ArizaTanimlamaPostPojo.getArizasaat(),ArizaTanimlamaPostPojo.getArizakonu(), ArizaTanimlamaPostPojo.getAciklama());
 
                         finish();
@@ -204,7 +204,7 @@ public class ArizaTanimlamaPostActivity extends AppCompatActivity {
         request.enqueue(new Callback<ArizaTanimlamaPostPojo>() {
             @Override
             public void onResponse(Call<ArizaTanimlamaPostPojo> call, Response<ArizaTanimlamaPostPojo> response) {
-                Log.i("tfne", "tfne" + response.body().isTf());
+
                 if (response.body().isTf()) {
                     //               Intent intent = new Intent(ArizaActivity.this, MainActivity.class);
                     //             startActivity(intent);

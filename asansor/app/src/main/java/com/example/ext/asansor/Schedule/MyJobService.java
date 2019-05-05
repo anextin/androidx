@@ -31,9 +31,6 @@ public class MyJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
 
-        Toast.makeText(this,"Executed",Toast.LENGTH_LONG).show();
-        Toast.makeText(this,"ardaaaaaaaa",Toast.LENGTH_LONG).show();
-        Log.i("ardaturuu","ardaturuu");
 
         /*
          * True - if your service needs to process
@@ -54,7 +51,7 @@ public class MyJobService extends JobService {
             x = true;
         }
 
-        Log.i("parannnn start dis: "+x,"durummmmmm: "+ilk_online_durum);
+
         return true;
 
 
@@ -63,11 +60,9 @@ public class MyJobService extends JobService {
     @Override
     public boolean onStopJob(JobParameters params) {
 
-        Toast.makeText(this,"ardaaaaaaaafalse",Toast.LENGTH_LONG).show();
-        Log.i("ardafals","ardafals");
+
         ilk_online_durum="1";
 
-        Log.i("parannnn stop: "+x,"durummmmmm: "+ilk_online_durum);
         return true;
     }
 

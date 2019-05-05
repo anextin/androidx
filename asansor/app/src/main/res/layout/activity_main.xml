@@ -117,7 +117,23 @@
         android:layout_height="wrap_content">
 
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
 
+            android:gravity="center"
+            android:background="@drawable/mybutton"
+            android:paddingBottom="12dp"
+            android:textStyle="bold"
+            android:textColor="#ecf0f1"
+            android:textSize="12dp"
+            android:id="@+id/bakimEksikleriButton"
+            android:text="BAKIM EKSİKLERİ"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

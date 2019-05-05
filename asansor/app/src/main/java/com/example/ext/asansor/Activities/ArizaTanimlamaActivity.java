@@ -49,8 +49,8 @@ public class ArizaTanimlamaActivity extends AppCompatActivity {
     public void ilanlarimigoruntule()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("ilanlar");
-        progressDialog.setMessage("ilanlar yukleniyor ...");
+        progressDialog.setTitle("Arızalar");
+        progressDialog.setMessage("Arızalar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -64,7 +64,6 @@ public class ArizaTanimlamaActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         tahsilatYapSorgulaPojoList=response.body();
-                        Log.i("kakkk","kakkk"+tahsilatYapSorgulaPojoList);
                         tahsilatYapSorgulaAdapter= new TahsilatYapSorgulaAdapter(tahsilatYapSorgulaPojoList,getApplicationContext());
                         listView.setAdapter(tahsilatYapSorgulaAdapter);
                         progressDialog.cancel();

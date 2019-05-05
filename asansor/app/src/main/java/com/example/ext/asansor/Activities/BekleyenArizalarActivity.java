@@ -65,8 +65,7 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
         bekleyenArizalarBugunButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("bugun","bugun"+bekleyenArizalarBugunButton);
-                Toast.makeText(getApplicationContext(),"bugun",Toast.LENGTH_LONG).show();
+
                 ilanlarimigoruntulebugun();
             }
         });
@@ -74,8 +73,7 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
         bekleyenArizalarBuayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Buay","Buay"+bekleyenArizalarBuayButton);
-                Toast.makeText(getApplicationContext(),"Buay",Toast.LENGTH_LONG).show();
+
                 ilanlarimigoruntuleBuay();
             }
         });
@@ -83,8 +81,7 @@ public class BekleyenArizalarActivity extends AppCompatActivity {
         bekleyenArizalarTumuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Tumu","Tumu"+bekleyenArizalarTumuButton);
-                Toast.makeText(getApplicationContext(),"Tumu",Toast.LENGTH_LONG).show();
+
                 ilanlarimigoruntuleTumu();
             }
         });

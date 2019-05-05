@@ -48,8 +48,8 @@ public class TahsilatYapActivity extends AppCompatActivity {
     public void ilanlarimigoruntule()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("ilanlar");
-        progressDialog.setMessage("ilanlar yukleniyor ...");
+        progressDialog.setTitle("Tahsilatlar");
+        progressDialog.setMessage("Tahsilatlar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -63,7 +63,6 @@ public class TahsilatYapActivity extends AppCompatActivity {
                     if(response.body().get(0).isTf())
                     {
                         tahsilatYapSorgulaPojoList=response.body();
-                        Log.i("kakkk","kakkk"+tahsilatYapSorgulaPojoList);
                         tahsilatYapSorgulaAdapter= new TahsilatYapSorgulaAdapter(tahsilatYapSorgulaPojoList,getApplicationContext());
                         listView.setAdapter(tahsilatYapSorgulaAdapter);
                         progressDialog.cancel();

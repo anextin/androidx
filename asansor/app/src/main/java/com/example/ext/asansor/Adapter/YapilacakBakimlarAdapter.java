@@ -1,6 +1,7 @@
 package com.example.ext.asansor.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,4 +69,18 @@ public class YapilacakBakimlarAdapter extends BaseAdapter {
         return converView;
 
     }
+
+
+        @Override
+        public boolean isEnabled(int position) {
+            Log.i("hop123","hop123: "+BakimPojoPojoList.get(position).getBinaadi());
+        if(BakimPojoPojoList.get(position).getBakimdurum().equals("0"))
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }

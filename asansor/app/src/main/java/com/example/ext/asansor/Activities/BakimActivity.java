@@ -79,7 +79,12 @@ public class BakimActivity extends AppCompatActivity {
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!YapilmaliEditText.getText().toString().equals(""))
+                if(!YapilmaliEditText.getText().toString().equals("")&&!TutarEditText.getText().toString().equals("")&&
+                        !BinaYetkilisiEditText.getText().toString().equals("")&&
+                        !AcıklamaEditText.getText().toString().equals("")&&
+                        !TelEditText.getText().toString().equals("")&&
+                        !EpostaEditText.getText().toString().equals("")&&
+                        !MesajEditText.getText().toString().equals(""))
                 {
                     if(isNetworkConnected()==true) {
                         dateHour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());

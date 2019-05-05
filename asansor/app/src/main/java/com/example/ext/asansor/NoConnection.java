@@ -56,7 +56,7 @@ public class NoConnection {
       //      PrintWriter printWriter = new PrintWriter(new FileOutputStream("hagi"+binaAdi));
             fos.write(s.getBytes(Charset.forName("UTF-8")));
             fos.close();
-            Toast.makeText(context,"notepada yazıldı",Toast.LENGTH_LONG).show();
+
 
 
         } catch (IOException e) {
@@ -78,7 +78,7 @@ public class NoConnection {
             //      PrintWriter printWriter = new PrintWriter(new FileOutputStream("hagi"+binaAdi));
             fos.write(s.getBytes(Charset.forName("UTF-8")));
             fos.close();
-            Toast.makeText(context,"notepada yazıldı",Toast.LENGTH_LONG).show();
+
 
 
         } catch (IOException e) {

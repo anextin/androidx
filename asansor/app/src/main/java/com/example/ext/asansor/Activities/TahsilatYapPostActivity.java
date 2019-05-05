@@ -74,7 +74,12 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
         OnayButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!BinaAdiEditText.getText().toString().equals(""))
+                if(!BinaAdiEditText.getText().toString().equals("")&&!YoneticiTelEditText.getText().toString().equals("")&&
+                        !KasaEditText.getText().toString().equals("")&&
+                        !tarihTextView.getText().toString().equals("")&&
+                        !TutarEditText.getText().toString().equals("")&&
+                        !FisNumarasiEditText.getText().toString().equals("")&&
+                        !TahsilatYapPostAciklamaEditText.getText().toString().equals(""))
                 {
 
         //            BakimPojo.setBinaAdi(BinaAdiEditText.getText().toString());
@@ -89,8 +94,6 @@ public class TahsilatYapPostActivity extends AppCompatActivity {
                     TahsilatYapSorgulaPostPojo.setAciklama(TahsilatYapPostAciklamaEditText.getText().toString());
 
                    if(isNetworkConnected()==true) {    //bunu duzelt
-                        Toast.makeText(getApplicationContext(),"internet var",Toast.LENGTH_LONG).show();
-                        Log.i("hop123","hop123"+TahsilatYapSorgulaPostPojo.getBinaadi());
                         TahsilatYapPost(TahsilatYapSorgulaPostPojo.getBinaadi(), TahsilatYapSorgulaPostPojo.getAsansoradi(),TahsilatYapSorgulaPostPojo.getYoneticiadi(), TahsilatYapSorgulaPostPojo.getYoneticiTel(),TahsilatYapSorgulaPostPojo.getKasa(),TahsilatYapSorgulaPostPojo.getOdemeTarihi(),TahsilatYapSorgulaPostPojo.getTutar(), TahsilatYapSorgulaPostPojo.getFis_numarasi(), TahsilatYapSorgulaPostPojo.getAciklama());
 
                         finish();

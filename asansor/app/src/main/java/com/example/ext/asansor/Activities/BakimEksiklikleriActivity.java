@@ -2,7 +2,6 @@ package com.example.ext.asansor.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.ext.asansor.Adapter.YapilacakBakimlarAdapter;
 import com.example.ext.asansor.Models.BakimPojo;
-import com.example.ext.asansor.Models.YapilacakBakimlarPojo;
 import com.example.ext.asansor.R;
 import com.example.ext.asansor.RestApi.ManagerAll;
 
@@ -24,28 +22,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class YapilacakBakimlarActivity extends AppCompatActivity {
+public class BakimEksiklikleriActivity extends AppCompatActivity {
 
     ListView listView;
     List<BakimPojo> BakimPojoPojoList;
     YapilacakBakimlarAdapter yapilacakBakimlarAdapter;
-    Button yapilacakBakimlarBugunButton,yapilacakBakimlarBuayButton,yapilacakBakimlarTumuButton;
+    Boolean clickable;
+    Button yapilacakBakimlarBugunButton,yapilacakBakimlarBuayButton,yapilacakBakimlarTumuButton,TamamlanmisButton,BaslatilmisButton,BeklemedeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_yapilacak_bakimlar);
-        listView=findViewById(R.id.yapilacakBakimlarListView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(YapilacakBakimlarActivity.this,BakimActivity.class);
-                intent.putExtra("asansorserino", BakimPojoPojoList.get(i).getAsansorserino());
-                intent.putExtra("donemtarihi", BakimPojoPojoList.get(i).getDonemtarihi());
+        setContentView(R.layout.activity_bakim_eksiklikleri);
+        listView=findViewById(R.id.bakimeksiklikleriListView);
 
-                startActivity(intent);
-            }
-        });
+
 
         tanimla();
         ilanlarimigoruntulebugun();
@@ -53,31 +44,34 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
 
     public void tanimla()
     {
-        yapilacakBakimlarBugunButton = findViewById(R.id.yapilacakBakimlarBugunButton);
-        yapilacakBakimlarBuayButton = findViewById(R.id.yapilacakBakimlarBuayButton);
-        yapilacakBakimlarTumuButton = findViewById(R.id.yapilacakBakimlarTumuButton);
+        BeklemedeButton = findViewById(R.id.BeklemedeButton);
+        BaslatilmisButton = findViewById(R.id.BaslatilmisButton);
+        TamamlanmisButton = findViewById(R.id.TamamlanmisButton);
 
 
-        yapilacakBakimlarBugunButton.setOnClickListener(new View.OnClickListener() {
+        BeklemedeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ilanlarimigoruntulebugun();
             }
         });
 
-        yapilacakBakimlarBuayButton.setOnClickListener(new View.OnClickListener() {
+        BaslatilmisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ilanlarimigoruntuleBuay();
             }
         });
 
-        yapilacakBakimlarTumuButton.setOnClickListener(new View.OnClickListener() {
+        TamamlanmisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ilanlarimigoruntuleTumu();
             }
         });
+
+
+
 
 
     }
@@ -90,20 +84,23 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("bakımlar");
-        progressDialog.setMessage("yapılacak bakımlar yukleniyor ...");
+        progressDialog.setMessage("beklemede bakımlar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+        clickable=true;
 
 
-        Call<List<BakimPojo>> request = ManagerAll.getInstance().YapilacakBakimlarbugun();
+        Call<List<BakimPojo>> request = ManagerAll.getInstance().BeklemedeBakimlar();
         request.enqueue(new Callback<List<BakimPojo>>() {
             @Override
             public void onResponse(Call<List<BakimPojo>> call, Response<List<BakimPojo>> response) {
                 if(response.isSuccessful())
                 {
+                    Log.i("arda","arda"+response.body().get(0).getBaslik());
                     if(response.body().get(0).isTf())
                     {
                         BakimPojoPojoList=response.body();
+
 
                         yapilacakBakimlarAdapter= new YapilacakBakimlarAdapter(BakimPojoPojoList,getApplicationContext());
 
@@ -128,6 +125,22 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             }
         });
 
+
+        if(clickable==true) {
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(BakimEksiklikleriActivity.this, BakimActivity.class);
+                    intent.putExtra("asansorserino", BakimPojoPojoList.get(i).getAsansorserino());
+                    intent.putExtra("donemtarihi", BakimPojoPojoList.get(i).getDonemtarihi());
+                    intent.putExtra("yetkili", BakimPojoPojoList.get(i).getYetkili());
+
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
 
 
@@ -135,12 +148,12 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("bakımlar");
-        progressDialog.setMessage("yapılacak bakımlar yukleniyor ...");
+        progressDialog.setMessage("başlatılmış bakımlar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+        clickable=true;
 
-
-        Call<List<BakimPojo>> request = ManagerAll.getInstance().YapilacakBakimlarBuay();
+        Call<List<BakimPojo>> request = ManagerAll.getInstance().BaslatilmisBakimlar();
         request.enqueue(new Callback<List<BakimPojo>>() {
             @Override
             public void onResponse(Call<List<BakimPojo>> call, Response<List<BakimPojo>> response) {
@@ -169,18 +182,37 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             }
         });
 
+
+        if(clickable==true) {
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(BakimEksiklikleriActivity.this, BakimActivity.class);
+                    intent.putExtra("asansorserino", BakimPojoPojoList.get(i).getAsansorserino());
+                    intent.putExtra("donemtarihi", BakimPojoPojoList.get(i).getDonemtarihi());
+                    intent.putExtra("yetkili", BakimPojoPojoList.get(i).getYetkili());
+
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
 
     public void ilanlarimigoruntuleTumu()
     {
+
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("bakımlar");
-        progressDialog.setMessage("yapılacak bakımlar yukleniyor ...");
+        progressDialog.setMessage("tamamlanan bakımlar yukleniyor ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+        clickable=false;
 
 
-        Call<List<BakimPojo>> request = ManagerAll.getInstance().YapilacakBakimlarTumu();
+        Call<List<BakimPojo>> request = ManagerAll.getInstance().TamamlananBakimlar();
         request.enqueue(new Callback<List<BakimPojo>>() {
             @Override
             public void onResponse(Call<List<BakimPojo>> call, Response<List<BakimPojo>> response) {
@@ -210,7 +242,27 @@ public class YapilacakBakimlarActivity extends AppCompatActivity {
             }
         });
 
+        if(clickable==true) {
+            Log.i("click","aaa: "+clickable);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    yapilacakBakimlarAdapter.isEnabled(i);
+                    Intent intent = new Intent(BakimEksiklikleriActivity.this, BakimActivity.class);
+                    intent.putExtra("asansorserino", BakimPojoPojoList.get(i).getAsansorserino());
+                    intent.putExtra("donemtarihi", BakimPojoPojoList.get(i).getDonemtarihi());
+                    intent.putExtra("yetkili", BakimPojoPojoList.get(i).getYetkili());
+
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
+
+
+
 
 
 }

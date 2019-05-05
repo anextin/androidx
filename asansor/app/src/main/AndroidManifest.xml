@@ -51,9 +51,10 @@
         <activity android:name=".Activities.ArizaActivity" />
         <activity android:name=".Activities.QRCodeBakimActivity" />
         <activity android:name=".BarcodeActivity" />
-        <activity android:name=".Activities.ArizaOnarimDonemTarihiSecActivity"></activity>
-        <activity android:name=".Activities.BakimDonemTarihiSecActivity"></activity>
+        <activity android:name=".Activities.ArizaOnarimDonemTarihiSecActivity" />
+        <activity android:name=".Activities.BakimDonemTarihiSecActivity" />
         BakimDonemTarihiSecActivity
+        <activity android:name=".Activities.BakimEksiklikleriActivity"></activity>
     </application>
 
 </manifest>
