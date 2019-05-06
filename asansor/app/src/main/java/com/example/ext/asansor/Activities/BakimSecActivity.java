@@ -94,7 +94,7 @@ public class BakimSecActivity extends AppCompatActivity implements View.OnClickL
         if(!mTvResult.getText().toString().equals(""))
         {
             String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-            Intent intent = new Intent(BakimSecActivity.this, BakimActivity.class);
+            Intent intent = new Intent(BakimSecActivity.this, BakimDonemTarihiSecActivity.class);
             intent.putExtra("asansorserino", mTvResult.getText().toString());
             intent.putExtra("bakimbasla", date);
             startActivity(intent);
