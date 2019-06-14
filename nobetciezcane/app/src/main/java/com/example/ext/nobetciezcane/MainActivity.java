@@ -11,6 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,9 +86,18 @@ public class MainActivity extends AppCompatActivity {
             {
                 tokenText= (String) msg.obj;
             }
+            else if(msg.what==2)
+            {
+                parseHtml(msg.obj);
+            }
+
         }
     };
 
+    private void parseHtml(Object htmlKaynak)
+    {
+        Jsoup.
+    }
 
 
     class JsBridge extends MainActivity
