@@ -12,6 +12,8 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.util.regex.Pattern;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     String tokenText="";
     WebView webView;
     TextView textv;
+    Document document;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,22 +84,23 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg)
         {
             super.handleMessage(msg);
-            Log.i("kuwai","handler");
             if(msg.what==1)
             {
                 tokenText= (String) msg.obj;
             }
             else if(msg.what==2)
             {
-                parseHtml(msg.obj);
+                parseHtml((String) msg.obj);
             }
 
         }
     };
 
-    private void parseHtml(Object htmlKaynak)
+    private void parseHtml(String htmlKaynak)
     {
-        Jsoup.
+        document=Jsoup.parse(htmlKaynak);
+        Elements table = document.select("table.ilce-nobet-detay");
+        Log.i("qevap",""+table);
     }
 
 
