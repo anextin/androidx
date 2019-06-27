@@ -11,10 +11,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.example.ext.nobetciezcane.Models.Eczane;
+import com.example.ext.nobetciezcane.Models.EczaneDetay;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     WebView webView;
     TextView textv;
     Document document;
+    List<EczaneDetay> eczaneList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         textv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getEczane("1");
+                getEczane("38");
             }
         });
     }
@@ -90,19 +97,85 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(msg.what==2)
             {
-                parseHtml((String) msg.obj);
+               Eczane ec = parseHtml((String) msg.obj);
+                eczaneList=ec.getEczaneDetay();
             }
 
         }
     };
 
-    private void parseHtml(String htmlKaynak)
+    private Eczane parseHtml(String htmlKaynak)
     {
         document=Jsoup.parse(htmlKaynak);
         Elements table = document.select("table.ilce-nobet-detay");
-        Log.i("qevap",""+table);
+        Elements ilceDetay= table.select("caption>b");
+        Eczane eczane= new Eczane();
+        eczane.setTarih(ilceDetay.get(0).text());
+        eczane.setIlceIsmi(ilceDetay.get(1).text());
+        Log.i("qevap",""+ilceDetay.get(1).text());
+
+
+
+       Elements eczaneDetayElement= document.select("table.nobecti-eczane");
+    //    Log.i("tanzileee",""+eczaneDetayElement.size());
+
+        List<EczaneDetay> eczaneDetayList = new ArrayList<>();
+        for (Element el : eczaneDetayElement)
+        {
+
+            EczaneDetay eczaneDetay=getEczaneDetay(el);
+            Log.i("utkuu",eczaneDetay.toString());
+            if(eczaneDetay!=null)
+            {
+                eczaneDetayList.add(eczaneDetay);
+            }
+        }
+
+        eczane.setEczaneDetay(eczaneDetayList);
+        Log.i("gizemm",eczane.toString());
+        return eczane;
     }
 
+    public EczaneDetay getEczaneDetay(Element el)
+    {
+        String fax="",tel="",adres="",adresTarif="";
+
+        EczaneDetay eczaneDetay= new EczaneDetay();
+        Elements eczaneIsmiTag= el.select("thead");
+        String eczaneIsmi=eczaneIsmiTag.select("div").attr("title");
+        eczaneDetay.setEczaneIsmi(eczaneIsmi);
+        Log.i("veseeczaneIsmi",""+eczaneIsmi);
+
+        Elements trTags= el.select("tbody>tr");
+        Elements adresTags=trTags.select("tr#adres");
+         adres =adresTags.select("label").get(1).text();
+        eczaneDetay.setAdres(adres);
+        Log.i("veseadres",""+adres);
+
+
+        Elements telTags=trTags.select("tr#Tel");
+         tel =telTags.select("label").get(1).text();
+        eczaneDetay.setTelefon(tel);
+
+        Log.i("vesetel",""+tel);
+
+        Element faxTags=trTags.get(2);
+         fax =faxTags.select("label").get(1).text();
+        if(!fax.equals("")) {
+            eczaneDetay.setFax(fax);
+        }
+
+        Element adresTarifTags=trTags.get(3);
+        adresTarif =adresTarifTags.select("label").get(1).text();
+        if(!adresTarif.equals("")) {
+            eczaneDetay.setTarif(adresTarif);
+        }
+
+
+
+
+        return  eczaneDetay;
+    }
 
     class JsBridge extends MainActivity
     {
