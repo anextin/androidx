@@ -2,24 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#d63031"
+    android:background="#00a79d"
+    android:layout_margin="4dp"
     android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="eczane"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="#fff"
         android:gravity="center"
         android:id="@+id/eczaneIsim"/>
 
     <TextView
+        android:layout_marginLeft="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="adres"
-        android:textSize="20dp"
+        android:text="Adres"
+        android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="#fff"
         android:id="@+id/eczaneAdres"/>
@@ -29,11 +31,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <TextView
+        android:layout_marginLeft="4dp"
         android:layout_weight="3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Telefon"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="#fff"
         android:id="@+id/eczaneTelefon"/>
@@ -42,13 +45,17 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="ara"
+            android:layout_margin="4dp"
+            android:background="#fff1c1"
+            android:id="@+id/aramaYap"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fax"
-        android:textSize="20dp"
+        android:text="Fax"
+        android:layout_marginLeft="4dp"
+        android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="#fff"
         android:id="@+id/eczaneFax"/>
@@ -57,8 +64,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Adres Tarifi"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:textStyle="bold"
+        android:layout_marginLeft="4dp"
         android:textColor="#fff"
         android:id="@+id/eczaneAdresTarifi"/>
 
@@ -66,8 +74,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Haritada Goster"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        android:background="#fff1c1"
         android:id="@+id/eczaneHaritadaGoster"/>
 
 </LinearLayout>

@@ -9,6 +9,12 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.ext.nobetciezcane.Models.Eczane;
@@ -26,26 +32,46 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
     String tokenText="";
     WebView webView;
-    TextView textv;
+    Spinner spinner;
     Document document;
     List<EczaneDetay> eczaneList;
+    EczaneAdapter eczaneAdapter;
+    ListView listView;
+    Button listeleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listView=findViewById(R.id.listview);
         webView= new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new JsBridge(),"Android");
         this.getToken();
-        textv =findViewById(R.id.textv);
-        textv.setOnClickListener(new View.OnClickListener() {
+        final String ilceler[]={"Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
+        final int ilceid[]=new int[]{1,33,34,2,3,4,5,35,6,7,8,36,9,10,11,37,13,38,14,15,16,17,18,19,20,21,22,23,39,24,27,25,28,26,40,29,30,31,32};
+
+        spinner =findViewById(R.id.ilceSpinner);
+        ArrayAdapter<String> dataAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, ilceler);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+        listeleButton=findViewById(R.id.listeleButton);
+        listeleButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                getEczane("38");
+            public void onClick(View v) {
+                String item = spinner.getSelectedItem().toString();
+                int index= Integer.parseInt(String.valueOf(java.util.Arrays.asList(ilceler).indexOf(item)));
+                int id = ilceid[index];
+                Log.i("gelenid",""+id);
+                getEczane(String.valueOf(id));
             }
         });
+
+
+
+
+
     }
 
     public void getEczane(String id)
@@ -99,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
             {
                Eczane ec = parseHtml((String) msg.obj);
                 eczaneList=ec.getEczaneDetay();
+                eczaneAdapter=new EczaneAdapter(eczaneList, MainActivity.this, MainActivity.this);
+                listView.setAdapter(eczaneAdapter);
             }
 
         }
@@ -176,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
 
         return  eczaneDetay;
     }
+
+
+
 
     class JsBridge extends MainActivity
     {
