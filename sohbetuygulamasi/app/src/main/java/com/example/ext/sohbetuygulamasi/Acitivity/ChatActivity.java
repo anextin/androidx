@@ -29,11 +29,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class   ChatActivity extends AppCompatActivity {
 
@@ -57,6 +60,30 @@ public class   ChatActivity extends AppCompatActivity {
         tanimla();
         action();
         loadMessage();
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(final String userId, String registrationId) {
+                    System.out.println("userID: "+userId);
+
+                UUID uuid = UUID.randomUUID();
+                final String uuidString =uuid.toString();
+
+                getUserName();
+                getId();
+                saveIdforNot(firebaseUser.getUid(),getId(),userId);
+
+
+
+
+            }
+        });
     }
 
     public String getUserName()
@@ -138,6 +165,9 @@ public class   ChatActivity extends AppCompatActivity {
                 });
             }
         });
+
+
+        //onesignal
     }
 
 
@@ -173,6 +203,60 @@ public class   ChatActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void saveIdforNot(final String userId,final String otherid,final String playerid)
+    {
+        System.out.println("haygursel: "+userId+otherid+playerid);
+        final Map messageMap = new HashMap();
+//        messageMap.put("from", userId);
+//        messageMap.put("to", otherid);
+        messageMap.put("playerid", playerid);
+
+        reference.child("saveIdforNot").child(userId).setValue(messageMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+
+
+        DatabaseReference getotherPlayerIDref= firebaseDatabase.getReference("saveIdforNot");
+
+        reference.child("saveIdforNot").child(otherid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String otherPlayerId= dataSnapshot.getKey();
+
+      //          System.out.println("sasigursel: "+otherPlayerId);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        FirebaseDatabase database= FirebaseDatabase.getInstance();
+        DatabaseReference ref=database.getReference("saveIdforNot").child("otherid").child("playerid");
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String playerid = dataSnapshot.getValue().toString();
+                System.out.println("sasigursel: "+playerid );
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
