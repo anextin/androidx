@@ -32,6 +32,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +81,12 @@ public class   ChatActivity extends AppCompatActivity {
                 getUserName();
                 getId();
                 saveIdforNot(firebaseUser.getUid(),getId(),userId);
+
+     //           try {
+       //             OneSignal.postNotification(new JSONObject("{'contents': {'en':'Test Message'}, 'include_player_ids': ['" + userId + "']}"), null);
+      //          } catch (JSONException e) {
+        //            e.printStackTrace();
+          //      }
 
 
 
@@ -166,8 +175,14 @@ public class   ChatActivity extends AppCompatActivity {
             }
         });
 
-
+        String deneme="ec497fe0-9347-4522-8a03-10a9b21eb8a7";
         //onesignal
+        try {
+            OneSignal.postNotification(new JSONObject("{'contents': {'en':'Test Message'}, 'include_player_ids': ['" + deneme + "']}"), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -240,7 +255,7 @@ public class   ChatActivity extends AppCompatActivity {
 
 
         FirebaseDatabase database= FirebaseDatabase.getInstance();
-        DatabaseReference ref=database.getReference("saveIdforNot").child("otherid").child("playerid");
+        DatabaseReference ref=database.getReference("saveIdforNot").child(otherid);
 
 
         ref.addValueEventListener(new ValueEventListener() {
