@@ -1,5 +1,6 @@
 package com.example.ext.sohbetuygulamasi.Acitivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ext.sohbetuygulamasi.Adapters.MessageAdapter;
@@ -46,6 +48,7 @@ public class   ChatActivity extends AppCompatActivity {
     RecyclerView chat_recycler_view;
     MessageAdapter messageAdapter;
     List<String> keyList;
+    Button backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,7 @@ public class   ChatActivity extends AppCompatActivity {
         firebaseDatabase=FirebaseDatabase.getInstance();
         reference=firebaseDatabase.getReference();
         sendMessageButton= findViewById(R.id.sendMessageButton);
+        backbutton= findViewById(R.id.backbutton);
         mesajTextEdittext= findViewById(R.id.mesajTextEdittext);
         messageModelList = new ArrayList<>();
         keyList = new ArrayList<>();
@@ -94,6 +98,14 @@ public class   ChatActivity extends AppCompatActivity {
     public void action()
     {
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(ChatActivity.this, AnaActivity.class);
+                startActivity(intent);
+            }
+        });
 
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
