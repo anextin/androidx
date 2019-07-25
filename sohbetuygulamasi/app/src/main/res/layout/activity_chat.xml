@@ -10,7 +10,7 @@
         android:id="@+id/card_view_chat"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        card_view:cardBackgroundColor="#8bbabb"
+        card_view:cardBackgroundColor="#216583"
         card_view:cardElevation="10dp"
         android:layout_alignParentTop="true">
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/linear"
             android:gravity="center"
-            android:background="#8bbabb"
+            android:background="#216583"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
