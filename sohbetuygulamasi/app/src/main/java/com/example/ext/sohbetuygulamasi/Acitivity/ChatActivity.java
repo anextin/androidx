@@ -55,6 +55,7 @@ public class   ChatActivity extends AppCompatActivity {
     MessageAdapter messageAdapter;
     List<String> keyList;
     Button backbutton;
+    String otherplayerid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class   ChatActivity extends AppCompatActivity {
         OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
             @Override
             public void idsAvailable(final String userId, String registrationId) {
-                    System.out.println("userID: "+userId);
+                System.out.println("userID: "+userId);
 
                 UUID uuid = UUID.randomUUID();
                 final String uuidString =uuid.toString();
@@ -82,11 +83,11 @@ public class   ChatActivity extends AppCompatActivity {
                 getId();
                 saveIdforNot(firebaseUser.getUid(),getId(),userId);
 
-     //           try {
-       //             OneSignal.postNotification(new JSONObject("{'contents': {'en':'Test Message'}, 'include_player_ids': ['" + userId + "']}"), null);
-      //          } catch (JSONException e) {
-        //            e.printStackTrace();
-          //      }
+                //           try {
+                //             OneSignal.postNotification(new JSONObject("{'contents': {'en':'Test Message'}, 'include_player_ids': ['" + userId + "']}"), null);
+                //          } catch (JSONException e) {
+                //            e.printStackTrace();
+                //      }
 
 
 
@@ -170,18 +171,23 @@ public class   ChatActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
+
+                        String deneme="ec497fe0-9347-4522-8a03-10a9b21eb8a7";
+                        try {
+                            OneSignal.postNotification(new JSONObject("{'contents': {'en':'mesaj geldi'}, 'include_player_ids': ['" + otherplayerid + "']}"), null);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }
         });
 
-        String deneme="ec497fe0-9347-4522-8a03-10a9b21eb8a7";
+
         //onesignal
-        try {
-            OneSignal.postNotification(new JSONObject("{'contents': {'en':'Test Message'}, 'include_player_ids': ['" + deneme + "']}"), null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+
+
 
     }
 
@@ -236,34 +242,17 @@ public class   ChatActivity extends AppCompatActivity {
         });
 
 
-        DatabaseReference getotherPlayerIDref= firebaseDatabase.getReference("saveIdforNot");
-
-        reference.child("saveIdforNot").child(otherid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String otherPlayerId= dataSnapshot.getKey();
-
-      //          System.out.println("sasigursel: "+otherPlayerId);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
 
         FirebaseDatabase database= FirebaseDatabase.getInstance();
-        DatabaseReference ref=database.getReference("saveIdforNot").child(otherid);
+        DatabaseReference ref=database.getReference("saveIdforNot").child(otherid).child("playerid");
 
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String playerid = dataSnapshot.getValue().toString();
-                System.out.println("sasigursel: "+playerid );
+                otherplayerid = dataSnapshot.getValue().toString();
+                System.out.println("sasigursel: "+otherplayerid );
             }
 
             @Override
@@ -272,6 +261,7 @@ public class   ChatActivity extends AppCompatActivity {
             }
         });
 
+        //     return playerid;
     }
 
 
