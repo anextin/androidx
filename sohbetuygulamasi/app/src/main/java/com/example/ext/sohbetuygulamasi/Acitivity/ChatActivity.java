@@ -43,6 +43,7 @@ import java.util.UUID;
 
 public class   ChatActivity extends AppCompatActivity {
 
+    String checkonlinefalseornot="false";
     TextView chat_username_textview;
     DatabaseReference reference;
     FirebaseDatabase firebaseDatabase;
@@ -64,6 +65,11 @@ public class   ChatActivity extends AppCompatActivity {
         tanimla();
         action();
         loadMessage();
+
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(firebaseUser.getUid()).child("state").setValue(true);
 
         // OneSignal Initialization
         OneSignal.startInit(this)
@@ -164,6 +170,29 @@ public class   ChatActivity extends AppCompatActivity {
         messageMap.put("text", messageText);
         messageMap.put("from", userId);
 
+        //checkonline or not
+        FirebaseAuth auth;
+        FirebaseUser user;
+        auth= FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference checkonline = firebaseDatabase.getReference().child("Kullanicilar");
+        System.out.println("gssa: "+otherId );
+        checkonline.child(otherId).child("state");
+        DatabaseReference arda = checkonline.child(otherId);
+        arda.child("state").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                 checkonlinefalseornot=dataSnapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        //checkonline or not
+
         reference.child("Mesajlar").child(userId).child(otherId).child(mesajId).setValue(messageMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -171,20 +200,19 @@ public class   ChatActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
-
-                        String deneme="ec497fe0-9347-4522-8a03-10a9b21eb8a7";
-                        try {
-                            OneSignal.postNotification(new JSONObject("{'contents': {'en':'mesaj geldi'}, 'include_player_ids': ['" + otherplayerid + "']}"), null);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        System.out.println("neziii: "+checkonlinefalseornot );
+                       if(checkonlinefalseornot.equals("false")) {
+                           try {
+                               OneSignal.postNotification(new JSONObject("{'contents': {'en':'mesaj geldi'}, 'include_player_ids': ['" + otherplayerid + "']}"), null);
+                           } catch (JSONException e) {
+                               e.printStackTrace();
+                           }
+                       }
                     }
                 });
             }
         });
 
-
-        //onesignal
 
 
 
@@ -264,6 +292,45 @@ public class   ChatActivity extends AppCompatActivity {
         //     return playerid;
     }
 
+    protected void onDestroy(){
+        super.onDestroy();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(firebaseUser.getUid()).child("state").setValue(false);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(firebaseUser.getUid()).child("state").setValue(true);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(firebaseUser.getUid()).child("state").setValue(true);
+    }
+/*
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(firebaseUser.getUid()).child("state").setValue(false);
+    }*/
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(firebaseUser.getUid()).child("state").setValue(false);
+    }
 
 
 }

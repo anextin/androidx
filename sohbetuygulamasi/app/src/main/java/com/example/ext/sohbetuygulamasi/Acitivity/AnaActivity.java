@@ -85,14 +85,37 @@ public class    AnaActivity extends AppCompatActivity {
         user=auth.getCurrentUser();
 
     }
-
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy(){
+        super.onDestroy();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
         reference.child(user.getUid()).child("state").setValue(false);
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(user.getUid()).child("state").setValue(true);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(user.getUid()).child("state").setValue(true);
+    }
+
+@Override
+protected void onPause() {
+    super.onPause();
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+    reference.child(user.getUid()).child("state").setValue(false);
+}
 
     @Override
     protected void onResume() {

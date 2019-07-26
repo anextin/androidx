@@ -67,6 +67,7 @@ public class EczaneAdapter extends BaseAdapter{
         aramaYap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("haygursel: "+list.get(position).getTelefon());
                 Intent intent= new Intent();
                 intent.setData(Uri.parse("tel:" +list.get(position).getTelefon() ));
                 activity.startActivity(intent);
