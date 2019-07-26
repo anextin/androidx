@@ -90,7 +90,7 @@ public class    AnaActivity extends AppCompatActivity {
         super.onDestroy();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
-        reference.child(user.getUid()).child("state").setValue(false);
+//        reference.child(user.getUid()).child("state").setValue(false);
     }
 
     @Override

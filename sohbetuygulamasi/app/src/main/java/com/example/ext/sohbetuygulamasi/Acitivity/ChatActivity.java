@@ -44,6 +44,9 @@ import java.util.UUID;
 public class   ChatActivity extends AppCompatActivity {
 
     String checkonlinefalseornot="false";
+    static String  mesajatankim="";
+    String asa="";
+    String mesajicerik="",mesajtime="";
     TextView chat_username_textview;
     DatabaseReference reference;
     FirebaseDatabase firebaseDatabase;
@@ -162,6 +165,8 @@ public class   ChatActivity extends AppCompatActivity {
     }
 
     public void sendMessage(final String userId, final String otherId, String textType, String date, Boolean seen, String messageText) {
+
+
         final String mesajId = reference.child("Mesajlar").child(userId).child(otherId).push().getKey();
         final Map messageMap = new HashMap();
         messageMap.put("type", textType);
@@ -175,12 +180,19 @@ public class   ChatActivity extends AppCompatActivity {
         FirebaseUser user;
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference checkonline = firebaseDatabase.getReference().child("Kullanicilar");
-        System.out.println("gssa: "+otherId );
-        checkonline.child(otherId).child("state");
-        DatabaseReference arda = checkonline.child(otherId);
-        arda.child("state").addValueEventListener(new ValueEventListener() {
+
+
+
+   //     checkonline.child(otherId).child("state");
+   //     notifydetay.child(userId).child(otherId).child("text");
+
+
+        DatabaseReference statefinder = checkonline.child(otherId);
+        statefinder.child("state").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                  checkonlinefalseornot=dataSnapshot.getValue().toString();
@@ -191,7 +203,19 @@ public class   ChatActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+
+        System.out.println("gssa disari: "+asa+" "+checkonlinefalseornot);
+
+
+
+
         //checkonline or not
+
+
+
 
         reference.child("Mesajlar").child(userId).child(otherId).child(mesajId).setValue(messageMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -200,19 +224,71 @@ public class   ChatActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
-                        System.out.println("neziii: "+checkonlinefalseornot );
+
                        if(checkonlinefalseornot.equals("false")) {
-                           try {
-                               OneSignal.postNotification(new JSONObject("{'contents': {'en':'mesaj geldi'}, 'include_player_ids': ['" + otherplayerid + "']}"), null);
-                           } catch (JSONException e) {
-                               e.printStackTrace();
-                           }
+
+                           FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                           DatabaseReference checkonline = firebaseDatabase.getReference().child("Kullanicilar");
+                           DatabaseReference namefinderReferance = checkonline.child(userId).child("isim");
+                           DatabaseReference notifydetay = firebaseDatabase.getReference().child("Mesajlar");
+
+                           DatabaseReference textfinder=notifydetay.child(userId).child(otherId).child(mesajId);
+                           textfinder.child("text").addValueEventListener(new ValueEventListener() {
+                               @Override
+                               public void onDataChange(DataSnapshot dataSnapshot) {
+                                   mesajicerik=dataSnapshot.getValue().toString();
+                                   System.out.println("neziii: "+mesajicerik );
+                               }
+
+                               @Override
+                               public void onCancelled(DatabaseError databaseError) {
+
+                               }
+                           });
+
+                           textfinder.child("time").addValueEventListener(new ValueEventListener() {
+                               @Override
+                               public void onDataChange(DataSnapshot dataSnapshot) {
+                                   mesajtime=dataSnapshot.getValue().toString();
+                                   System.out.println("neziiii: "+otherplayerid );
+                               }
+
+                               @Override
+                               public void onCancelled(DatabaseError databaseError) {
+
+                               }
+                           });
+
+                           namefinderReferance.addListenerForSingleValueEvent(new ValueEventListener() {
+                               @Override
+                               public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                   String mesajatankim;
+                                   mesajatankim= dataSnapshot.getValue().toString();
+
+                                   String arda= "Kimden: "+mesajatankim+" Mesaj: "+mesajicerik+" --"+mesajtime;
+
+                                   try {
+
+                                       OneSignal.postNotification(new JSONObject("{'contents': {'en':'"+arda+"'}, 'include_player_ids': ['" + otherplayerid + "']}"), null);
+
+
+                                   } catch (JSONException e) {
+                                       e.printStackTrace();
+                                   }
+                               }
+
+                               @Override
+                               public void onCancelled(DatabaseError databaseError) {
+
+                               }
+                           });
+
                        }
                     }
                 });
             }
         });
-
 
 
 
