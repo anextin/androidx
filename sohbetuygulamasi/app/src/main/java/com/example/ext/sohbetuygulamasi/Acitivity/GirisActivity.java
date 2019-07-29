@@ -88,7 +88,7 @@ public class GirisActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"hatali girdin ilkosum guzel gozlum",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"hatali girdin ",Toast.LENGTH_LONG).show();
                 }
             }
         });
