@@ -75,6 +75,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.messageText.setText(messageModelList.get(position).getText());
+        holder.messageDate.setText(messageModelList.get(position).getTime());
     }
 
     //adaptera olusturulucak olan listenin size ı burda olucak
@@ -89,6 +90,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     {
 
         TextView messageText;
+        TextView messageDate;
         CircleImageView friend_state_img,friend_image;
 
 
@@ -98,10 +100,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             if(state==true) {
                 messageText = (TextView) itemView.findViewById(R.id.message_sent_text);
+                messageDate = (TextView) itemView.findViewById(R.id.message_sent_date);
             }
             else
             {
                 messageText = (TextView) itemView.findViewById(R.id.message_reveived_text);
+                messageDate = (TextView) itemView.findViewById(R.id.message_reveived_date);
             }
         }
 

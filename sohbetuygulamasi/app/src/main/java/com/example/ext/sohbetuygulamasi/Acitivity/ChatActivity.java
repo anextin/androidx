@@ -83,7 +83,7 @@ public class   ChatActivity extends AppCompatActivity {
         OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
             @Override
             public void idsAvailable(final String userId, String registrationId) {
-                System.out.println("userID: "+userId);
+
 
                 UUID uuid = UUID.randomUUID();
                 final String uuidString =uuid.toString();
@@ -175,13 +175,13 @@ public class   ChatActivity extends AppCompatActivity {
         messageMap.put("text", messageText);
         messageMap.put("from", userId);
 
-        //checkonline or not
+
         FirebaseAuth auth;
         FirebaseUser user;
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
 
-
+//checkonline or not
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference checkonline = firebaseDatabase.getReference().child("Kullanicilar");
 
@@ -224,7 +224,7 @@ public class   ChatActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
-
+//notification işlermeri
                        if(checkonlinefalseornot.equals("false")) {
 
                            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
