@@ -11,8 +11,8 @@ public class GetDate {
 
     public static String getDate()
     {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        //DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date today = Calendar.getInstance().getTime();
 
         final String reportdate = df.format(today);
