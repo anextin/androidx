@@ -76,10 +76,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         holder.messageText.setText(messageModelList.get(position).getText());
         holder.messageDate.setText(messageModelList.get(position).getTime());
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/ardabranch
     }
 
     //adaptera olusturulucak olan listenin size ı burda olucak
@@ -93,13 +90,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder
     {
 
-<<<<<<< HEAD
+
         TextView messageText;
         TextView messageDate;
-=======
-        TextView messageText,messageDate;
 
->>>>>>> refs/remotes/origin/ardabranch
+
+
+
         CircleImageView friend_state_img,friend_image;
 
 
@@ -109,20 +106,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             if(state==true) {
                 messageText = (TextView) itemView.findViewById(R.id.message_sent_text);
-<<<<<<< HEAD
-                messageDate = (TextView) itemView.findViewById(R.id.message_sent_date);
-=======
+
                 messageDate= itemView.findViewById(R.id.message_sent_date);
->>>>>>> refs/remotes/origin/ardabranch
+
             }
             else
             {
                 messageText = (TextView) itemView.findViewById(R.id.message_reveived_text);
-<<<<<<< HEAD
-                messageDate = (TextView) itemView.findViewById(R.id.message_reveived_date);
-=======
+
                 messageDate= itemView.findViewById(R.id.message_reveived_date);
->>>>>>> refs/remotes/origin/ardabranch
+
             }
         }
 
