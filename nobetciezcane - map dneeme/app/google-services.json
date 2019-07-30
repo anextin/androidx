@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "481906763221",
+    "firebase_url": "https://nobetci-eczane-d115c.firebaseio.com",
+    "project_id": "nobetci-eczane-d115c",
+    "storage_bucket": "nobetci-eczane-d115c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481906763221:android:952b9f4d76aa6899",
+        "android_client_info": {
+          "package_name": "com.example.ext.nobetciezcane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481906763221-ls2f49b8im5m9l6ckhc4o8e9vb368l6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ext.nobetciezcane",
+            "certificate_hash": "cd281268a8aa7c334e324c65bae2d18c8fc3e86d"
+          }
+        },
+        {
+          "client_id": "481906763221-bj3q8ela5cvu2df6s6mnrsbv5slqqqs3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJtNCnzPztYwfDS9v-1K2La_2XRKLn3kU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481906763221-bj3q8ela5cvu2df6s6mnrsbv5slqqqs3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

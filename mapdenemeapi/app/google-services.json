@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "265562697329",
+    "firebase_url": "https://mapdenemeapi.firebaseio.com",
+    "project_id": "mapdenemeapi",
+    "storage_bucket": "mapdenemeapi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265562697329:android:f3a18941c2dc6729",
+        "android_client_info": {
+          "package_name": "com.example.mapdenemeapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265562697329-fl9e9v9rjjh9jikffb0dvlg6hb2sbvb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mapdenemeapi",
+            "certificate_hash": "cd281268a8aa7c334e324c65bae2d18c8fc3e86d"
+          }
+        },
+        {
+          "client_id": "265562697329-28k8hq58u2nop73kphdhdhqf67hh233o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAxND68AQx3ER3n3S1KfA1w5GG4MdGnps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265562697329-28k8hq58u2nop73kphdhdhqf67hh233o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
