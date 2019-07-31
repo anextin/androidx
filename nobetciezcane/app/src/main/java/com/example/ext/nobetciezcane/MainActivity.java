@@ -2,9 +2,11 @@ package com.example.ext.nobetciezcane;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 
@@ -19,7 +21,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.ext.nobetciezcane.Models.Eczane;
 import com.example.ext.nobetciezcane.Models.EczaneDetay;
@@ -56,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
         webView= new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
         getCurrentLocation();
-
-
+        getPermission();
 
 
         webView.addJavascriptInterface(new JsBridge(),"Android");
@@ -285,7 +289,23 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("tullah: "+ longitude+" "+latitude );
 
         }
+
+
     }
+
+    public void getPermission()
+    {
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            return;
+        }else{
+            System.out.println("tanzile: " );
+        }
+    }
+
+
+
+
 
 
 

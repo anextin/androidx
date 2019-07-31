@@ -16,6 +16,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
+
 import com.example.ext.nobetciezcane.Models.Eczane;
 import com.example.ext.nobetciezcane.Models.EczaneDetay;
 import com.google.firebase.database.annotations.NotNull;
@@ -87,15 +89,18 @@ public class EczaneAdapter extends BaseAdapter {
 
             public void onClick(View v) {
 
+
+
                 String adres = list.get(position).getAdres().toString();
                 System.out.println("haygursel: " + list.get(position).getAdres().toString());
 
                 MainActivity mainActivity = new MainActivity();
                 Double latitude=mainActivity.latitude;
                 Double longitude=mainActivity.longitude;
+                Location location;
 
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("http://maps.google.com/maps?saddr=" + latitude+ "," + longitude + "&daddr=" + adres));
+                        Uri.parse("http://maps.google.com/maps?daddr=" + adres));
                 context.startActivity(intent);
             }
         });
