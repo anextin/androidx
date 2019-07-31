@@ -3,6 +3,7 @@ package com.example.ext.nobetciezcane;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class EczaneAdapter extends BaseAdapter{
     List<EczaneDetay> list;
     Context context;
     Activity activity;
+    public String adres;
 
     public EczaneAdapter(List<EczaneDetay> list, Context context, Activity activity) {
         this.list = list;
@@ -28,6 +30,8 @@ public class EczaneAdapter extends BaseAdapter{
         this.activity=activity;
 
     }
+
+    public EczaneAdapter(){}
 
     @Override
     public int getCount() {
@@ -77,13 +81,20 @@ public class EczaneAdapter extends BaseAdapter{
         haritadaGoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(context, MapsActivity.class);
-                String adres = list.get(position).getAdres().toString();
-                intent.putExtra("adres",adres);
+         //       Intent intent= new Intent(context, MapsActivity.class);
+                adres = list.get(position).getAdres().toString();
+          //      intent.putExtra("adres",adres);
                 System.out.println("sasigursel: "+adres );
-                context.startActivity(intent);
+         //       context.startActivity(intent);
             }
         });
         return convertView;
+    }
+
+
+    public String adresgetir()
+    {
+        System.out.println("adresmethodkontrol: "+adres );
+        return  adres;
     }
 }

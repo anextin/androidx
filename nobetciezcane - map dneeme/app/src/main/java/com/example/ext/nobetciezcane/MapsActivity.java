@@ -32,20 +32,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private final static int REQUEST_lOCATION=90;
-    public String adres;
-    public EditText etLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        SupportMapFragment mapFragment=(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        Bundle bundle = getIntent().getExtras();
-        adres = bundle.getString("adres");
-         etLocation=(EditText)findViewById(R.id.et_location);
-        etLocation.setText(adres);
 
         ZoomControls zoom=(ZoomControls)findViewById(R.id.zoom);
         zoom.setOnZoomOutClickListener(new View.OnClickListener() {
@@ -80,9 +74,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String location=adres;
-                System.out.println("gidigursel: "+ location );
+                EditText etLocation=(EditText)findViewById(R.id.et_location);
+                String location=etLocation.getText().toString();
                 if(location!=null && !location.equals("")){
                     List<Address> adressList=null;
                     Geocoder geocoder=new Geocoder(MapsActivity.this);

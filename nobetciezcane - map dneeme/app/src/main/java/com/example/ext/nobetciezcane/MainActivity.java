@@ -1,5 +1,12 @@
 package com.example.ext.nobetciezcane;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 
@@ -16,8 +23,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.ext.nobetciezcane.Models.Eczane;
 import com.example.ext.nobetciezcane.Models.EczaneDetay;
@@ -39,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
     List<EczaneDetay> eczaneList;
     EczaneAdapter eczaneAdapter;
     ListView listView;
-    Button listeleButton;
+    Button listeleButton,gmButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -70,11 +82,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        gmButton=findViewById(R.id.gmButton);
+        gmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, "First enable LOCATION ACCESS in settings.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                LocationManager locManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
+                boolean network_enabled = locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+                Location location;
+
+                location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+
+                        Double longitude = location.getLongitude();
+                        Double latitude = location.getLatitude();
+
+                        String arda="Mecidiye Mahallesi, Muvakkit Sokak, 26-A,Ortaköy, Beşiktaş";
+                        EczaneAdapter eczaneAdapter= new EczaneAdapter();
+                        String ilkin =eczaneAdapter.adresgetir();
+                System.out.println("ilkis: "+ilkin);
+                String uri = "http://maps.google.com/maps?saddr=" + latitude + "," + longitude + "&daddr=" + arda;
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(intent);
+
+
+
+
+    //            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+  //              locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0, (LocationListener) MainActivity.this);
+
+    //            Intent intent = new Intent(MainActivity.this, locationActivity.class);
+      //          startActivity(intent);
+        //        finish();
+            }
+        });
+
 
 
 
 
     }
+
+
 
     public void getEczane(String id)
     {
