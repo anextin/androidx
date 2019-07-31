@@ -1,9 +1,12 @@
 package com.example.ext.nobetciezcane;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 
 import android.os.Bundle;
@@ -31,7 +34,7 @@ import androidx.fragment.app.FragmentActivity;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private final static int REQUEST_lOCATION=90;
+    private final static int REQUEST_lOCATION = 90;
     public String adres;
     public EditText etLocation;
 
@@ -39,8 +42,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        SupportMapFragment mapFragment=(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+
 
         Bundle bundle = getIntent().getExtras();
         adres = bundle.getString("adres");
@@ -132,4 +138,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+
 }
