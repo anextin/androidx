@@ -1,5 +1,12 @@
 package com.example.ext.nobetciezcane;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 
@@ -9,15 +16,15 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.ext.nobetciezcane.Models.Eczane;
 import com.example.ext.nobetciezcane.Models.EczaneDetay;
@@ -40,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
     EczaneAdapter eczaneAdapter;
     ListView listView;
     Button listeleButton;
+    public  static   Double longitude;
+    public  static  Double latitude;
+
+  //  MainActivity(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
         listView=findViewById(R.id.listview);
         webView= new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
+        getCurrentLocation();
+        getPermission();
+
+
         webView.addJavascriptInterface(new JsBridge(),"Android");
         this.getToken();
         final String ilceler[]={"Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
@@ -245,6 +260,53 @@ public class MainActivity extends AppCompatActivity {
             handler.sendMessage(message);
         }
     }
+
+    public void getCurrentLocation()
+    {
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean network_enabled = locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        Location location;
+
+
+
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return ;
+        }
+        location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+        if(location!=null){
+             longitude = location.getLongitude();
+             latitude = location.getLatitude();
+
+            System.out.println("tullah: "+ longitude+" "+latitude );
+
+        }
+
+
+    }
+
+    public void getPermission()
+    {
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            return;
+        }else{
+            System.out.println("tanzile: " );
+        }
+    }
+
+
+
+
+
 
 
 }
