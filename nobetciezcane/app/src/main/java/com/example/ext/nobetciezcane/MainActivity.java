@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -60,8 +62,17 @@ public class MainActivity extends AppCompatActivity {
         listView=findViewById(R.id.listview);
         webView= new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
-        getCurrentLocation();
-        getPermission();
+
+        //anime
+ //       LinearLayout your_Layout = (LinearLayout) findViewById(R.id.deneme);
+ //       AnimationDrawable animationDrawable = (AnimationDrawable) your_Layout.getBackground();
+ //       animationDrawable.setEnterFadeDuration(4000);
+  //      animationDrawable.setExitFadeDuration(4000);
+  //      animationDrawable.start();
+
+        //anime
+      //  getCurrentLocation();
+       // getPermission();
 
 
         webView.addJavascriptInterface(new JsBridge(),"Android");
