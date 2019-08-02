@@ -1,6 +1,7 @@
 package com.example.ext.nobetciezcane;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -8,6 +9,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 
@@ -63,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         webView= new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
 
+
+
+
+
         //anime
  //       LinearLayout your_Layout = (LinearLayout) findViewById(R.id.deneme);
  //       AnimationDrawable animationDrawable = (AnimationDrawable) your_Layout.getBackground();
@@ -88,11 +94,41 @@ public class MainActivity extends AppCompatActivity {
         listeleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final  ProgressDialog progressDialog = new android.app.ProgressDialog(MainActivity.this);
+                progressDialog.setTitle("Nöbetçi Eczaneler");
+                progressDialog.setMessage("Yükleniyor ...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
+                CountDownTimer timer = new CountDownTimer(5000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        listeleButton.setEnabled(false);
+        //                listeleButton.setText("count down " + millisUntilFinished);
+                        System.out.println("tick: " + "tick");
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                        progressDialog.cancel();
+                                listeleButton.setEnabled(true);
+                                System.out.println("tick: " + "click");
+
+
+                    }
+                };
+                timer.start();
+
+
                 String item = spinner.getSelectedItem().toString();
                 int index= Integer.parseInt(String.valueOf(java.util.Arrays.asList(ilceler).indexOf(item)));
                 int id = ilceid[index];
                 Log.i("gelenid",""+id);
                 getEczane(String.valueOf(id));
+
+
             }
         });
 
@@ -144,6 +180,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg)
         {
+
+
             super.handleMessage(msg);
             if(msg.what==1)
             {
@@ -151,10 +189,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(msg.what==2)
             {
+
+
                Eczane ec = parseHtml((String) msg.obj);
                 eczaneList=ec.getEczaneDetay();
                 eczaneAdapter=new EczaneAdapter(eczaneList, MainActivity.this, MainActivity.this);
                 listView.setAdapter(eczaneAdapter);
+
+
             }
 
         }
@@ -162,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Eczane parseHtml(String htmlKaynak)
     {
+
         document=Jsoup.parse(htmlKaynak);
         Elements table = document.select("table.ilce-nobet-detay");
         Elements ilceDetay= table.select("caption>b");
@@ -169,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
         eczane.setTarih(ilceDetay.get(0).text());
         eczane.setIlceIsmi(ilceDetay.get(1).text());
         Log.i("qevap",""+ilceDetay.get(1).text());
-
 
 
        Elements eczaneDetayElement= document.select("table.nobecti-eczane");
@@ -189,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
         eczane.setEczaneDetay(eczaneDetayList);
         Log.i("gizemm",eczane.toString());
+
         return eczane;
     }
 
@@ -313,6 +356,9 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("tanzile: " );
         }
     }
+
+
+
 
 
 
