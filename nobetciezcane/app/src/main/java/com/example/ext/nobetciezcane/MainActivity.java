@@ -5,7 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     Button listeleButton;
     public  static   Double longitude;
     public  static  Double latitude;
+    LinearLayout listLayout;
 
   //  MainActivity(){}
 
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listview);
+        listLayout=findViewById(R.id.listLayout);
         webView= new WebView(getApplicationContext());
         webView.getSettings().setJavaScriptEnabled(true);
 
@@ -92,9 +96,11 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(dataAdapter);
         listeleButton=findViewById(R.id.listeleButton);
         listeleButton.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
-
+                listLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                 final  ProgressDialog progressDialog = new android.app.ProgressDialog(MainActivity.this);
                 progressDialog.setTitle("Nöbetçi Eczaneler");
                 progressDialog.setMessage("Yükleniyor ...");
