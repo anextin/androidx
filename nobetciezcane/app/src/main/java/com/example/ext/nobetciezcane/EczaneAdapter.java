@@ -9,6 +9,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +24,11 @@ import androidx.core.app.ActivityCompat;
 import com.example.ext.nobetciezcane.Models.Eczane;
 import com.example.ext.nobetciezcane.Models.EczaneDetay;
 import com.google.firebase.database.annotations.NotNull;
+import com.google.firebase.database.annotations.Nullable;
 
 import java.util.List;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
 import static androidx.core.content.ContextCompat.checkSelfPermission;
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -60,7 +65,7 @@ public class EczaneAdapter extends BaseAdapter {
 
         convertView = LayoutInflater.from(context).inflate(R.layout.layout, parent, false);
         TextView eczaneIsim, eczaneAdres, eczaneTel, eczaneFax, eczaneAdresTarifi;
-        Button haritadaGoster, aramaYap;
+        final Button haritadaGoster, aramaYap;
         eczaneIsim = convertView.findViewById(R.id.eczaneIsim);
         eczaneAdres = convertView.findViewById(R.id.eczaneAdres);
         eczaneTel = convertView.findViewById(R.id.eczaneTelefon);
