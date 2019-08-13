@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
@@ -43,13 +45,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class KullaniciProfilFragment extends Fragment {
 
+    Spinner ilcespinner,irkspinner,cinsiyetspinner;
     String imageUrl;
     FirebaseAuth auth;
     FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference reference;
     View view;
-    EditText kullaniciIsmi,input_egitim,input_dogumtarih,input_hakkimda;
+    EditText kullaniciIsmi,input_egitim,input_dogumtarih,input_hakkimda,input_semt;
     CircleImageView profile_image;
     Button bilgiGuncelleButton,bilgiArkadasButon,bilgiIstekButonu;
     StorageReference storageReference;
@@ -61,6 +64,10 @@ public class KullaniciProfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_kullanici_profil, container, false);
+        ilcespinner =view.findViewById(R.id.ilceSpinner);
+        irkspinner =view.findViewById(R.id.irkSpinner);
+        cinsiyetspinner =view.findViewById(R.id.cinsiyetSpinner);
+
         tanimla();
         bilgileriGetir();
         return  view;
@@ -70,15 +77,37 @@ public class KullaniciProfilFragment extends Fragment {
 
     public void tanimla()
     {
+        final String ilceler[]={"Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
+
+        final String irk[]={"golden","pug","doberman","kurt"};
+
+        final String cinsiyet[]={"Erkek","Dişi"};
+
         bilgiArkadasButon=view.findViewById(R.id.bilgiArkadasButon);
         bilgiIstekButonu=view.findViewById(R.id.bilgiIstekButonu);
 
         kullaniciIsmi= view.findViewById(R.id.kullaniciIsmi);
         input_egitim= view.findViewById(R.id.input_egitim);
         input_dogumtarih= view.findViewById(R.id.input_dogumTarihi);
-        input_hakkimda= view.findViewById(R.id.input_hakkimda);
+     //   input_hakkimda= view.findViewById(R.id.input_hakkimda);
         profile_image= view.findViewById(R.id.profile_image);
         bilgiGuncelleButton=view.findViewById(R.id.bilgiGuncelleButon);
+
+
+
+
+
+        ArrayAdapter<String> ilcelerdataAdapter= new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item, ilceler);
+        ilcelerdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ilcespinner.setAdapter(ilcelerdataAdapter);
+
+        ArrayAdapter<String> irkdataAdapter= new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item, irk);
+        irkdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        irkspinner.setAdapter(irkdataAdapter);
+
+        ArrayAdapter<String> cinsiyetdataAdapter= new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item, cinsiyet);
+        cinsiyetdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cinsiyetspinner.setAdapter(cinsiyetdataAdapter);
 
         firebaseStorage= FirebaseStorage.getInstance();
         storageReference= firebaseStorage.getReference();//resim ekleme icin
@@ -209,7 +238,40 @@ public class KullaniciProfilFragment extends Fragment {
                 kullaniciIsmi.setText(k1.getIsim());
                 input_egitim.setText(k1.getEgitim());
                 input_dogumtarih.setText(k1.getDogumtarih());
-                input_hakkimda.setText(k1.getHakkimda());
+//                input_hakkimda.setText(k1.getHakkimda());
+
+
+                String ilceNum=k1.getIlceNum().toString();
+                Integer ilceNumresult = Integer.valueOf(ilceNum);
+     //           String spin =k1.getIlce().toString();
+     //           int num = (int) spinner.getSelectedItemId();
+                ilcespinner.setSelection(ilceNumresult);
+
+                if(k1.getIrkNum()==null)
+                {
+                    irkspinner.setSelection(0);
+                }
+                else {
+                    String irkNum = k1.getIrkNum().toString();
+                    Integer irkNumresult = Integer.valueOf(irkNum);
+                    irkspinner.setSelection(irkNumresult);
+                }
+
+                if(k1.getCinsiyetNum()==null)
+                {
+                    cinsiyetspinner.setSelection(0);
+                }
+                else {
+                    String cinsiyetNum = k1.getCinsiyetNum().toString();
+                    Integer cinsiyetNumresult = Integer.valueOf(cinsiyetNum);
+                    cinsiyetspinner.setSelection(cinsiyetNumresult);
+                }
+
+
+
+
+                System.out.println("nevo: " + ilceNum);
+
                 imageUrl=k1.getResim();
 
                 if(!k1.getResim().equals("null"))
@@ -231,7 +293,17 @@ public class KullaniciProfilFragment extends Fragment {
         String isim=kullaniciIsmi.getText().toString();
         String egitim=input_egitim.getText().toString();
         String dogum=input_dogumtarih.getText().toString();
-        String hakkimda=input_hakkimda.getText().toString();
+   //     String hakkimda=input_hakkimda.getText().toString();
+        String spinner_ilce=ilcespinner.getSelectedItem().toString();
+        int spinner_ilceNum= (int) ilcespinner.getSelectedItemId();
+
+        String spinner_irk=irkspinner.getSelectedItem().toString();
+        int spinner_irkNum= (int) irkspinner.getSelectedItemId();
+
+        String spinner_cinsiyet=cinsiyetspinner.getSelectedItem().toString();
+        int spinner_cinsiyetNum= (int) cinsiyetspinner.getSelectedItemId();
+
+
 
 
         reference=database.getReference().child("Kullanicilar").child(auth.getUid());
@@ -240,7 +312,14 @@ public class KullaniciProfilFragment extends Fragment {
         map.put("isim",isim);
         map.put("egitim",egitim);
         map.put("dogumtarih",dogum);
-        map.put("hakkimda",hakkimda);
+        map.put("ilce",spinner_ilce);
+        map.put("ilceNum",spinner_ilceNum);
+        map.put("irk",spinner_irk);
+        map.put("irkNum",spinner_irkNum);
+        map.put("cinsiyet",spinner_cinsiyet);
+        map.put("cinsiyetNum",spinner_cinsiyetNum);
+        map.put("state",true);
+ //       map.put("hakkimda",hakkimda);
         if(imageUrl.equals("null"))
         {
             map.put("resim","null");

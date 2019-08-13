@@ -156,10 +156,10 @@ public class OtherProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Kullanicilar kl = dataSnapshot.getValue(Kullanicilar.class);//getvalue bize obje dondurdugu ıcın kullanicilar class ına gore cast liyoruz
-                userProfileNameText.setText("isim: " + kl.getIsim());
-                userProfileEgitimText.setText("egitim: " + kl.getEgitim());
-                userProfileDogumText.setText("dogumtarihi: " + kl.getDogumtarih());
-                userProfileHakkimdaText.setText("hakkimda: " + kl.getHakkimda());
+                userProfileNameText.setText("Sahip: " + kl.getEgitim());
+                userProfileEgitimText.setText("Irk: " + kl.getIrk());
+                userProfileDogumText.setText("Cinsiyet: " + kl.getCinsiyet());
+                userProfileHakkimdaText.setText("Semt: " + kl.getIlce());
                 userProfileNameText2.setText(kl.getIsim());
 
 

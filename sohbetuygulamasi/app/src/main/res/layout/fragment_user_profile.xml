@@ -132,7 +132,7 @@
                 android:textColor="#353190"
                 android:layout_marginLeft="20dp"
                 android:id="@+id/userProfileNameText"
-                android:text="isim"/>
+                android:text="Sahip"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
