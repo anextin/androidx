@@ -52,7 +52,7 @@ public class KullaniciProfilFragment extends Fragment {
     FirebaseDatabase database;
     DatabaseReference reference;
     View view;
-    EditText kullaniciIsmi,input_egitim,input_dogumtarih,input_hakkimda,input_semt;
+    EditText kullaniciIsmi,input_egitim,input_dogumtarih,input_hakkimda;
     CircleImageView profile_image;
     Button bilgiGuncelleButton,bilgiArkadasButon,bilgiIstekButonu;
     StorageReference storageReference;
@@ -270,7 +270,7 @@ public class KullaniciProfilFragment extends Fragment {
 
 
 
-                System.out.println("nevo: " + ilceNum);
+
 
                 imageUrl=k1.getResim();
 
