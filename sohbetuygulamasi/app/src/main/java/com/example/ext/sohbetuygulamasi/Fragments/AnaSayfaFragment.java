@@ -55,6 +55,14 @@ public class AnaSayfaFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseUser user;
     Button filtreleButton;
+    public String spinner_ilce="Tümü";
+    public String spinner_irk="Tümü";
+    public String spinner_cinsiyet="Tümü";
+
+
+    public int spinner_ilceNum;
+    public int spinner_irkNum;
+    public int spinner_cinsiyetNum;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,7 +77,8 @@ public class AnaSayfaFragment extends Fragment {
         cinsiyetspinner =view.findViewById(R.id.anasayfacinsiyetSpinner);
         filtreleButton=view.findViewById(R.id.filtreleButton);
         tanimla();
-        kullanicilariGetir();
+        kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
+  //     kullanicilariGetir();
         return view;
     }
 
@@ -77,11 +86,11 @@ public class AnaSayfaFragment extends Fragment {
     public void tanimla()
     {
 
-        final String ilceler[]={"Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
+        final String ilceler[]={"Tümü","Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
 
-        final String irk[]={"golden","pug","doberman","kurt"};
+        final String irk[]={"Tümü","golden","pug","doberman","kurt"};
 
-        final String cinsiyet[]={"Erkek","Dişi"};
+        final String cinsiyet[]={"Tümü","Erkek","Dişi"};
 
 
         userKeysList= new ArrayList<>();
@@ -121,7 +130,9 @@ public class AnaSayfaFragment extends Fragment {
 
                 String spinner_cinsiyet=cinsiyetspinner.getSelectedItem().toString();
                 int spinner_cinsiyetNum= (int) cinsiyetspinner.getSelectedItemId();
-                filtrele(spinner_ilce,spinner_irk,spinner_cinsiyet);
+          //      filtrele(spinner_ilce,spinner_irk,spinner_cinsiyet);
+                kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
+                userKeysList.clear();
 
             }
         });
@@ -131,7 +142,7 @@ public class AnaSayfaFragment extends Fragment {
 
 
 
-    public void kullanicilariGetir()
+    public void kullanicilariGetir(final String ilce, final String irk, final String cinsiyet)
     {
         reference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
             @Override
@@ -145,15 +156,24 @@ public class AnaSayfaFragment extends Fragment {
 
                         //asagıdaki sartların amacları:
                         //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
-                        if(!k1.getIsim().equals("null") && !dataSnapshot.getKey().equals(user.getUid()))
+                        if(k1.getIrk().equals(irk) && !dataSnapshot.getKey().equals(user.getUid()))
                         {
                             if(userKeysList.indexOf(dataSnapshot.getKey())==-1) {
                                 userKeysList.add(dataSnapshot.getKey());
-                                userKeysList.add(dataSnapshot.getKey().equals(k1.getCinsiyet().equals("arda")));
-                                //userKeysList.add(dataSnapshot.getKey(k1.getIsim().equals("arda")));
+
+
                             }
-                            userAdapter.notifyDataSetChanged();  //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
+
+                             //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
                         }
+                //     /*
+                        else if(!dataSnapshot.getKey().equals(user.getUid())){
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+               //      */
+                        userAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -188,64 +208,6 @@ public class AnaSayfaFragment extends Fragment {
 
     }
 
-    public void filtrele(final String ilce, final String irk, final String cinsiyet)
-    {
 
-
-        reference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //      Log.i( "keyler ",dataSnapshot.getKey());
-                reference.child("Kullanicilar").child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
-                        System.out.println("nevo: " + ilce + irk + cinsiyet +" dbdekiler : "+k1.getIsim()+" ..." +k1.getCinsiyet());
-                        //asagıdaki sartların amacları:
-                        //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
-                        if(!k1.getIsim().equals("null") && !dataSnapshot.getKey().equals(user.getUid())
-//                                && k1.getCinsiyet().equals(cinsiyet)
- //                               && k1.getIrk().equals(irk)
-//                                && k1.getIlce().equals(ilce)
-                        )
-                        {
-                            if(userKeysList.indexOf(dataSnapshot.getKey())==-1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                            userAdapter.notifyDataSetChanged();  //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 }
