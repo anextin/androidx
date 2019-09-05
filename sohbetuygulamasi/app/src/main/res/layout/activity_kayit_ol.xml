@@ -4,41 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ecf0f1"
     android:orientation="vertical"
+    android:background="@drawable/gradient_1"
     tools:context=".Acitivity.KayitOlActivity">
 
 
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        card_view:cardElevation="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
 
-        android:layout_gravity="center"
-        android:layout_margin="2dp"
-        card_view:cardCornerRadius="4dp">
 
-        <LinearLayout
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:orientation="vertical">
-
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="20dp"
-                android:text="ilkos ile sohbet uygulaması-kayit"
-                android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:text="Animal Tinder"
+            android:gravity="center"
+            android:textColor="#6e2142"
+            android:textSize="28dp"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_email"
@@ -47,11 +39,12 @@
 
 
 
-            <EditText
-                android:id="@+id/input_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="ilkos email adresini gir" />
+                <EditText
+                    android:id="@+id/input_email"
+                    android:layout_width="200dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Email" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -61,9 +54,10 @@
 
                 <EditText
                     android:id="@+id/input_password"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_height="wrap_content"
-                    android:hint="ilkos parolanı gir" />
+                    android:hint="Şifre" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -71,24 +65,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:layout_marginBottom="20dp"
-                android:text="hesabım var ben ilkosum"
+                android:text="Hesabım Var"
                 android:id="@+id/hesapvarText"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="#6e2142"
                 android:textSize="20dp"/>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_gravity="right"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/mybuttongiris"
+                android:layout_gravity="right"
+                android:textColor="#fff"
+                android:layout_marginRight="60dp"
                 android:id="@+id/registerButon"
-                android:text="ilkos burdan kayit ol"/>
+                android:text="Kaydet"/>
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>
