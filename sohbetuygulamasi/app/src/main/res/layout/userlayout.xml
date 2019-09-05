@@ -34,7 +34,10 @@
                 android:layout_gravity="center"
                 android:id="@+id/user_state_img"
                 android:layout_height="16dp" />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,6 +45,15 @@
                 android:textStyle="bold"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/msjTextview"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

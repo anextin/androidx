@@ -227,16 +227,7 @@ public class   ChatActivity extends AppCompatActivity {
 
 
 
-
-        System.out.println("gssa disari: "+asa+" "+checkonlinefalseornot);
-
-
-
-
         //checkonline or not
-
-
-
 
         reference.child("Mesajlar").child(userId).child(otherId).child(mesajId).setValue(messageMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -386,7 +377,7 @@ public class   ChatActivity extends AppCompatActivity {
             }
         });
 
-        //     return playerid;
+
     }
 
     protected void onDestroy(){
