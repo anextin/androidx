@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.example.ext.sohbetuygulamasi.Adapters.UserAdapter;
@@ -54,10 +55,11 @@ public class AnaSayfaFragment extends Fragment {
     UserAdapter userAdapter;
     FirebaseAuth auth;
     FirebaseUser user;
-    Button filtreleButton;
+    Button filtreleButton , filterAc;
     public String spinner_ilce="Tümü";
     public String spinner_irk="Tümü";
     public String spinner_cinsiyet="Tümü";
+    LinearLayout filtre;
 
 
     public int spinner_ilceNum;
@@ -72,10 +74,13 @@ public class AnaSayfaFragment extends Fragment {
 
         view= inflater.inflate(R.layout.fragment_ana_sayfa, container, false);
 
+        filtre=view.findViewById(R.id.filtre);
+        filtre.setVisibility(filtre.INVISIBLE);
         ilcespinner =view.findViewById(R.id.anasayfailceSpinner);
         irkspinner =view.findViewById(R.id.anasayfairkSpinner);
         cinsiyetspinner =view.findViewById(R.id.anasayfacinsiyetSpinner);
         filtreleButton=view.findViewById(R.id.filtreleButton);
+        filterAc=view.findViewById(R.id.filterAc);
         tanimla();
         kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
         //     kullanicilariGetir();
@@ -137,6 +142,20 @@ public class AnaSayfaFragment extends Fragment {
             }
         });
 
+        filterAc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(filtre.getVisibility()==View.VISIBLE)
+                {
+                    filtre.setVisibility(filtre.INVISIBLE);
+                }
+                else
+                {
+                    filtre.setVisibility(filtre.VISIBLE);
+                }
+            }
+        });
+
 
     }
 
@@ -179,7 +198,7 @@ public class AnaSayfaFragment extends Fragment {
                             }
                         }
 
-                        else if (k1.getIlce().equals(ilce) && k1.getIrk().equals(irk) && k1.getCinsiyet().equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())) {
+                        else if (k1.getIlce().equals(ilce) && k1.getIrk().equals(irk) && cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())) {
                             if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
                                 userKeysList.add(dataSnapshot.getKey());
                             }
@@ -234,6 +253,11 @@ public class AnaSayfaFragment extends Fragment {
 
             }
         });
+
+    }
+
+    public void filreAc()
+    {
 
     }
 
