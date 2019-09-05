@@ -59,7 +59,7 @@ public class AnaSayfaFragment extends Fragment {
     public String spinner_ilce="Tümü";
     public String spinner_irk="Tümü";
     public String spinner_cinsiyet="Tümü";
-    LinearLayout filtre;
+    public LinearLayout filtre;
 
 
     public int spinner_ilceNum;
@@ -103,7 +103,7 @@ public class AnaSayfaFragment extends Fragment {
         reference=firebaseDatabase.getReference();
 
         userListRecyclerView= view.findViewById(R.id.userListRecyclerView);
-        RecyclerView.LayoutManager mng=new GridLayoutManager(getContext(),2);   //bunun sayesınde 1 satıra 2 tane layout koyabılecegız
+        RecyclerView.LayoutManager mng=new GridLayoutManager(getContext(),1);   //bunun sayesınde 1 satıra 2 tane layout koyabılecegız
         userListRecyclerView.setLayoutManager(mng);
 
         userAdapter= new UserAdapter(userKeysList,getActivity(),getContext());

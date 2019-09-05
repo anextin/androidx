@@ -9,15 +9,53 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="vertical"
-
+        android:layout_gravity="center"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:background="@drawable/tttt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:layout_marginLeft="4dp"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:text="Animal Tinder"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:textSize="12dp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:text="Filtrele"/>
+
 
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_gravity="left"
+            android:layout_gravity="right"
+            android:gravity="right"
             android:id="@+id/filterAc"
-            android:background="@drawable/filter"/>
+            android:background="@drawable/filtre"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#293462"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="vertical"
@@ -49,7 +87,7 @@
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:id="@+id/filtreleButton"
-            android:background="@drawable/mybuttongiris"
+            android:background="@drawable/mybuttonfiltre"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
             android:textColor="#fff"/>

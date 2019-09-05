@@ -42,7 +42,7 @@ public class OtherProfileFragment extends Fragment {
     TextView denemeText;
     View view;
     String otherId, userId;
-    TextView userProfileNameText, userProfileEgitimText, userProfileDogumText, userProfileHakkimdaText, userProfileTakipText, userProfileArkadasText, userProfileNameText2;
+    TextView userProfileNameText, userProfileEgitimText, userProfileDogumText, userProfileHakkimdaText, userProfileTakipText, userProfileArkadasText, userProfileNameText2,userProfileNotText;
     ImageView userProfileArkadasImage, userProfileMesajImage, userProfileTakipImage;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
@@ -84,6 +84,7 @@ public class OtherProfileFragment extends Fragment {
         userProfileEgitimText = view.findViewById(R.id.userProfileEgitimText);
         userProfileDogumText = view.findViewById(R.id.userProfileDogumText);
         userProfileHakkimdaText = view.findViewById(R.id.userProfileHakkimdaText);
+        userProfileNotText= view.findViewById(R.id.userProfileNotText);
 
         userProfileArkadasImage = view.findViewById(R.id.userProfileArkadasImage);
         userProfileMesajImage = view.findViewById(R.id.userProfileMesajImage);
@@ -160,6 +161,7 @@ public class OtherProfileFragment extends Fragment {
                 userProfileEgitimText.setText("Irk: " + kl.getIrk());
                 userProfileDogumText.setText("Cinsiyet: " + kl.getCinsiyet());
                 userProfileHakkimdaText.setText("Semt: " + kl.getIlce());
+                userProfileNotText.setText("Hakkımda: " + kl.getDogumtarih());
                 userProfileNameText2.setText(kl.getIsim());
 
 
