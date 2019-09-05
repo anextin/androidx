@@ -78,7 +78,7 @@ public class AnaSayfaFragment extends Fragment {
         filtreleButton=view.findViewById(R.id.filtreleButton);
         tanimla();
         kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
-  //     kullanicilariGetir();
+        //     kullanicilariGetir();
         return view;
     }
 
@@ -130,7 +130,7 @@ public class AnaSayfaFragment extends Fragment {
 
                 String spinner_cinsiyet=cinsiyetspinner.getSelectedItem().toString();
                 int spinner_cinsiyetNum= (int) cinsiyetspinner.getSelectedItemId();
-          //      filtrele(spinner_ilce,spinner_irk,spinner_cinsiyet);
+                //      filtrele(spinner_ilce,spinner_irk,spinner_cinsiyet);
                 kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
                 userKeysList.clear();
 
@@ -156,23 +156,52 @@ public class AnaSayfaFragment extends Fragment {
 
                         //asagıdaki sartların amacları:
                         //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
-                        if(k1.getIrk().equals(irk) && !dataSnapshot.getKey().equals(user.getUid()))
-                        {
-                            if(userKeysList.indexOf(dataSnapshot.getKey())==-1) {
-                                userKeysList.add(dataSnapshot.getKey());
 
 
-                            }
-
-                             //firebase anlık calıstıgı icin bununla beraber adapterımız hep guncellenicek
-                        }
-                //     /*
-                        else if(!dataSnapshot.getKey().equals(user.getUid())){
+                        if (k1.getIlce().equals(ilce) && k1.getIrk().equals(irk) && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())) {
                             if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
                                 userKeysList.add(dataSnapshot.getKey());
                             }
                         }
-               //      */
+                        else if (k1.getIlce().equals(ilce) && irk.equals("Tümü") && cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (ilce.equals("Tümü") && k1.getIrk().equals(irk) && cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (ilce.equals("Tümü") && irk.equals("Tümü") && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+
+                        else if (k1.getIlce().equals(ilce) && k1.getIrk().equals(irk) && k1.getCinsiyet().equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (k1.getIlce().equals(ilce) && irk.equals("Tümü") && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (ilce.equals("Tümü") && k1.getIrk().equals(irk) && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+
+
+                        else if(ilce.equals("Tümü")&&irk.equals("Tümü")&&cinsiyet.equals("Tümü")&& !dataSnapshot.getKey().equals(user.getUid())) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+
                         userAdapter.notifyDataSetChanged();
                     }
 
