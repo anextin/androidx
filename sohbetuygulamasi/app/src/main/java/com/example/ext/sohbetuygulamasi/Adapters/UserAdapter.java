@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.example.ext.sohbetuygulamasi.R;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +47,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser user;
-    String userId;
+    String userId,ccc;
 
 
     public UserAdapter(List<String> userKeysList, Activity activity, Context context) {
@@ -81,12 +83,30 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                    user = auth.getCurrentUser();
                    userId = user.getUid();
              //      String ac=reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).child("-LknDWcqCk-Ca3e68ZlZ").child("text").getKey().toString();
-                   DatabaseReference reff=reference.child("Mesajlar").child("oynJ1Om8KhWOai6MHXPEfQrT3du1").child("6mJhqfBrhNPIhVIgqFdTsgq4txt1").child("-LknDWcqCk-Ca3e68ZlZ").child("text");
-                   reff.addValueEventListener(new ValueEventListener() {
+                   Query fb= reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).orderByKey().limitToLast(1);
+                   fb.addChildEventListener(new ChildEventListener() {
                        @Override
-                       public void onDataChange(DataSnapshot dataSnapshot) {
-                           String text = dataSnapshot.getValue().toString();
-                           System.out.println("tick: " + text +"....");
+                       public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                           Boolean ggg=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
+                           ccc= dataSnapshot.child("text").getValue().toString();
+                           //String ggg=dataSnapshot.getValue().toString();
+                           System.out.println("gebes:"+ ggg+"---"+ccc);
+                           holder.msjTextview.setText(ccc);
+                       }
+
+                       @Override
+                       public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                       }
+
+                       @Override
+                       public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                       }
+
+                       @Override
+                       public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
                        }
 
                        @Override
@@ -94,23 +114,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                        }
                    });
-               //    Query query=ac.orderByKey().limitToLast(1);
-                   //System.out.println("tick: " + ac +"....");
 
 
-                   Boolean seenOrnotseen = Boolean.parseBoolean(dataSnapshot.child("cinsiyetNum").getValue().toString());
+
+
+
                     Boolean arda=false;
                    Boolean userState = Boolean.parseBoolean(dataSnapshot.child("state").getValue().toString());
 
-
+                   System.out.println("got:"+ ccc);
 
                        Picasso.get().load(k1.getResim()).into(holder.userimage);
                        holder.usernameTextview.setText(k1.getIsim());
-            //           holder.msjTextview.setText();
 
-                       if(arda==true) { holder.msjTextview.setText(""); }
-
-                       else { holder.msjTextview.setText("Mesajınız var"); }
 
                        if(userState==true)
                        {
