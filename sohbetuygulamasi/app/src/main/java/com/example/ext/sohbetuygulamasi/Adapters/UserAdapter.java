@@ -1,5 +1,6 @@
 package com.example.ext.sohbetuygulamasi.Adapters;
 
+import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,7 +51,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser user;
-    String userId,ccc;
+    String userId,lastMes;
 
 
     public UserAdapter(List<String> userKeysList, Activity activity, Context context) {
@@ -87,11 +91,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                    fb.addChildEventListener(new ChildEventListener() {
                        @Override
                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                           Boolean ggg=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
-                           ccc= dataSnapshot.child("text").getValue().toString();
+                           Boolean seenOrNot=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
+                           lastMes= dataSnapshot.child("text").getValue().toString();
                            //String ggg=dataSnapshot.getValue().toString();
-                           System.out.println("gebes:"+ ggg+"---"+ccc);
-                           holder.msjTextview.setText(ccc);
+                           System.out.println("gebes:"+ seenOrNot+"---"+lastMes);
+                           holder.msjTextview.setText(lastMes);
+
+                           if(seenOrNot==true)
+                           {
+                               holder.messageImage.setVisibility(View.INVISIBLE);
+                              // holder.user_state_img.setImageResource(R.drawable.online_icon);
+                           }
+                           else
+                           {
+                               holder.messageImage.setVisibility(View.VISIBLE);
+                             //  holder.user_state_img.setImageResource(R.drawable.offline_icon);
+                           }
+
                        }
 
                        @Override
@@ -122,7 +138,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     Boolean arda=false;
                    Boolean userState = Boolean.parseBoolean(dataSnapshot.child("state").getValue().toString());
 
-                   System.out.println("got:"+ ccc);
 
                        Picasso.get().load(k1.getResim()).into(holder.userimage);
                        holder.usernameTextview.setText(k1.getIsim());
@@ -171,6 +186,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         TextView usernameTextview;
         TextView msjTextview;
+        ImageView messageImage;
         CircleImageView userimage,user_state_img;
         LinearLayout userAnaLayout;
 
@@ -180,9 +196,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
             usernameTextview= (TextView)itemView.findViewById(R.id.usernameTextview);
             msjTextview=itemView.findViewById(R.id.msjTextview);
+            messageImage=itemView.findViewById(R.id.messageImage);
             userimage= (CircleImageView)itemView.findViewById(R.id.userimage);
             user_state_img= (CircleImageView)itemView.findViewById(R.id.user_state_img);
             userAnaLayout=itemView.findViewById(R.id.userAnaLayout);
+
         }
     }
 }
