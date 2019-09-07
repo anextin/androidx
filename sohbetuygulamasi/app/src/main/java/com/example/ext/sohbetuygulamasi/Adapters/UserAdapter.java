@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.example.ext.sohbetuygulamasi.R;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +47,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser user;
-    String userId;
+    String userId,lastMes,ccc;
 
 
     public UserAdapter(List<String> userKeysList, Activity activity, Context context) {
@@ -80,13 +82,45 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                    auth = FirebaseAuth.getInstance();
                    user = auth.getCurrentUser();
                    userId = user.getUid();
-             //      String ac=reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).child("-LknDWcqCk-Ca3e68ZlZ").child("text").getKey().toString();
-                   DatabaseReference reff=reference.child("Mesajlar").child("oynJ1Om8KhWOai6MHXPEfQrT3du1").child("6mJhqfBrhNPIhVIgqFdTsgq4txt1").child("-LknDWcqCk-Ca3e68ZlZ").child("text");
-                   reff.addValueEventListener(new ValueEventListener() {
+
+                   Query fb= reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).orderByKey().limitToLast(1);
+                   fb.addChildEventListener(new ChildEventListener() {
                        @Override
-                       public void onDataChange(DataSnapshot dataSnapshot) {
-                           String text = dataSnapshot.getValue().toString();
-                           System.out.println("tick: " + text +"....");
+                       public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                           Boolean ggg=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
+                           ccc= dataSnapshot.child("text").getValue().toString();
+                           Boolean seenOrNot=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
+                           lastMes= dataSnapshot.child("text").getValue().toString();
+                           //String ggg=dataSnapshot.getValue().toString();
+                           System.out.println("gebes:"+ seenOrNot+"---"+lastMes);
+                           holder.msjTextview.setText(lastMes);
+
+                           if(seenOrNot==true)
+                           {
+                               holder.messageImage.setVisibility(View.INVISIBLE);
+                               // holder.user_state_img.setImageResource(R.drawable.online_icon);
+                           }
+                           else
+                           {
+                               holder.messageImage.setVisibility(View.VISIBLE);
+                               //  holder.user_state_img.setImageResource(R.drawable.offline_icon);
+                           }
+
+                       }
+
+                       @Override
+                       public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                       }
+
+                       @Override
+                       public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                       }
+
+                       @Override
+                       public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
                        }
 
                        @Override
@@ -94,11 +128,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                        }
                    });
-               //    Query query=ac.orderByKey().limitToLast(1);
-                   //System.out.println("tick: " + ac +"....");
+             //      String ac=reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).child("-LknDWcqCk-Ca3e68ZlZ").child("text").getKey().toString();
 
 
-                   Boolean seenOrnotseen = Boolean.parseBoolean(dataSnapshot.child("cinsiyetNum").getValue().toString());
+
+
+
                     Boolean arda=false;
                    Boolean userState = Boolean.parseBoolean(dataSnapshot.child("state").getValue().toString());
 
@@ -108,9 +143,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                        holder.usernameTextview.setText(k1.getIsim());
             //           holder.msjTextview.setText();
 
-                       if(arda==true) { holder.msjTextview.setText(""); }
 
-                       else { holder.msjTextview.setText("Mesajınız var"); }
 
                        if(userState==true)
                        {
@@ -157,6 +190,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         TextView msjTextview;
         CircleImageView userimage,user_state_img;
         LinearLayout userAnaLayout;
+        ImageView messageImage;
 
 
         ViewHolder(View itemView)
@@ -164,6 +198,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
             usernameTextview= (TextView)itemView.findViewById(R.id.usernameTextview);
             msjTextview=itemView.findViewById(R.id.msjTextview);
+            messageImage=itemView.findViewById(R.id.messageImage);
             userimage= (CircleImageView)itemView.findViewById(R.id.userimage);
             user_state_img= (CircleImageView)itemView.findViewById(R.id.user_state_img);
             userAnaLayout=itemView.findViewById(R.id.userAnaLayout);
