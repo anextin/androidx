@@ -38,6 +38,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
@@ -60,7 +61,7 @@ public class   ChatActivity extends AppCompatActivity {
     String asa="";
     String mesajicerik="",mesajtime="";
     TextView chat_username_textview;
-    DatabaseReference reference;
+    DatabaseReference reference,referenceSeen;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
     FirebaseAuth auth;
@@ -105,15 +106,6 @@ public class   ChatActivity extends AppCompatActivity {
                 getUserName();
                 getId();
                 saveIdforNot(firebaseUser.getUid(),getId(),userId);
-
-                //           try {
-                //             OneSignal.postNotification(new JSONObject("{'contents': {'en':'Test Message'}, 'include_player_ids': ['" + userId + "']}"), null);
-                //          } catch (JSONException e) {
-                //            e.printStackTrace();
-                //      }
-
-
-
 
             }
         });
@@ -205,11 +197,6 @@ public class   ChatActivity extends AppCompatActivity {
 //checkonline or not
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference checkonline = firebaseDatabase.getReference().child("Kullanicilar");
-
-
-
-   //     checkonline.child(otherId).child("state");
-   //     notifydetay.child(userId).child(otherId).child("text");
 
 
         DatabaseReference statefinder = checkonline.child(otherId);
@@ -318,6 +305,39 @@ public class   ChatActivity extends AppCompatActivity {
                 messageAdapter.notifyDataSetChanged();
                 keyList.add(dataSnapshot.getKey());
                 chat_recycler_view.scrollToPosition(messageModelList.size()-1);
+                firebaseDatabase= FirebaseDatabase.getInstance();
+                referenceSeen = firebaseDatabase.getReference();
+
+                Query query=referenceSeen.child("Mesajlar").child(firebaseUser.getUid()).child(getId()).orderByKey().limitToLast(1);
+                query.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        String lastMessageId=dataSnapshot.getKey();
+                        Boolean ggg=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
+                        System.out.println("fox:"+ "---"+ggg+"---"+lastMessageId);
+                       referenceSeen.child("Mesajlar").child(firebaseUser.getUid()).child(getId()).child(lastMessageId).child("seen").setValue(true);
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override

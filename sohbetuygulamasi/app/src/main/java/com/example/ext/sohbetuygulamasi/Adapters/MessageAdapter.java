@@ -33,7 +33,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
-    String userId;
+    String userId="";
     List<MessageModel> messageModelList;
     Boolean state;
     int view_type_sent=1;

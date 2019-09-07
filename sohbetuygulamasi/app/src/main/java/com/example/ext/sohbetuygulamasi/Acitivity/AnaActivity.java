@@ -76,13 +76,15 @@ public class    AnaActivity extends AppCompatActivity {
 
     public void cik()
     {
-        auth.signOut();
+
+ //       auth.signOut();
         Intent intent = new Intent(AnaActivity.this, GirisActivity.class);
         startActivity(intent);
         finish();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
         reference.child(user.getUid()).child("state").setValue(false);
+
     }
 
     public void tanimla()

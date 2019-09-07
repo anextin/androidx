@@ -42,6 +42,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal"
                     >
                     <TextView
@@ -51,8 +52,7 @@
                         android:layout_weight="1"
                         android:textStyle="bold"
                         android:text="arda"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
+                        android:textSize="16dp"
                         android:layout_gravity="center"/>
 
                     <ImageView
@@ -61,6 +61,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="0"
                         android:layout_marginRight="12dp"
+                        android:visibility="invisible"
                         android:id="@+id/messageImage"
                         android:background="@drawable/message3"/>
                 </LinearLayout>
@@ -68,7 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/msjTextview"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"/>
 
             </LinearLayout>

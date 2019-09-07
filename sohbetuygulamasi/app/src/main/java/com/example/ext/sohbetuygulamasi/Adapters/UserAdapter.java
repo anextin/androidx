@@ -47,7 +47,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser user;
-    String userId,lastMes,ccc;
+    String userId="0",lastMes,ccc;
 
 
     public UserAdapter(List<String> userKeysList, Activity activity, Context context) {
@@ -77,12 +77,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                public void onDataChange(DataSnapshot dataSnapshot) {
 
                    Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
-                   MessageModel m1= dataSnapshot.getValue(MessageModel.class);
 
                    auth = FirebaseAuth.getInstance();
                    user = auth.getCurrentUser();
                    userId = user.getUid();
-
+                   holder.messageImage.setVisibility(View.INVISIBLE);
+                   System.out.println("ankara: "+userId );
                    Query fb= reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).orderByKey().limitToLast(1);
                    fb.addChildEventListener(new ChildEventListener() {
                        @Override
@@ -92,19 +92,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                            Boolean seenOrNot=Boolean.parseBoolean(dataSnapshot.child("seen").getValue().toString());
                            lastMes= dataSnapshot.child("text").getValue().toString();
                            //String ggg=dataSnapshot.getValue().toString();
-                           System.out.println("gebes:"+ seenOrNot+"---"+lastMes);
+                           System.out.println("gebes: "+userId +"-------"+ seenOrNot+"---"+lastMes);
                            holder.msjTextview.setText(lastMes);
 
-                           if(seenOrNot==true)
-                           {
-                               holder.messageImage.setVisibility(View.INVISIBLE);
-                               // holder.user_state_img.setImageResource(R.drawable.online_icon);
-                           }
-                           else
+                           if(seenOrNot==false  )
                            {
                                holder.messageImage.setVisibility(View.VISIBLE);
-                               //  holder.user_state_img.setImageResource(R.drawable.offline_icon);
+                               // holder.user_state_img.setImageResource(R.drawable.online_icon);
                            }
+
+
 
                        }
 
@@ -128,7 +125,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                        }
                    });
-             //      String ac=reference.child("Mesajlar").child(userId).child(userKeysList.get(position).toString()).child("-LknDWcqCk-Ca3e68ZlZ").child("text").getKey().toString();
+
 
 
 

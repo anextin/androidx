@@ -99,6 +99,13 @@ public class KayitOlActivity extends AppCompatActivity {
                     map.put("isim","null");
                     map.put("egitim","null");
                     map.put("dogumtarih","null");
+                    map.put("cinsiyet","null");
+                    map.put("cinsiyetNum",0);
+                    map.put("ilce","null");
+                    map.put("ilceNum",0);
+                    map.put("irk","null");
+                    map.put("irkNum",0);
+                    map.put("state",false);
                     map.put("hakkimda","null");
 
                     reference.setValue(map);

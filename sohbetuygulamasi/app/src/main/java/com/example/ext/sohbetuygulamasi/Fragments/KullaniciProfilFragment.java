@@ -234,10 +234,32 @@ public class KullaniciProfilFragment extends Fragment {
                 // alternatif alma yontemi        //    String adi = dataSnapshot.child("isim").getValue().toString();
                 //      String egitim = dataSnapshot.child("egitim").getValue().toString();
 
-
-                kullaniciIsmi.setText(k1.getIsim());
-                input_egitim.setText(k1.getEgitim());
-                input_dogumtarih.setText(k1.getDogumtarih());
+                System.out.println("antalya: "+k1.getIsim() );
+                if(k1.getIsim().equals("null"))
+                {
+                    kullaniciIsmi.setText("");
+                }
+                else
+                {
+                    kullaniciIsmi.setText(k1.getIsim());
+                }
+                if(k1.getEgitim().equals("null"))
+                {
+                    input_egitim.setText("");
+                }
+                else
+                {
+                    input_egitim.setText(k1.getEgitim());
+                }if(k1.getDogumtarih().equals("null"))
+                {
+                    input_dogumtarih.setText("");
+                }
+                else
+                {
+                    input_dogumtarih.setText(k1.getDogumtarih());
+                }
+    //            input_egitim.setText(k1.getEgitim());
+      //          input_dogumtarih.setText(k1.getDogumtarih());
 //                input_hakkimda.setText(k1.getHakkimda());
 
 
@@ -337,11 +359,11 @@ public class KullaniciProfilFragment extends Fragment {
                 if(task.isSuccessful()) {
                     ChangeFragment fragment = new ChangeFragment(getContext());
                     fragment.change(new KullaniciProfilFragment());
-                    Toast.makeText(getContext(), "bilgiler basarili insert edildi...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Bilgiler Başarıyla Güncellendi...", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    Toast.makeText(getContext(),"guncellenmedi..", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Beklenmedik Bir Hata Oluştu..", Toast.LENGTH_LONG).show();
                 }
 
             }
