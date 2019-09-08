@@ -11,15 +11,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.ext.sohbetuygulamasi.Acitivity.ChatActivity;
 import com.example.ext.sohbetuygulamasi.Fragments.OtherProfileFragment;
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
-import com.example.ext.sohbetuygulamasi.Models.MessageModel;
 import com.example.ext.sohbetuygulamasi.R;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,11 +43,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     Activity activity;
     Context context;
     FirebaseDatabase firebaseDatabase;
-    FirebaseUser firebaseUser;
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser user;
     String userId="0",lastMes,ccc;
+
 
 
     public UserAdapter(List<String> userKeysList, Activity activity, Context context) {
@@ -77,6 +77,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                public void onDataChange(DataSnapshot dataSnapshot) {
 
                    Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
+
 
                    auth = FirebaseAuth.getInstance();
                    user = auth.getCurrentUser();
@@ -132,14 +133,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
                     Boolean arda=false;
+
                    Boolean userState = Boolean.parseBoolean(dataSnapshot.child("state").getValue().toString());
-
-
-
                        Picasso.get().load(k1.getResim()).into(holder.userimage);
                        holder.usernameTextview.setText(k1.getIsim());
-            //           holder.msjTextview.setText();
-
 
 
                        if(userState==true)
@@ -158,10 +155,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                }
            });
-
-
-
-
 
            holder.userAnaLayout.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -183,8 +176,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder
     {
 
-        TextView usernameTextview;
-        TextView msjTextview;
+        TextView usernameTextview,msjTextview;
         CircleImageView userimage,user_state_img;
         LinearLayout userAnaLayout;
         ImageView messageImage;
@@ -196,6 +188,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             usernameTextview= (TextView)itemView.findViewById(R.id.usernameTextview);
             msjTextview=itemView.findViewById(R.id.msjTextview);
             messageImage=itemView.findViewById(R.id.messageImage);
+
             userimage= (CircleImageView)itemView.findViewById(R.id.userimage);
             user_state_img= (CircleImageView)itemView.findViewById(R.id.user_state_img);
             userAnaLayout=itemView.findViewById(R.id.userAnaLayout);
