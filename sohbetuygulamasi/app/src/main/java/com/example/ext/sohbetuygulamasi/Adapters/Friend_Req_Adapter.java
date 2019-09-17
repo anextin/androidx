@@ -82,6 +82,7 @@ public class Friend_Req_Adapter extends RecyclerView.Adapter<Friend_Req_Adapter.
                 if(!k1.getIsim().equals("null"))
                 {
                     Picasso.get().load(k1.getResim()).into(holder.friend_req_image);
+                    System.out.println("naaaboypos1: "+k1.getResim());
                     holder.friend_req_text.setText(k1.getIsim());
 
                     holder.friend_req_ekle.setOnClickListener(new View.OnClickListener() {

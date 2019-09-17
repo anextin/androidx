@@ -1,0 +1,218 @@
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:layout_height="match_parent"
+    android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff">
+    <!-- İki sütunlu birinci satır  -->
+    <TextView
+        android:text="SmartSDK Statistics"
+        android:gravity="center"
+        android:textSize="32dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"/>
+    <TextView
+        android:text="Hourly"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+    <TableRow
+        android:layout_marginTop="4dp"
+        android:id="@+id/baslik1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/TextView01" android:text="Current"
+            android:layout_weight="1"
+            android:textColor="#fff "
+            android:padding="10dip" android:gravity="center"/>
+        <TextView android:text="Current"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView android:text="Yesterday"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:text="Last Week"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+
+
+    </TableRow>
+    <TableRow
+
+
+        android:id="@+id/data1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:text="Sent"
+            android:background="@drawable/rect"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyCurrentSent" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyYesterdaySent" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyLastWeekSent" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/data2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+             android:text="Rejected"
+            android:layout_weight="1"
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyCurrentRejected" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyYesterdayRejected" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyLastWeekRejected" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/data3"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:text="Postponed"
+            android:layout_weight="1"
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyCurrentPostponed" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyYesterdayPostponed" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+        <TextView
+            android:id="@+id/HourlyLastWeekPostponed" android:text="123"
+            android:layout_weight="1"
+            android:textColor="#000000 "
+            android:background="@drawable/rect"
+            android:padding="10dip" android:gravity="center"/>
+
+
+    </TableRow><TableRow
+    android:id="@+id/data4"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:text="Accepted"
+        android:layout_weight="1"
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+    <TextView
+        android:id="@+id/HourlyCurrentAccepted" android:text="123"
+        android:layout_weight="1"
+        android:textColor="#000000 "
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+    <TextView
+        android:id="@+id/HourlyYesterdayAccepted" android:text="s123"
+        android:layout_weight="1"
+        android:textColor="#000000 "
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+    <TextView
+        android:id="@+id/HourlyLastWeekAccepted" android:text="123un1"
+        android:layout_weight="1"
+        android:textColor="#000000 "
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+
+
+</TableRow><TableRow
+    android:id="@+id/data5"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:text="Fulfilled"
+        android:layout_weight="1"
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+    <TextView
+        android:id="@+id/HourlyCurrentFullfilled" android:text="satn1"
+        android:layout_weight="1"
+        android:textColor="#000000 "
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+    <TextView
+        android:id="@+id/HourlyYesterdayFullfilled" android:text="satvn1"
+        android:layout_weight="1"
+        android:textColor="#000000 "
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+    <TextView
+        android:id="@+id/HourlyLastWeekFullfilled" android:text="s1231"
+        android:layout_weight="1"
+        android:textColor="#000000 "
+        android:background="@drawable/rect"
+        android:padding="10dip" android:gravity="center"/>
+
+
+</TableRow>
+
+
+    <Button
+        android:text="arda"
+        android:id="@+id/button"/>
+
+    <!-- Row 2 with 3 columns -->
+
+
+</TableLayout>

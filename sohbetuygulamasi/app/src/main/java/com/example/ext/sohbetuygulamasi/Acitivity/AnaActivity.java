@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.ext.sohbetuygulamasi.Fragments.AnaSayfaFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.BildirimFragment;
+import com.example.ext.sohbetuygulamasi.Fragments.FotoFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.KullaniciProfilFragment;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.example.ext.sohbetuygulamasi.R;
@@ -37,7 +38,7 @@ public class    AnaActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    changeFragment.change(new AnaSayfaFragment());
+                    changeFragment.change(new FotoFragment());
                     return true;
                 case R.id.navigation_dashboard:
                     changeFragment.change(new BildirimFragment());
