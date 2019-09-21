@@ -38,7 +38,10 @@ public class    AnaActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    changeFragment.change(new FotoFragment());
+             //       changeFragment.change(new AnaSayfaFragment());
+                    Intent intent= new Intent(AnaActivity.this,CardActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 case R.id.navigation_dashboard:
                     changeFragment.change(new BildirimFragment());

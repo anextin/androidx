@@ -35,6 +35,13 @@
             android:name=".Acitivity.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme"></activity>
+
+        <activity
+
+            android:name=".Acitivity.CardActivity"
+            android:label="@string/title_activity_kayit_ol"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
