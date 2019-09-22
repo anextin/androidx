@@ -34,6 +34,8 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.ext.sohbetuygulamasi.Card.ListItem.cardimage;
+
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
   List<String> userKeysList;
@@ -82,7 +84,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         user = auth.getCurrentUser();
         userId = user.getUid();
         Picasso.get().load(k1.getResim()).into(holder.cardimage);
-
       }
 
       @Override
