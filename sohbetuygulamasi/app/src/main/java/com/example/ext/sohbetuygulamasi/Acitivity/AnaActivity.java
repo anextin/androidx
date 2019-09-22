@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.ext.sohbetuygulamasi.Fragments.AnaSayfaFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.BildirimFragment;
+import com.example.ext.sohbetuygulamasi.Fragments.CardFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.FotoFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.KullaniciProfilFragment;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
@@ -39,9 +40,7 @@ public class    AnaActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
              //       changeFragment.change(new AnaSayfaFragment());
-                    Intent intent= new Intent(AnaActivity.this,CardActivity.class);
-                    startActivity(intent);
-                    finish();
+                    changeFragment.change(new CardFragment());
                     return true;
                 case R.id.navigation_dashboard:
                     changeFragment.change(new BildirimFragment());

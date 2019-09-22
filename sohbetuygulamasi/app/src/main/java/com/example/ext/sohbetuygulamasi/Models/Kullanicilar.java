@@ -9,17 +9,15 @@ public class Kullanicilar {
     public Kullanicilar() {
     }
 
-    public Kullanicilar(String dogumtarih, String egitim, String hakkimda, String isim, String resim, Object state, String cinsiyet, String irk, String ilce, String sehir, Object ilceNum,Object irkNum,Object cinsiyetNum) {
+    public Kullanicilar(String dogumtarih, String egitim,  String isim, String resim, Object state, String cinsiyet, String irk, String ilce, Object ilceNum,Object irkNum,Object cinsiyetNum) {
         this.dogumtarih = dogumtarih;
         this.egitim = egitim;
-        this.hakkimda = hakkimda;
         this.isim = isim;
         this.resim = resim;
         this.state = state;
         this.cinsiyet = cinsiyet;
         this.irk = irk;
         this.ilce = ilce;
-        this.sehir = sehir;
         this.ilceNum=ilceNum;
         this.irkNum=irkNum;
         this.cinsiyetNum=cinsiyetNum;
@@ -73,13 +71,7 @@ public class Kullanicilar {
         this.ilce = ilce;
     }
 
-    public String getSehir() {
-        return sehir;
-    }
 
-    public void setSehir(String sehir) {
-        this.sehir = sehir;
-    }
 
     public String getDogumtarih() {
         return dogumtarih;
@@ -97,13 +89,7 @@ public class Kullanicilar {
         this.egitim = egitim;
     }
 
-    public String getHakkimda() {
-        return hakkimda;
-    }
 
-    public void setHakkimda(String hakkimda) {
-        this.hakkimda = hakkimda;
-    }
 
     public String getIsim() {
         return isim;

@@ -6,24 +6,28 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.example.ext.sohbetuygulamasi.Adapters.MessageAdapter;
-import com.example.ext.sohbetuygulamasi.Adapters.UserAdapter;
 import com.example.ext.sohbetuygulamasi.Card.CardListAdapter;
 import com.example.ext.sohbetuygulamasi.Card.ListAdapter;
+import com.example.ext.sohbetuygulamasi.Models.CardModel;
+import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.Models.MessageModel;
 import com.example.ext.sohbetuygulamasi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import swipeable.com.layoutmanager.OnItemSwiped;
 import swipeable.com.layoutmanager.SwipeableLayoutManager;
 import swipeable.com.layoutmanager.SwipeableTouchHelperCallback;
@@ -31,25 +35,35 @@ import swipeable.com.layoutmanager.touchelper.ItemTouchHelper;
 
 public class CardActivity extends AppCompatActivity {
 
-    private ListAdapter adapter;
-    List<String> userKeysList;
+    ListAdapter adapter;
+    List<Object> userKeysList;
+    List<String> kullanicilarList;
     CardListAdapter cardlistadapter;
-    DatabaseReference reference,referenceSeen;
+    DatabaseReference reference;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
     FirebaseAuth auth;
     List<MessageModel> messageModelList;
-    RecyclerView chat_recycler_view;
+    RecyclerView chat_recycler_view,recycler_view;
     MessageAdapter messageAdapter;
     List<String> keyList;
+    ArrayList<Object> objectArrayList;
 
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
-        tanimla();
-        adapter = new ListAdapter();
+
+
+  //      adapter = new ListAdapter(keyList,CardActivity.this,CardActivity.this);
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        //benimkiler
+        tanimla();
+        kullanicilariGetir();
+
+
+
+
         SwipeableTouchHelperCallback swipeableTouchHelperCallback =
                 new SwipeableTouchHelperCallback(new OnItemSwiped() {
                     @Override public void onItemSwiped() {
@@ -84,7 +98,7 @@ public class CardActivity extends AppCompatActivity {
                 .setMaxShowCount(3)
                 .setScaleGap(0.1f)
                 .setTransYGap(0));
-        recyclerView.setAdapter(adapter = new ListAdapter());
+//        recyclerView.setAdapter(adapter = new ListAdapter(keyList,CardActivity.this,CardActivity.this));
 
         AppCompatButton button = findViewById(R.id.swipe);
         button.setOnClickListener(new View.OnClickListener() {
@@ -98,8 +112,65 @@ public class CardActivity extends AppCompatActivity {
     {
         auth= FirebaseAuth.getInstance();
         firebaseUser=auth.getCurrentUser();
-        firebaseDatabase= FirebaseDatabase.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
         reference=firebaseDatabase.getReference();
         keyList = new ArrayList<>();
+    }
+
+    public void kullanicilariGetir()
+    {
+        reference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+               Kullanicilar kullanicilar=dataSnapshot.getValue(Kullanicilar.class);
+                CardModel cardModel= dataSnapshot.getValue(CardModel.class);
+ //               System.out.println("adanakeyler0: "+cardModel.toString());
+   //            System.out.println("adanakeyler1: "+kullanicilar.toString());
+     //           System.out.println("adanakeyler2: "+ dataSnapshot.toString());
+       //         System.out.println("adanakeyler4: "+ dataSnapshot.child("resim").getValue());
+         //       System.out.println("adanakeyler3: "+ dataSnapshot.getKey().toString());
+                if(!dataSnapshot.toString().equals(null)) {
+         //           kullanicilarList.add((String) dataSnapshot.child("resim").toString());
+         //           kullanicilarList.add(cardModel.toString());
+          //          userKeysList.add(dataSnapshot.getKey());
+                    System.out.println("adanakeyler9: "+dataSnapshot.toString());
+         //           Map<String, Object> td = (HashMap<String,Object>) dataSnapshot.getValue();
+          //          System.out.println("adanakeyler5: "+td.toString());
+
+          //          GenericTypeIndicator<HashMap<String, Object>> objectsGTypeInd = new GenericTypeIndicator<HashMap<String, Object>>() {};
+          //          Map<String, Object> objectHashMap = dataSnapshot.getValue(objectsGTypeInd);
+           //         userKeysList = new ArrayList<Object>(objectHashMap.values());
+           //         System.out.println("adanakeyler6: "+userKeysList.size()+"....."+userKeysList.toString());
+//                    List<Object> values = (List<Object>) td.values();
+                }
+
+
+        //      kullanicilarList.add(dataSnapshot.toString());
+    //           adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
