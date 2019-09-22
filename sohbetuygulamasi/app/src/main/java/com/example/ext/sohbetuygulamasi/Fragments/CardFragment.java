@@ -1,5 +1,6 @@
 package com.example.ext.sohbetuygulamasi.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,16 +43,22 @@ import swipeable.com.layoutmanager.touchelper.ItemTouchHelper;
 public class CardFragment extends Fragment {
 
     private ListAdapter adapter;
+    List<String> userKeysList;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        adapter = new ListAdapter();
+
+  //      adapter = new ListAdapter(userKeysList,getActivity(),getContext());
         View view;
         view = inflater.inflate(R.layout.fragment_card, container, false);
         final RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        tanimla();
+        kullanicilariGetir();
         SwipeableTouchHelperCallback swipeableTouchHelperCallback =
                 new SwipeableTouchHelperCallback(new OnItemSwiped() {
                     @Override
@@ -92,7 +99,8 @@ public class CardFragment extends Fragment {
                 .setMaxShowCount(3)
                 .setScaleGap(0.1f)
                 .setTransYGap(0));
-        recyclerView.setAdapter(adapter = new ListAdapter());
+        System.out.println("adanakeyler14: " + userKeysList.size());
+        recyclerView.setAdapter(adapter = new ListAdapter(userKeysList,getActivity(),getContext()));
 
         AppCompatButton button = view.findViewById(R.id.swipe);
         button.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +110,68 @@ public class CardFragment extends Fragment {
             }
 
         });
+
         return view;
+    }
+
+
+    public void tanimla()
+    {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference=firebaseDatabase.getReference();
+        userKeysList= new ArrayList<>();
+    }
+
+    public void kullanicilariGetir() {
+
+
+
+        reference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //      Log.i( "keyler ",dataSnapshot.getKey());
+                reference.child("Kullanicilar").child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        Kullanicilar k1 = dataSnapshot.getValue(Kullanicilar.class);
+
+                        userKeysList.add(dataSnapshot.getKey());
+                        System.out.println("adanakeyler11: " + userKeysList.toString());
+                        System.out.println("adanakeyler15: " + userKeysList.size());
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
 

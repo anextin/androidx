@@ -168,6 +168,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     //adaptera olusturulucak olan listenin size ı burda olucak
     @Override
     public int getItemCount() {
+        System.out.println("adanakeyler13: " + userKeysList.size());
         return userKeysList.size();
     }
 
