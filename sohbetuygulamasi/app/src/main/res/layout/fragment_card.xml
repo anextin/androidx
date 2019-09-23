@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -11,12 +12,20 @@
         android:layout_above="@+id/swipe"
         android:orientation="vertical"
         >
-
     </android.support.v7.widget.RecyclerView>
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Mesaj At"
+        android:textStyle="bold"
+        android:textColor="#112d4e"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:background="#f9f7f7"
         android:layout_alignParentBottom="true"
         />
 </RelativeLayout>
