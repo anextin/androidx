@@ -72,7 +72,7 @@ public class    AnaActivity extends AppCompatActivity {
         kontrol();
 
         changeFragment= new ChangeFragment(AnaActivity.this);
-        changeFragment.change(new CardFragment());
+        changeFragment.change(new AnaSayfaFragment());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
