@@ -70,7 +70,7 @@ public class ArkadaslarFragment extends Fragment {
         reference.child(firebaseUser.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.i( "arda",dataSnapshot.getKey());
+                Log.i( "mersin",dataSnapshot.getKey());
 
                 if(keyList.indexOf(dataSnapshot.getKey())==-1)
                 {

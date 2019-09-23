@@ -78,8 +78,8 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
+                Log.i( "rize",dataSnapshot.getKey());
+                System.out.println("antalya: "+dataSnapshot.child("isim").getValue().toString() );
                 String userName =dataSnapshot.child("isim").getValue().toString();
                 String userImage = dataSnapshot.child("resim").getValue().toString();
 

@@ -9,10 +9,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:background="#dbe2ef"
+        android:orientation="vertical"
+        android:background="#f9f7f7"
         android:layout_alignParentTop="true"
-        android:layout_height="60dp">
+        android:layout_height="48dp">
 
 
         <TextView
@@ -26,17 +26,21 @@
             android:textColor="#112d4e"
             android:layout_gravity="center"
             android:text="Animal Tinder"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#112d4e"/>
 
     </LinearLayout>
 
 
 
         <FrameLayout
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="48dp"
             android:id="@+id/fragmentlayout"
             android:layout_width="match_parent"
             android:layout_marginBottom="60dp"
-            android:background="#f9f7f7"
+            android:background="#f7fbfc"
             android:layout_height="match_parent"
             ></FrameLayout>
 
@@ -47,7 +51,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
-        android:background="#dbe2ef"
+        android:background="#f9f7f7"
         app:menu="@menu/navigation" />
 
 </RelativeLayout>

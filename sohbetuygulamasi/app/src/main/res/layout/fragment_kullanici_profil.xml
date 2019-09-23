@@ -36,6 +36,7 @@
         android:id="@+id/kullaniciIsmi"
         android:enabled="true"
         android:hint="İsim"
+        android:maxLines="1"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="10dp"
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:textColor="#000"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="Temel Bilgiler"
         android:textStyle="bold"
         android:textSize="20dp"/>
@@ -55,23 +56,23 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/input_egitim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:hint="Sahip" />
 
     </android.support.design.widget.TextInputLayout>
 
 
         <LinearLayout
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-
             android:layout_marginBottom="12dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
@@ -92,7 +93,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_marginRight="20dp"
@@ -118,7 +119,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="12dp"
         android:layout_marginLeft="20dp"
         android:layout_height="wrap_content">
@@ -147,6 +148,7 @@
             <EditText
                 android:id="@+id/input_dogumTarihi"
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:hint="Not" />
 
@@ -160,7 +162,7 @@
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="12dp"
             android:layout_height="wrap_content">
             <Button
                 android:layout_width="60dp"
