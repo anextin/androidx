@@ -176,10 +176,19 @@ public class KullaniciProfilFragment extends Fragment {
                         Toast.makeText(getContext(),"resim guncellendi...", Toast.LENGTH_LONG).show();
 
 
+                        //     String hakkimda=input_hakkimda.getText().toString();
+                        String spinner_ilce=ilcespinner.getSelectedItem().toString();
+                        int spinner_ilceNum= (int) ilcespinner.getSelectedItemId();
+
+                        String spinner_irk=irkspinner.getSelectedItem().toString();
+                        int spinner_irkNum= (int) irkspinner.getSelectedItemId();
+
+                        String spinner_cinsiyet=cinsiyetspinner.getSelectedItem().toString();
+                        int spinner_cinsiyetNum= (int) cinsiyetspinner.getSelectedItemId();
                         String isim=kullaniciIsmi.getText().toString();
                         String egitim=input_egitim.getText().toString();
                         String dogum=input_dogumtarih.getText().toString();
-                        String hakkimda=input_hakkimda.getText().toString();
+//                        String hakkimda=input_hakkimda.getText().toString();
 
 
                         reference=database.getReference().child("Kullanicilar").child(auth.getUid());
@@ -188,7 +197,13 @@ public class KullaniciProfilFragment extends Fragment {
                         map.put("isim",isim);
                         map.put("egitim",egitim);
                         map.put("dogumtarih",dogum);
-                        map.put("hakkimda",hakkimda);
+                        map.put("ilce",spinner_ilce);
+                        map.put("ilceNum",spinner_ilceNum);
+                        map.put("irk",spinner_irk);
+                        map.put("irkNum",spinner_irkNum);
+                        map.put("cinsiyet",spinner_cinsiyet);
+                        map.put("cinsiyetNum",spinner_cinsiyetNum);
+                        map.put("state",true);
                         map.put("resim",task.getResult().getDownloadUrl().toString());
 
                         reference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
