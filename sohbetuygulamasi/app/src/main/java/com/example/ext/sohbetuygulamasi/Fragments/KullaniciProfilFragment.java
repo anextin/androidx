@@ -2,9 +2,13 @@ package com.example.ext.sohbetuygulamasi.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -37,6 +41,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +66,7 @@ public class KullaniciProfilFragment extends Fragment {
     Button bilgiGuncelleButton,bilgiArkadasButon,bilgiIstekButonu;
     StorageReference storageReference;
     FirebaseStorage firebaseStorage;
+    Bitmap  selectedImage;
 
 
     @Override
@@ -89,9 +99,10 @@ public class KullaniciProfilFragment extends Fragment {
         kullaniciIsmi= view.findViewById(R.id.kullaniciIsmi);
         input_egitim= view.findViewById(R.id.input_egitim);
         input_dogumtarih= view.findViewById(R.id.input_dogumTarihi);
-     //   input_hakkimda= view.findViewById(R.id.input_hakkimda);
+        //   input_hakkimda= view.findViewById(R.id.input_hakkimda);
         profile_image= view.findViewById(R.id.profile_image);
         bilgiGuncelleButton=view.findViewById(R.id.bilgiGuncelleButon);
+
 
 
 
@@ -166,8 +177,26 @@ public class KullaniciProfilFragment extends Fragment {
         if(requestCode==5 && resultCode== Activity.RESULT_OK)
         {
             Uri filePath = data.getData();
+            InputStream imageStream = null;
+            try {
+                imageStream = getActivity().getApplicationContext().getContentResolver().openInputStream(filePath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            selectedImage = BitmapFactory.decodeStream(imageStream);
+
+            selectedImage = getResizedBitmap(selectedImage, 400);// 400 is for example, replace with desired size
+
+
+            saveToInternalStorage(selectedImage);
+            isExternalStorageWritable();
+
+            Uri uri = Uri.fromFile(new File(saveToInternalStorage(selectedImage)));
+            System.out.println("mersinyersin9: "+"..."+saveToInternalStorage(selectedImage)+"....||||...."+filePath+"....||||...."+uri);
+
+
             StorageReference ref =storageReference.child("kullaniciresimleri").child(RandomName.getSaltString()+".jpg");
-            ref.putFile(filePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            ref.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
@@ -205,14 +234,15 @@ public class KullaniciProfilFragment extends Fragment {
                         map.put("cinsiyetNum",spinner_cinsiyetNum);
                         map.put("state",true);
                         map.put("resim",task.getResult().getDownloadUrl().toString());
+                        map.put("deneme",saveToInternalStorage(selectedImage).toString());
 
                         reference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()) {
-                                    ChangeFragment fragment = new ChangeFragment(getContext());
-                                    fragment.change(new KullaniciProfilFragment());
+                                    //                       ChangeFragment fragment = new ChangeFragment(getContext());
+                                    //                         fragment.change(new KullaniciProfilFragment());
                                     Toast.makeText(getContext(), "bilgiler basarili insert edildi...", Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(getContext(), "guncellenmedi..", Toast.LENGTH_LONG).show();
@@ -232,7 +262,20 @@ public class KullaniciProfilFragment extends Fragment {
     }
 
 
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
 
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
 
 
 
@@ -273,15 +316,15 @@ public class KullaniciProfilFragment extends Fragment {
                 {
                     input_dogumtarih.setText(k1.getDogumtarih());
                 }
-    //            input_egitim.setText(k1.getEgitim());
-      //          input_dogumtarih.setText(k1.getDogumtarih());
+                //            input_egitim.setText(k1.getEgitim());
+                //          input_dogumtarih.setText(k1.getDogumtarih());
 //                input_hakkimda.setText(k1.getHakkimda());
 
 
                 String ilceNum=k1.getIlceNum().toString();
                 Integer ilceNumresult = Integer.valueOf(ilceNum);
-     //           String spin =k1.getIlce().toString();
-     //           int num = (int) spinner.getSelectedItemId();
+                //           String spin =k1.getIlce().toString();
+                //           int num = (int) spinner.getSelectedItemId();
                 ilcespinner.setSelection(ilceNumresult);
 
                 if(k1.getIrkNum()==null)
@@ -330,7 +373,7 @@ public class KullaniciProfilFragment extends Fragment {
         String isim=kullaniciIsmi.getText().toString();
         String egitim=input_egitim.getText().toString();
         String dogum=input_dogumtarih.getText().toString();
-   //     String hakkimda=input_hakkimda.getText().toString();
+        //     String hakkimda=input_hakkimda.getText().toString();
         String spinner_ilce=ilcespinner.getSelectedItem().toString();
         int spinner_ilceNum= (int) ilcespinner.getSelectedItemId();
 
@@ -356,7 +399,7 @@ public class KullaniciProfilFragment extends Fragment {
         map.put("cinsiyet",spinner_cinsiyet);
         map.put("cinsiyetNum",spinner_cinsiyetNum);
         map.put("state",true);
- //       map.put("hakkimda",hakkimda);
+        //       map.put("hakkimda",hakkimda);
         if(imageUrl.equals("null"))
         {
             map.put("resim","null");
@@ -383,5 +426,40 @@ public class KullaniciProfilFragment extends Fragment {
 
             }
         });
+    }
+
+
+
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"profile.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return mypath.toString();
+    }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
     }
 }

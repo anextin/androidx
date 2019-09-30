@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.FilterFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/filtre"
+            android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/anasayfairkSpinner"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"></Spinner>
+            <Spinner
+                android:id="@+id/anasayfacinsiyetSpinner"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"></Spinner>
+            <Spinner
+                android:id="@+id/anasayfailceSpinner"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"></Spinner>
+
+
+        </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Uygula"
+        android:id="@+id/filtreleButton"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:textColor="#fff"/>
+
+
+</LinearLayout>
