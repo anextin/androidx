@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -51,6 +52,8 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class KullaniciProfilFragment extends Fragment {
 
@@ -67,7 +70,7 @@ public class KullaniciProfilFragment extends Fragment {
     StorageReference storageReference;
     FirebaseStorage firebaseStorage;
     Bitmap  selectedImage;
-
+    String spinner_ilce;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,6 +80,8 @@ public class KullaniciProfilFragment extends Fragment {
         ilcespinner =view.findViewById(R.id.ilceSpinner);
         irkspinner =view.findViewById(R.id.irkSpinner);
         cinsiyetspinner =view.findViewById(R.id.cinsiyetSpinner);
+
+
 
         tanimla();
         bilgileriGetir();
@@ -433,7 +438,7 @@ public class KullaniciProfilFragment extends Fragment {
     private String saveToInternalStorage(Bitmap bitmapImage){
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
         // path to /data/data/yourapp/app_data/imageDir
-        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        File directory = cw.getDir("imageDir", MODE_PRIVATE);
         // Create imageDir
         File mypath=new File(directory,"profile.jpg");
 

@@ -2,6 +2,7 @@ package com.example.ext.sohbetuygulamasi.Fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.Spinner;
 
 import com.example.ext.sohbetuygulamasi.Acitivity.CardActivity;
 import com.example.ext.sohbetuygulamasi.Adapters.UserAdapter;
+import com.example.ext.sohbetuygulamasi.Card.CardListAdapter;
 import com.example.ext.sohbetuygulamasi.Card.ListAdapter;
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.R;
@@ -46,6 +48,10 @@ public class CardFragment extends Fragment {
     List<String> userKeysList;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
+    FirebaseUser user;
+    FirebaseAuth auth;
+
+
 
 
     @Override
@@ -120,6 +126,12 @@ public class CardFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         reference=firebaseDatabase.getReference();
         userKeysList= new ArrayList<>();
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
+
+
+        // To load the data at a later time
+
     }
 
     public void kullanicilariGetir() {
@@ -134,11 +146,68 @@ public class CardFragment extends Fragment {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        Kullanicilar k1 = dataSnapshot.getValue(Kullanicilar.class);
+                        Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
 
-                        userKeysList.add(dataSnapshot.getKey());
-                        System.out.println("adanakeyler11: " + userKeysList.toString());
-                        System.out.println("adanakeyler15: " + userKeysList.size());
+                        //asagıdaki sartların amacları:
+                        //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
+
+                        SharedPreferences prefs = getContext().getSharedPreferences("giris",0);
+                        String loadedspinner_ilce = prefs.getString("spinner_ilce", null);
+                        String loadedspinner_irk = prefs.getString("spinner_irk", null);
+                        String loadedspinner_cinsiyet = prefs.getString("spinner_cinsiyet", null);
+                        int loadedspinner_ilceNum = prefs.getInt("spinner_ilceNum", 0);
+                        int loadedspinner_irkNum = prefs.getInt("spinner_irkNum", 0);
+                        int loadedspinner_cinsiyetNum = prefs.getInt("spinner_cinsiyetNum", 0);
+
+                        System.out.println("kayseriii: "+"..."+loadedspinner_ilce+"..."+loadedspinner_irk+"..."+loadedspinner_cinsiyet+"..."+loadedspinner_ilceNum+"..."+loadedspinner_irkNum+"..."+loadedspinner_cinsiyetNum);
+
+                        if (k1.getIlce().equals(loadedspinner_ilce) && k1.getIrk().equals(loadedspinner_irk) && k1.getCinsiyet().equals(loadedspinner_cinsiyet) && !dataSnapshot.getKey().equals(user.getUid()) && !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (k1.getIlce().equals(loadedspinner_ilce) && loadedspinner_irk.equals("Tümü") && loadedspinner_cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (loadedspinner_ilce.equals("Tümü") && k1.getIrk().equals(loadedspinner_irk) && loadedspinner_cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (loadedspinner_ilce.equals("Tümü") && loadedspinner_irk.equals("Tümü") && k1.getCinsiyet().equals(loadedspinner_cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+
+                        else if (k1.getIlce().equals(loadedspinner_ilce) && k1.getIrk().equals(loadedspinner_irk) && loadedspinner_cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (k1.getIlce().equals(loadedspinner_ilce) && loadedspinner_irk.equals("Tümü") && k1.getCinsiyet().equals(loadedspinner_cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+                        else if (loadedspinner_ilce.equals("Tümü") && k1.getIrk().equals(loadedspinner_irk) && k1.getCinsiyet().equals(loadedspinner_cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                            }
+                        }
+
+
+                        else if(loadedspinner_ilce.equals("Tümü")&&loadedspinner_irk.equals("Tümü")&&loadedspinner_cinsiyet.equals("Tümü")&& !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
+                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
+                                userKeysList.add(dataSnapshot.getKey());
+                                System.out.println("adanakeyler8: "+userKeysList.toString());
+                            }
+                        }
+
+
+
                         adapter.notifyDataSetChanged();
                     }
 

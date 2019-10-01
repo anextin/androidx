@@ -1,6 +1,7 @@
 package com.example.ext.sohbetuygulamasi.Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -85,11 +86,24 @@ public class AnaSayfaFragment extends Fragment {
         kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
         //     kullanicilariGetir();
         return view;
+
+
+
     }
 
 
     public void tanimla()
     {
+        // To load the data at a later time
+        SharedPreferences prefs = getContext().getSharedPreferences("giris",0);
+        String loadedspinner_ilce = prefs.getString("spinner_ilce", null);
+        String loadedspinner_irk = prefs.getString("spinner_irk", null);
+        String loadedspinner_cinsiyet = prefs.getString("spinner_cinsiyet", null);
+        int loadedspinner_ilceNum = prefs.getInt("spinner_ilceNum", 0);
+        int loadedspinner_irkNum = prefs.getInt("spinner_irkNum", 0);
+        int loadedspinner_cinsiyetNum = prefs.getInt("spinner_cinsiyetNum", 0);
+
+        System.out.println("amasyaa2: "+"..."+loadedspinner_ilce+"..."+loadedspinner_irk+"..."+loadedspinner_cinsiyet+"..."+loadedspinner_ilceNum+"..."+loadedspinner_irkNum+"..."+loadedspinner_cinsiyetNum);
 
         final String ilceler[]={"Tümü","Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
 
