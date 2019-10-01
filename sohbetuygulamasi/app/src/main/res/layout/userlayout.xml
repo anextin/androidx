@@ -52,7 +52,6 @@
                         android:id="@+id/usernameTextview"
                         android:layout_weight="1"
                         android:textStyle="bold"
-                        android:text="arda"
                         android:textSize="16dp"
                         android:layout_gravity="center"/>
 

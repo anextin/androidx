@@ -127,7 +127,7 @@ public class FilterFragment extends Fragment {
         editor.putInt("spinner_irkNum",spinner_irkNum);
         editor.putInt("spinner_cinsiyetNum",spinner_cinsiyetNum);
         System.out.println("amasyaa3: "+"..."+spinner_ilce+"..."+spinner_irk+"..."+spinner_cinsiyet+"..."+spinner_ilceNum+"..."+spinner_irkNum+"..."+spinner_cinsiyetNum);
-        editor.commit();
+        editor.apply();
 
 //        sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
   //      uye_id=sharedPreferences.getString("uye_id",null);

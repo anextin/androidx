@@ -50,6 +50,12 @@ public class CardFragment extends Fragment {
     DatabaseReference reference;
     FirebaseUser user;
     FirebaseAuth auth;
+    String loadedspinner_ilce ="Tümü";
+    String loadedspinner_irk ="Tümü";
+    String loadedspinner_cinsiyet="Tümü";
+    int loadedspinner_ilceNum = 0;
+    int loadedspinner_irkNum = 0;
+    int loadedspinner_cinsiyetNum=0;
 
 
 
@@ -58,6 +64,14 @@ public class CardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+
+        SharedPreferences prefs = getContext().getSharedPreferences("giris",Context.MODE_PRIVATE);
+        loadedspinner_ilce = prefs.getString("spinner_ilce", null);
+        loadedspinner_irk = prefs.getString("spinner_irk", null);
+        loadedspinner_cinsiyet = prefs.getString("spinner_cinsiyet", null);
+        loadedspinner_ilceNum = prefs.getInt("spinner_ilceNum", 0);
+        loadedspinner_irkNum = prefs.getInt("spinner_irkNum", 0);
+        loadedspinner_cinsiyetNum = prefs.getInt("spinner_cinsiyetNum", 0);
 
   //      adapter = new ListAdapter(userKeysList,getActivity(),getContext());
         View view;
@@ -129,7 +143,6 @@ public class CardFragment extends Fragment {
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
 
-
         // To load the data at a later time
 
     }
@@ -151,13 +164,7 @@ public class CardFragment extends Fragment {
                         //asagıdaki sartların amacları:
                         //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
 
-                        SharedPreferences prefs = getContext().getSharedPreferences("giris",0);
-                        String loadedspinner_ilce = prefs.getString("spinner_ilce", null);
-                        String loadedspinner_irk = prefs.getString("spinner_irk", null);
-                        String loadedspinner_cinsiyet = prefs.getString("spinner_cinsiyet", null);
-                        int loadedspinner_ilceNum = prefs.getInt("spinner_ilceNum", 0);
-                        int loadedspinner_irkNum = prefs.getInt("spinner_irkNum", 0);
-                        int loadedspinner_cinsiyetNum = prefs.getInt("spinner_cinsiyetNum", 0);
+
 
                         System.out.println("kayseriii: "+"..."+loadedspinner_ilce+"..."+loadedspinner_irk+"..."+loadedspinner_cinsiyet+"..."+loadedspinner_ilceNum+"..."+loadedspinner_irkNum+"..."+loadedspinner_cinsiyetNum);
 

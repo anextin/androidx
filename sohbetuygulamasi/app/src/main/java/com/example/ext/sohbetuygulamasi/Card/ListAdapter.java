@@ -3,6 +3,7 @@ package com.example.ext.sohbetuygulamasi.Card;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +92,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
       }
     });
+
+
+    holder.listadapterlayout.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ChangeFragment fragment= new ChangeFragment(context);
+        fragment.changeWithParameter(new OtherProfileFragment(),userKeysList.get(position));
+      }
+    });
   }
 
   //adaptera olusturulucak olan listenin size ı burda olucak
@@ -107,13 +117,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     TextView usernameTextview,msjTextview;
     ImageView cardimage;
-
+    CardView listadapterlayout;
 
     ViewHolder(View itemView)
     {
       super(itemView);
       usernameTextview= (TextView)itemView.findViewById(R.id.usernameTextview);
       cardimage=itemView.findViewById(R.id.cardimage);
+      listadapterlayout=itemView.findViewById(R.id.listadapterlayout);
     }
   }
   public void removeTopItem() {
