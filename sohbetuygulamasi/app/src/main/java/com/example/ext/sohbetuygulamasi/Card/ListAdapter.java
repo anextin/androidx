@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
   FirebaseAuth auth;
   FirebaseUser user;
   String userId="0",lastMes,ccc;
+  Button cardmsjat;
 
 
 
@@ -94,7 +96,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     });
 
 
-    holder.listadapterlayout.setOnClickListener(new View.OnClickListener() {
+    holder.cardmsjat.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         ChangeFragment fragment= new ChangeFragment(context);
@@ -118,6 +120,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     TextView usernameTextview,msjTextview;
     ImageView cardimage;
     CardView listadapterlayout;
+    Button cardmsjat;
 
     ViewHolder(View itemView)
     {
@@ -125,6 +128,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
       usernameTextview= (TextView)itemView.findViewById(R.id.usernameTextview);
       cardimage=itemView.findViewById(R.id.cardimage);
       listadapterlayout=itemView.findViewById(R.id.listadapterlayout);
+      cardmsjat=itemView.findViewById(R.id.cardmsjat);
     }
   }
   public void removeTopItem() {

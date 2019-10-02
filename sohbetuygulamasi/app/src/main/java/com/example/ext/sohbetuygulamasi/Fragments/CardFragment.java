@@ -24,6 +24,7 @@ import com.example.ext.sohbetuygulamasi.Card.CardListAdapter;
 import com.example.ext.sohbetuygulamasi.Card.ListAdapter;
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.R;
+import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -56,7 +57,8 @@ public class CardFragment extends Fragment {
     int loadedspinner_ilceNum = 0;
     int loadedspinner_irkNum = 0;
     int loadedspinner_cinsiyetNum=0;
-
+    Button cardmsjat;
+    View view;
 
 
 
@@ -122,14 +124,7 @@ public class CardFragment extends Fragment {
         System.out.println("adanakeyler14: " + userKeysList.size());
         recyclerView.setAdapter(adapter = new ListAdapter(userKeysList,getActivity(),getContext()));
 
-        AppCompatButton button = view.findViewById(R.id.swipe);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemTouchHelper.swipe(recyclerView.findViewHolderForAdapterPosition(0), ItemTouchHelper.DOWN);
-            }
 
-        });
 
         return view;
     }
@@ -142,8 +137,14 @@ public class CardFragment extends Fragment {
         userKeysList= new ArrayList<>();
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-
-        // To load the data at a later time
+   //     cardmsjat=view.findViewById(R.id.cardmsjat);
+   //     cardmsjat.setOnClickListener(new View.OnClickListener() {
+   //         @Override
+     //       public void onClick(View v) {
+    //            ChangeFragment changeFragment= new ChangeFragment((getContext()));
+     //           changeFragment.changeWithParameter(new OtherProfileFragment(),userKeysList.get(position));
+      //      }
+     //   });
 
     }
 

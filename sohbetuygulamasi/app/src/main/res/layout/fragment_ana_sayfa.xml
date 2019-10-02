@@ -6,90 +6,13 @@
     android:orientation="vertical"
     tools:context=".Fragments.AnaSayfaFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:background="@drawable/tttt"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:layout_marginLeft="4dp"
-                android:textSize="20dp"
-                android:textColor="#000000"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:textSize="12dp"
-                android:textColor="#000000"
-                android:gravity="center"
-                android:text="Filtrele"/>
-
-
-        <Button
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:id="@+id/filterAc"
-            android:background="@drawable/filtre"/>
-
-        </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="vertical"
         android:id="@+id/filtre"
         android:layout_height="wrap_content">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/filtre"
-            android:layout_height="wrap_content">
-        <Spinner
-            android:id="@+id/anasayfairkSpinner"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"></Spinner>
-        <Spinner
-            android:id="@+id/anasayfacinsiyetSpinner"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"></Spinner>
-        <Spinner
-            android:id="@+id/anasayfailceSpinner"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"></Spinner>
-
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="Uygula"
-                android:id="@+id/filtreleButton"
-                android:layout_gravity="right"
-                android:layout_marginRight="20dp"
-                android:textColor="#fff"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

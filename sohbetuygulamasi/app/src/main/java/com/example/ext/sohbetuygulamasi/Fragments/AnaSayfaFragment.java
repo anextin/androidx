@@ -56,11 +56,6 @@ public class AnaSayfaFragment extends Fragment {
     UserAdapter userAdapter;
     FirebaseAuth auth;
     FirebaseUser user;
-    Button filtreleButton , filterAc;
-    public String spinner_ilce="Tümü";
-    public String spinner_irk="Tümü";
-    public String spinner_cinsiyet="Tümü";
-    public LinearLayout filtre;
 
 
     public int spinner_ilceNum;
@@ -74,17 +69,8 @@ public class AnaSayfaFragment extends Fragment {
 
 
         view= inflater.inflate(R.layout.fragment_ana_sayfa, container, false);
-
-        filtre=view.findViewById(R.id.filtre);
-        filtre.setVisibility(filtre.INVISIBLE);
-        ilcespinner =view.findViewById(R.id.anasayfailceSpinner);
-        irkspinner =view.findViewById(R.id.anasayfairkSpinner);
-        cinsiyetspinner =view.findViewById(R.id.anasayfacinsiyetSpinner);
-        filtreleButton=view.findViewById(R.id.filtreleButton);
-        filterAc=view.findViewById(R.id.filterAc);
         tanimla();
-        kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
-        //     kullanicilariGetir();
+        kullanicilariGetir();
         return view;
 
 
@@ -94,14 +80,6 @@ public class AnaSayfaFragment extends Fragment {
 
     public void tanimla()
     {
-
-
-
-        final String ilceler[]={"Tümü","Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
-
-        final String irk[]={"Tümü","golden","pug","doberman","kurt"};
-
-        final String cinsiyet[]={"Tümü","Erkek","Dişi"};
 
 
         userKeysList= new ArrayList<>();
@@ -116,58 +94,11 @@ public class AnaSayfaFragment extends Fragment {
         userListRecyclerView.setAdapter(userAdapter);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();   //kendinin gosterilmemesi icin
-
-
-        ArrayAdapter<String> ilcelerdataAdapter= new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item, ilceler);
-        ilcelerdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ilcespinner.setAdapter(ilcelerdataAdapter);
-
-        ArrayAdapter<String> irkdataAdapter= new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item, irk);
-        irkdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        irkspinner.setAdapter(irkdataAdapter);
-
-        ArrayAdapter<String> cinsiyetdataAdapter= new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item, cinsiyet);
-        cinsiyetdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cinsiyetspinner.setAdapter(cinsiyetdataAdapter);
-
-        filtreleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String spinner_ilce=ilcespinner.getSelectedItem().toString();
-                int spinner_ilceNum= (int) ilcespinner.getSelectedItemId();
-
-                String spinner_irk=irkspinner.getSelectedItem().toString();
-                int spinner_irkNum= (int) irkspinner.getSelectedItemId();
-
-                String spinner_cinsiyet=cinsiyetspinner.getSelectedItem().toString();
-                int spinner_cinsiyetNum= (int) cinsiyetspinner.getSelectedItemId();
-                //      filtrele(spinner_ilce,spinner_irk,spinner_cinsiyet);
-                kullanicilariGetir(spinner_ilce,spinner_irk,spinner_cinsiyet);
-                userKeysList.clear();
-
-            }
-        });
-
-        filterAc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(filtre.getVisibility()==View.VISIBLE)
-                {
-                    filtre.setVisibility(filtre.INVISIBLE);
-                }
-                else
-                {
-                    filtre.setVisibility(filtre.VISIBLE);
-                }
-            }
-        });
-
-
     }
 
 
 
-    public void kullanicilariGetir(final String ilce, final String irk, final String cinsiyet)
+    public void kullanicilariGetir()
     {
         reference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
             @Override
@@ -184,48 +115,10 @@ public class AnaSayfaFragment extends Fragment {
 
 
 
-                        if (k1.getIlce().equals(ilce) && k1.getIrk().equals(irk) && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid()) && !k1.getIsim().equals("null")) {
+                        if(!dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
                             if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
                                 userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
-                        else if (k1.getIlce().equals(ilce) && irk.equals("Tümü") && cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
-                        else if (ilce.equals("Tümü") && k1.getIrk().equals(irk) && cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
-                        else if (ilce.equals("Tümü") && irk.equals("Tümü") && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
 
-                        else if (k1.getIlce().equals(ilce) && k1.getIrk().equals(irk) && cinsiyet.equals("Tümü") && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
-                        else if (k1.getIlce().equals(ilce) && irk.equals("Tümü") && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
-                        else if (ilce.equals("Tümü") && k1.getIrk().equals(irk) && k1.getCinsiyet().equals(cinsiyet) && !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                            }
-                        }
-
-
-                        else if(ilce.equals("Tümü")&&irk.equals("Tümü")&&cinsiyet.equals("Tümü")&& !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-                                System.out.println("adanakeyler8: "+userKeysList.toString());
                             }
                         }
 

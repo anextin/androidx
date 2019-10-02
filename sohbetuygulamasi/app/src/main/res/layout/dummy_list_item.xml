@@ -17,6 +17,13 @@
         android:id="@+id/cardimage"
         android:scaleType="fitXY"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="mesaj at"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/cardmsjat"/>
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"

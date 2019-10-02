@@ -18,7 +18,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#f9ed69"
+            app:titleTextColor="#4a4a4a"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -33,7 +34,7 @@
             android:id="@+id/fragmentlayout"
             android:layout_width="match_parent"
             android:layout_marginBottom="60dp"
-            android:background="#f7fbfc"
+            android:background="#f3f3f3"
             android:layout_height="match_parent"
             ></FrameLayout>
 
@@ -44,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
-        android:background="#f9f7f7"
+        android:background="#f9ed69"
         app:menu="@menu/navigation" />
 
 </RelativeLayout>
