@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#feb209"
+    android:background="@drawable/backm4"
     android:orientation="vertical"
     tools:context=".Acitivity.KayitOlActivity">
 
@@ -21,7 +21,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="480dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="52dp"
             android:orientation="vertical"
             android:paddingLeft="20.7dp">
 
@@ -42,10 +42,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="57.7dp"
-                    android:text="LOGIN"
+                    android:layout_marginTop="37.7dp"
+                    android:layout_gravity="center"
+                    android:text="petdate"
                     android:textColor="#030303"
                     android:textSize="31.3sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REGISTER"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#222831"
+                    android:textSize="21.3sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
