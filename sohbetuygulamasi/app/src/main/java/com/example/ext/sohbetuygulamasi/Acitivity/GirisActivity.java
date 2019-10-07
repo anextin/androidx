@@ -85,7 +85,7 @@ public class GirisActivity extends AppCompatActivity {
 
                 if(task.isSuccessful())
                 {
-                    Intent intent= new Intent(GirisActivity.this,AnaActivity.class);
+                    Intent intent= new Intent(GirisActivity.this,SplashActivity.class);
                     startActivity(intent);
                     finish();
                 }

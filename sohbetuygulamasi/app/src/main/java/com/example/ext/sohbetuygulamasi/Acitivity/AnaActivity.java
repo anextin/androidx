@@ -45,20 +45,16 @@ public class    AnaActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
 
-                case R.id.navigation_home:
-             //       changeFragment.change(new AnaSayfaFragment());
-                    changeFragment.change(new AnaSayfaFragment());
-                    return true;
-
                 case R.id.petbul:
                     //       changeFragment.change(new AnaSayfaFragment());
                     changeFragment.change(new CardFragment());
                     return true;
 
-                case R.id.navigation_dashboard:
-                    changeFragment.change(new BildirimFragment());
-
+                case R.id.navigation_home:
+             //       changeFragment.change(new AnaSayfaFragment());
+                    changeFragment.change(new AnaSayfaFragment());
                     return true;
+
                 case R.id.navigation_profil:
                     changeFragment.change(new KullaniciProfilFragment());
                     return true;
@@ -82,7 +78,8 @@ public class    AnaActivity extends AppCompatActivity {
         kontrol();
 
         changeFragment= new ChangeFragment(AnaActivity.this);
-        changeFragment.change(new AnaSayfaFragment());
+  //      changeFragment.change(new AnaSayfaFragment());
+        changeFragment.change(new CardFragment());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
