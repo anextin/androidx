@@ -1,6 +1,7 @@
 package com.example.ext.sohbetuygulamasi.Acitivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -26,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+
 
 public class    AnaActivity extends AppCompatActivity {
 
@@ -74,7 +77,6 @@ public class    AnaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         tanimla();
         kontrol();

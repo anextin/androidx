@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="mesaj at"
+        android:text="Mesaj At"
+        android:textColor="#010101"
         android:layout_alignParentBottom="true"
         android:id="@+id/cardmsjat"/>
     <TextView
