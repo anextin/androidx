@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
+import com.example.ext.sohbetuygulamasi.Models.MessageModel;
 import com.example.ext.sohbetuygulamasi.R;
 
 
@@ -50,13 +51,14 @@ public class AnaSayfaFragment extends Fragment {
     Spinner ilcespinner,irkspinner,cinsiyetspinner;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
-    List<String> userKeysList;
+    List<String> userKeysList,mesajList,KullanicilarList;
     RecyclerView userListRecyclerView;
     View view;
     UserAdapter userAdapter;
     FirebaseAuth auth;
     FirebaseUser user;
-
+    String userId;
+    int c=0;
 
     public int spinner_ilceNum;
     public int spinner_irkNum;
@@ -70,7 +72,9 @@ public class AnaSayfaFragment extends Fragment {
 
         view= inflater.inflate(R.layout.fragment_ana_sayfa, container, false);
         tanimla();
+        mesajlar();
         kullanicilariGetir();
+        karsilastirma();
         return view;
 
 
@@ -83,6 +87,8 @@ public class AnaSayfaFragment extends Fragment {
 
 
         userKeysList= new ArrayList<>();
+        mesajList= new ArrayList<>();
+        KullanicilarList= new ArrayList<>();
         firebaseDatabase = FirebaseDatabase.getInstance();
         reference=firebaseDatabase.getReference();
 
@@ -94,44 +100,30 @@ public class AnaSayfaFragment extends Fragment {
         userListRecyclerView.setAdapter(userAdapter);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();   //kendinin gosterilmemesi icin
+        userId=user.getUid();
     }
 
 
 
     public void kullanicilariGetir()
     {
-        reference.child("Kullanicilar").addChildEventListener(new ChildEventListener() {
+        reference.child("Mesajlar").child(userId).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //      Log.i( "keyler ",dataSnapshot.getKey());
-                reference.child("Kullanicilar").child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
+                MessageModel m1= dataSnapshot.getValue(MessageModel.class);
+                System.out.println("ankara: " +dataSnapshot.getKey());
 
-                        //asagıdaki sartların amacları:
-                        //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
+                if(!dataSnapshot.getKey().equals(user.getUid()))
+                {
+                    userKeysList.add(dataSnapshot.getKey());
 
+                }
 
-
-                        if(!dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
-                            if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
-                                userKeysList.add(dataSnapshot.getKey());
-
-                            }
-                        }
+                userAdapter.notifyDataSetChanged();
 
 
-
-                        userAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                //  System.out.println("ankara3: ___"+x+"????");
 
 
             }
@@ -160,7 +152,65 @@ public class AnaSayfaFragment extends Fragment {
     }
 
 
+    public void mesajlar()
+    {
+        reference.child("Mesajlar").child(userId).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+                MessageModel m1= dataSnapshot.getValue(MessageModel.class);
+                System.out.println("ıgdır1: " +dataSnapshot.getKey() +"____________userId: "+userId);
+
+                if(!dataSnapshot.getKey().equals(user.getUid()))
+                {
+
+                        mesajList.add(dataSnapshot.getKey());
+
+
+ //                   mesajList.add(dataSnapshot.getKey());
+                    System.out.println("ıgdır: " +mesajList);
+
+                }
+
+
+
+                //  System.out.println("ankara3: ___"+x+"????");
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void karsilastirma()
+    {
+
+        for(int x=0; x<c; x++)
+        {
+            KullanicilarList.get(x).equals(mesajList);
+            //userKeysList,mesajList,KullanicilarList;
+        }
+
+    }
 
 
 }

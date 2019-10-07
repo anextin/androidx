@@ -136,7 +136,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                 Boolean userState = Boolean.parseBoolean(dataSnapshot.child("state").getValue().toString());
                 Picasso.get().load(k1.getResim()).into(holder.userimage);
-                holder.usernameTextview.setText(k1.getIsim());
+              holder.usernameTextview.setText(k1.getIsim());
 
 
                 if(userState==true)

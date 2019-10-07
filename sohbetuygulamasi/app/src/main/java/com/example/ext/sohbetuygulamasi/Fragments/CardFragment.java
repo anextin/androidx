@@ -121,7 +121,7 @@ public class CardFragment extends Fragment {
                 .setMaxShowCount(3)
                 .setScaleGap(0.1f)
                 .setTransYGap(0));
-        System.out.println("adanakeyler14: " + userKeysList.size());
+    //    System.out.println("adanakeyler14: " + userKeysList.size());
         recyclerView.setAdapter(adapter = new ListAdapter(userKeysList,getActivity(),getContext()));
 
 
@@ -161,7 +161,7 @@ public class CardFragment extends Fragment {
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         Kullanicilar k1= dataSnapshot.getValue(Kullanicilar.class);
-
+                        Log.i( "sisesu ",k1.getIsim());
                         //asagıdaki sartların amacları:
                         //1-kullanıcı ismi girmemis kisiyi kullanıcılar listesine almıyoruz ve hesabını kullanıcı listesinde kullanmıyoruz
 
@@ -210,7 +210,7 @@ public class CardFragment extends Fragment {
                         else if(loadedspinner_ilce.equals("Tümü")&&loadedspinner_irk.equals("Tümü")&&loadedspinner_cinsiyet.equals("Tümü")&& !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
                             if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
                                 userKeysList.add(dataSnapshot.getKey());
-                                System.out.println("adanakeyler8: "+userKeysList.toString());
+          //                      System.out.println("adanakeyler8: "+userKeysList.toString());
                             }
                         }
 
