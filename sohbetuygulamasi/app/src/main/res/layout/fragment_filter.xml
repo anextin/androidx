@@ -8,55 +8,59 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Ana Ekrandaki pet adaylarınızı buradan filtreleyebilirsiniz"/>
     <LinearLayout
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:layout_width="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="120dp"
             android:text="Irk"
-            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:gravity="left"
             android:layout_height="match_parent"></TextView>
+        <Spinner
+            android:id="@+id/filterirkSpinner"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"></Spinner>
         <TextView
             android:text="Cinsiyet"
-            android:gravity="center"
+            android:gravity="left"
+            android:layout_marginTop="60dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
             android:layout_width="120dp"
             android:layout_height="match_parent"></TextView>
+        <Spinner
+            android:id="@+id/filtercinsiyetSpinner"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"></Spinner>
         <TextView
             android:text="İlçe"
-            android:gravity="center"
+            android:gravity="left"
+            android:layout_marginTop="60dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
             android:layout_width="120dp"
             android:layout_height="match_parent"></TextView>
+        <Spinner
+            android:id="@+id/filterilceSpinner"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"></Spinner>
 
 
     </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="100dp"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content">
-            <Spinner
-                android:id="@+id/filterirkSpinner"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"></Spinner>
-            <Spinner
-                android:id="@+id/filtercinsiyetSpinner"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"></Spinner>
-            <Spinner
-                android:id="@+id/filterilceSpinner"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"></Spinner>
-
-
-        </LinearLayout>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

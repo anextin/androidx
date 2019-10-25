@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -23,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.ext.sohbetuygulamasi.Acitivity.AnaActivity;
 import com.example.ext.sohbetuygulamasi.Models.Kullanicilar;
 import com.example.ext.sohbetuygulamasi.R;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
@@ -31,7 +31,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,7 +54,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class KullaniciProfilFragment extends Fragment {
+public class IlkKayitFragment extends Fragment {
 
     Spinner ilcespinner,irkspinner,cinsiyetspinner;
     String imageUrl;
@@ -69,7 +68,7 @@ public class KullaniciProfilFragment extends Fragment {
     Button bilgiGuncelleButton,bilgiArkadasButon,bilgiIstekButonu;
     StorageReference storageReference;
     FirebaseStorage firebaseStorage;
-    Bitmap  selectedImage;
+    Bitmap selectedImage;
     String spinner_ilce;
 
     @Override
@@ -245,15 +244,14 @@ public class KullaniciProfilFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
-                                if (task.isSuccessful())
-                                {
-                                                           ChangeFragment fragment = new ChangeFragment(getContext());
-                                                           fragment.change(new KullaniciProfilFragment());
-                                    Toast.makeText(getContext(), "Bilgiler Kaydedildi..", Toast.LENGTH_LONG).show();
-                                }
-                                else
-                                    {
-                                    Toast.makeText(getContext(), "Bilgiler Kaydedilemedi..", Toast.LENGTH_LONG).show();
+                                if (task.isSuccessful()) {
+                                    //                       ChangeFragment fragment = new ChangeFragment(getContext());
+                                    //                         fragment.change(new KullaniciProfilFragment());
+                                    Toast.makeText(getContext(), "bilgiler basarili insert edildi...", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getActivity(), AnaActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getContext(), "guncellenmedi..", Toast.LENGTH_LONG).show();
                                 }
 
                             }
@@ -262,7 +260,7 @@ public class KullaniciProfilFragment extends Fragment {
 
                     else
                     {
-                        Toast.makeText(getContext(),"Resim Güncellenemedi..", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"resim guncellenmedi..", Toast.LENGTH_LONG).show();
                     }
                 }
             });

@@ -27,7 +27,7 @@ public class GirisActivity extends AppCompatActivity {
 
     private EditText input_email_login;
     private EditText input_password_login;
-    private ImageView loginButon;
+    private Button loginButon;
     private TextView hesapYok;
     FirebaseAuth auth;
 
@@ -60,7 +60,7 @@ public class GirisActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"bos girme ilkos..",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Alanları Doldurunuz..",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -91,7 +91,7 @@ public class GirisActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"hatali girdin ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Hatalı Giriş Yaptınız ",Toast.LENGTH_LONG).show();
                 }
             }
         });

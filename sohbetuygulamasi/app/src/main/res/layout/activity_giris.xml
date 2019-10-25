@@ -42,8 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="37.7dp"
-                    android:layout_gravity="center"
-                    android:text="petdate"
+                    android:layout_gravity="left"
+                    android:text="PetDate"
                     android:textColor="#030303"
                     android:textSize="31.3sp" />
                 <TextView
@@ -164,11 +164,12 @@
                     android:orientation="vertical">
 
 
-                    <ImageView
-                        android:layout_width="18.7dp"
+                    <Button
+                        android:layout_width="24.7dp"
                         android:id="@+id/loginButon"
                         android:clickable="true"
-                        android:layout_height="15.3dp"
+                        android:background="@drawable/black_arrow"
+                        android:layout_height="19.3dp"
                         android:src="@drawable/black_arrow" />
 
                 </LinearLayout>
@@ -207,7 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_horizontal"
-                android:text="Signin"
+                android:text="Sign up"
                 android:id="@+id/hesapYok"
                 android:textColor="#ffffff"
                 android:textSize="15sp" />

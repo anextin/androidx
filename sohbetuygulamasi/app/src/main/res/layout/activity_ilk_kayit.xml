@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.IlkKayitActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:layout_above="@+id/navigation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil Fotoğrafınızı seçin:"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_height="200dp"
+                android:src="@drawable/defaultprofile"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/kullaniciIsmi"
+                android:enabled="true"
+                android:hint="İsim"
+                android:singleLine="true"
+                android:inputType="text"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Temel Bilgiler"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_egitim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:hint="Sahip" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:hint="Irk"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/irkSpinner"
+                    android:layout_weight="8"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></Spinner>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="12dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:hint="Cinsiyet"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/cinsiyetSpinner"
+                    android:layout_weight="8"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></Spinner>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:hint="Semt"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/ilceSpinner"
+                    android:layout_weight="8"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></Spinner>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_dogumTarihi"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Not" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
+                    android:background="#6c7b95"
+                    android:textSize="8dp"
+
+                    android:textColor="#fff"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="32dp"
+                    android:id="@+id/bilgiIstekButonu"
+                    android:visibility="invisible"
+                    android:text="istekler"/>istekler
+
+                <Button
+                    android:id="@+id/bilgiGuncelleButon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="20dp"
+                    android:background="#6c7b95"
+                    android:padding="8dp"
+
+                    android:text="Kaydet"
+                    android:textColor="#fff"
+                    android:textSize="8dp" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="8dp"
+                    android:textSize="8dp"
+                    android:visibility="invisible"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#fff"
+                    android:background="#6c7b95"
+                    android:layout_gravity="right"
+                    android:layout_height="32dp"
+                    android:id="@+id/bilgiArkadasButon"
+                    android:text="Arkadas"/>
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -67,15 +67,20 @@ public class CardFragment extends Fragment {
                              Bundle savedInstanceState)
     {
 
-        SharedPreferences prefs = getContext().getSharedPreferences("giris",Context.MODE_PRIVATE);
-        loadedspinner_ilce = prefs.getString("spinner_ilce", null);
-        loadedspinner_irk = prefs.getString("spinner_irk", null);
-        loadedspinner_cinsiyet = prefs.getString("spinner_cinsiyet", null);
-        loadedspinner_ilceNum = prefs.getInt("spinner_ilceNum", 0);
-        loadedspinner_irkNum = prefs.getInt("spinner_irkNum", 0);
-        loadedspinner_cinsiyetNum = prefs.getInt("spinner_cinsiyetNum", 0);
+        SharedPreferences prefs = getContext().getSharedPreferences("giris", Context.MODE_PRIVATE);
+        if(prefs.contains("spinner_ilce")) {
+            loadedspinner_ilce = prefs.getString("spinner_ilce", null);
+            loadedspinner_irk = prefs.getString("spinner_irk", null);
+            loadedspinner_cinsiyet = prefs.getString("spinner_cinsiyet", null);
+            loadedspinner_ilceNum = prefs.getInt("spinner_ilceNum", 0);
+            loadedspinner_irkNum = prefs.getInt("spinner_irkNum", 0);
+            loadedspinner_cinsiyetNum = prefs.getInt("spinner_cinsiyetNum", 0);
+        }
+        else
+        {
 
-  //      adapter = new ListAdapter(userKeysList,getActivity(),getContext());
+        }
+        //      adapter = new ListAdapter(userKeysList,getActivity(),getContext());
         View view;
         view = inflater.inflate(R.layout.fragment_card, container, false);
         final RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
@@ -121,7 +126,7 @@ public class CardFragment extends Fragment {
                 .setMaxShowCount(3)
                 .setScaleGap(0.1f)
                 .setTransYGap(0));
-    //    System.out.println("adanakeyler14: " + userKeysList.size());
+        //    System.out.println("adanakeyler14: " + userKeysList.size());
         recyclerView.setAdapter(adapter = new ListAdapter(userKeysList,getActivity(),getContext()));
 
 
@@ -137,14 +142,14 @@ public class CardFragment extends Fragment {
         userKeysList= new ArrayList<>();
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-   //     cardmsjat=view.findViewById(R.id.cardmsjat);
-   //     cardmsjat.setOnClickListener(new View.OnClickListener() {
-   //         @Override
-     //       public void onClick(View v) {
-    //            ChangeFragment changeFragment= new ChangeFragment((getContext()));
-     //           changeFragment.changeWithParameter(new OtherProfileFragment(),userKeysList.get(position));
-      //      }
-     //   });
+        //     cardmsjat=view.findViewById(R.id.cardmsjat);
+        //     cardmsjat.setOnClickListener(new View.OnClickListener() {
+        //         @Override
+        //       public void onClick(View v) {
+        //            ChangeFragment changeFragment= new ChangeFragment((getContext()));
+        //           changeFragment.changeWithParameter(new OtherProfileFragment(),userKeysList.get(position));
+        //      }
+        //   });
 
     }
 
@@ -210,7 +215,7 @@ public class CardFragment extends Fragment {
                         else if(loadedspinner_ilce.equals("Tümü")&&loadedspinner_irk.equals("Tümü")&&loadedspinner_cinsiyet.equals("Tümü")&& !dataSnapshot.getKey().equals(user.getUid())&& !k1.getIsim().equals("null")) {
                             if (userKeysList.indexOf(dataSnapshot.getKey()) == -1) {
                                 userKeysList.add(dataSnapshot.getKey());
-          //                      System.out.println("adanakeyler8: "+userKeysList.toString());
+                                //                      System.out.println("adanakeyler8: "+userKeysList.toString());
                             }
                         }
 

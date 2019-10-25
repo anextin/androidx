@@ -1,13 +1,17 @@
 package com.example.ext.sohbetuygulamasi.Acitivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +19,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.ext.sohbetuygulamasi.Adapters.UserAdapter;
 import com.example.ext.sohbetuygulamasi.Fragments.AnaSayfaFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.BildirimFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.CardFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.FilterFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.FotoFragment;
 import com.example.ext.sohbetuygulamasi.Fragments.KullaniciProfilFragment;
+import com.example.ext.sohbetuygulamasi.Fragments.ViewPagerFragment;
 import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.example.ext.sohbetuygulamasi.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,7 +57,7 @@ public class    AnaActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.navigation_home:
-             //       changeFragment.change(new AnaSayfaFragment());
+                    //       changeFragment.change(new AnaSayfaFragment());
                     changeFragment.change(new AnaSayfaFragment());
                     return true;
 
@@ -71,6 +77,7 @@ public class    AnaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -78,7 +85,7 @@ public class    AnaActivity extends AppCompatActivity {
         kontrol();
 
         changeFragment= new ChangeFragment(AnaActivity.this);
-  //      changeFragment.change(new AnaSayfaFragment());
+        //      changeFragment.change(new AnaSayfaFragment());
         changeFragment.change(new CardFragment());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -114,7 +121,7 @@ public class    AnaActivity extends AppCompatActivity {
     public void cik()
     {
 
- //       auth.signOut();
+        //       auth.signOut();
         Intent intent = new Intent(AnaActivity.this, GirisActivity.class);
         startActivity(intent);
         finish();
@@ -154,13 +161,13 @@ public class    AnaActivity extends AppCompatActivity {
         reference.child(user.getUid()).child("state").setValue(true);
     }
 
-@Override
-protected void onPause() {
-    super.onPause();
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
-    reference.child(user.getUid()).child("state").setValue(false);
-}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
+        reference.child(user.getUid()).child("state").setValue(false);
+    }
 
     @Override
     protected void onResume() {
@@ -178,8 +185,8 @@ protected void onPause() {
             startActivity(intent);
             finish();
         }
-            else
-                {
+        else
+        {
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference reference = firebaseDatabase.getReference().child("Kullanicilar");
             reference.child(user.getUid()).child("state").setValue(true);

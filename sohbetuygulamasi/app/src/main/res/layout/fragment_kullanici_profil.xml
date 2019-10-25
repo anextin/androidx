@@ -36,6 +36,9 @@
         android:id="@+id/kullaniciIsmi"
         android:enabled="true"
         android:hint="İsim"
+        android:singleLine="true"
+        android:inputType="text"
+        android:maxLength="10"
         android:maxLines="1"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
@@ -63,6 +66,9 @@
             android:id="@+id/input_egitim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="text"
+            android:maxLength="10"
             android:maxLines="1"
             android:hint="Sahip" />
 
@@ -148,6 +154,9 @@
             <EditText
                 android:id="@+id/input_dogumTarihi"
                 android:layout_width="match_parent"
+                android:singleLine="true"
+                android:inputType="text"
+                android:maxLength="10"
                 android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:hint="Not" />
@@ -170,12 +179,14 @@
                 android:padding="8dp"
                 android:background="#6c7b95"
                 android:textSize="8dp"
+
                 android:textColor="#fff"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
                 android:layout_height="32dp"
-                android:id="@+id/bilgiGuncelleButon"
-                android:text="Guncelle"/>
+                android:id="@+id/bilgiIstekButonu"
+                android:visibility="invisible"
+                android:text="istekler"/>istekler
             <Button
                 android:layout_width="60dp"
                 android:layout_marginTop="20dp"
@@ -184,15 +195,17 @@
                 android:textColor="#fff"
                 android:background="#6c7b95"
                 android:layout_gravity="right"
+
                 android:layout_height="32dp"
-                android:id="@+id/bilgiIstekButonu"
-                android:text="istekler"/>
+                android:id="@+id/bilgiGuncelleButon"
+                android:text="Güncelle"/>
 
             <Button
                 android:layout_width="60dp"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:textSize="8dp"
+                android:visibility="invisible"
                 android:layout_marginLeft="20dp"
                 android:textColor="#fff"
                 android:background="#6c7b95"

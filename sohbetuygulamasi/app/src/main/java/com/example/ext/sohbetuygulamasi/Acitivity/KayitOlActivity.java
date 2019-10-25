@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ext.sohbetuygulamasi.Fragments.CardFragment;
 import com.example.ext.sohbetuygulamasi.R;
+import com.example.ext.sohbetuygulamasi.Utils.ChangeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +28,7 @@ import java.util.Map;
 public class KayitOlActivity extends AppCompatActivity {
 
     EditText input_email, input_password;
+    private ChangeFragment changeFragment;
     ImageView registerButon;
     FirebaseAuth auth;
     TextView hesapvarText;
@@ -64,7 +67,7 @@ public class KayitOlActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"bilgileri doldur ilkos",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Alanları Doldurunuz",Toast.LENGTH_LONG).show();
                 }
                 }
 
@@ -112,13 +115,13 @@ public class KayitOlActivity extends AppCompatActivity {
                     reference.setValue(map);
 
 
-                    Intent intent=new Intent(KayitOlActivity.this,AnaActivity.class);
+                    Intent intent=new Intent(KayitOlActivity.this,IlkKayitActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"kayit olamadın",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Kayıt Olamadınız ..",Toast.LENGTH_LONG).show();
                 }
             }
         });

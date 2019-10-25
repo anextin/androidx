@@ -43,8 +43,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="37.7dp"
-                    android:layout_gravity="center"
-                    android:text="petdate"
+                    android:layout_gravity="left"
+                    android:text="PetDate"
                     android:textColor="#030303"
                     android:textSize="31.3sp" />
                 <TextView
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_horizontal"
-                android:text="Signup"
+                android:text="Sign in"
                 android:id="@+id/hesapvarText"
                 android:textColor="#ffffff"
                 android:textSize="15sp" />
