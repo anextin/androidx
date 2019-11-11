@@ -93,7 +93,7 @@ public class IlkKayitFragment extends Fragment {
     {
         final String ilceler[]={"Adalar","Arnavutköy","Ataşehir","Avcılar","Bağcılar","Bahçelievler","Bakırköy","Başaksehir","Bayrampaşa","Beşiktaş","Beykoz","Beylikdüzü","Beyoğlu","Büyükçekmece","Çatalca","Çekmeköy","Esenler","Esenyurt","Eyüp","Fatih","Gaziosmanpaşa","Güngören","Kadıköy","Kağıthane","Kartal","Küçükçekmece","Maltepe","Pendik","Sancaktepe","Sarıyer","Şile","Silivri","Şişli","Sultanbeyli","Sultangazi","Tuzla","Ümraniye","Üsküdar","Zeytinburnu"};
 
-        final String irk[]={"golden","pug","doberman","kurt"};
+        final String irk[]={"Akita","Alaskan husky","German Shepherd Dog","Beagle","Bernese","Boxer","Boston Terrier","Bulldog","Cavalier King Charles","Chihuahua","Chow Chow","Dobermann","Dogo","French Bulldog","Golden Retriever","Jack Russell Terrier","Labrador Retriever","Maltese","Pug","Rottweiler","St. Bernard dog","Terrier"};
 
         final String cinsiyet[]={"Erkek","Dişi"};
 
