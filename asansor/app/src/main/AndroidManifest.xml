@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ext.asansor">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dev.ext.asansor">
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -16,14 +17,18 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/deneme"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity android:name="com.dev.ext.asansor.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,29 +37,29 @@
         </activity>
 
         <service
-            android:name=".Schedule.MyJobService"
+            android:name="com.dev.ext.asansor.Schedule.MyJobService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".GirisActivity" />
-        <activity android:name=".Activities.TahsilatYapActivity" />
-        <activity android:name=".Activities.TahsilatYapPostActivity" />
-        <activity android:name=".Activities.ArizaTanimlamaActivity" />
-        <activity android:name=".Activities.ArizaTanimlamaPostActivity" />
-        <activity android:name=".Activities.YapilacakBakimlarActivity" />
-        <activity android:name=".Activities.BekleyenArizalarActivity" />
-        <activity android:name=".Activities.BakimActivity" />
-        <activity android:name=".Activities.BakimSecActivity" />
-        <activity android:name=".Activities.QRCodeArizaActivity" />
-        <activity android:name=".Activities.BakimDurumActivity" />
-        <activity android:name=".Activities.ArizaSecActivity" />
-        <activity android:name=".Activities.ArizaActivity" />
-        <activity android:name=".Activities.QRCodeBakimActivity" />
-        <activity android:name=".BarcodeActivity" />
-        <activity android:name=".Activities.ArizaOnarimDonemTarihiSecActivity" />
-        <activity android:name=".Activities.BakimDonemTarihiSecActivity" />
+        <activity android:name="com.dev.ext.asansor.GirisActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.TahsilatYapActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.TahsilatYapPostActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.ArizaTanimlamaActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.ArizaTanimlamaPostActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.YapilacakBakimlarActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.BekleyenArizalarActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.BakimActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.BakimSecActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.QRCodeArizaActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.BakimDurumActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.ArizaSecActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.ArizaActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.QRCodeBakimActivity" />
+        <activity android:name="com.dev.ext.asansor.BarcodeActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.ArizaOnarimDonemTarihiSecActivity" />
+        <activity android:name="com.dev.ext.asansor.Activities.BakimDonemTarihiSecActivity" />
         BakimDonemTarihiSecActivity
-        <activity android:name=".Activities.BakimEksiklikleriActivity"></activity>
+        <activity android:name="com.dev.ext.asansor.Activities.BakimEksiklikleriActivity"></activity>
     </application>
 
 </manifest>

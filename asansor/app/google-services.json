@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:151548915760:android:3002aa80157f27c8",
         "android_client_info": {
-          "package_name": "com.example.ext.asansor"
+          "package_name": "com.dev.ext.asansor"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "151548915760-o7t4egfucl26a3i3q2avqdjptuas3r3g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.ext.asansor",
+            "package_name": "com.dev.ext.asansor",
             "certificate_hash": "cd281268a8aa7c334e324c65bae2d18c8fc3e86d"
           }
         },

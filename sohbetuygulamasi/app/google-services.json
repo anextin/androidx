@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:814342363324:android:1f0c407d903eaa9d",
         "android_client_info": {
-          "package_name": "com.example.ext.sohbetuygulamasi"
+          "package_name": "com.dev.ext.sohbetuygulamasi"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "814342363324-8le9dqedkaj1d8g0bn02akntvadov2eh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.ext.sohbetuygulamasi",
+            "package_name": "com.dev.ext.sohbetuygulamasi",
             "certificate_hash": "cd281268a8aa7c334e324c65bae2d18c8fc3e86d"
           }
         },

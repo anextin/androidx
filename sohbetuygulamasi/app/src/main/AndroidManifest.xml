@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ext.sohbetuygulamasi">
+    package="com.dev.ext.sohbetuygulamasi">
 
     <application
         android:allowBackup="true"
@@ -10,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Acitivity.IlkKayitActivity"></activity>
-        <activity android:name=".Acitivity.SplashActivity" />
-        <activity android:name=".Acitivity.AnaActivity">
+        <activity android:name="com.dev.ext.sohbetuygulamasi.Acitivity.IlkKayitActivity"></activity>
+        <activity android:name="com.dev.ext.sohbetuygulamasi.Acitivity.SplashActivity" />
+        <activity android:name="com.dev.ext.sohbetuygulamasi.Acitivity.AnaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,21 +20,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Acitivity.KayitOlActivity"
+            android:name="com.dev.ext.sohbetuygulamasi.Acitivity.KayitOlActivity"
             android:exported="true"
             android:label="@string/title_activity_kayit_ol"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Acitivity.GirisActivity"
+            android:name="com.dev.ext.sohbetuygulamasi.Acitivity.GirisActivity"
             android:exported="true"
             android:label="@string/title_activity_giris"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Acitivity.ChatActivity"
+            android:name="com.dev.ext.sohbetuygulamasi.Acitivity.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Acitivity.CardActivity"
+            android:name="com.dev.ext.sohbetuygulamasi.Acitivity.CardActivity"
             android:exported="true"
             android:label="@string/title_activity_kayit_ol"
             android:theme="@style/AppTheme.NoActionBar" />

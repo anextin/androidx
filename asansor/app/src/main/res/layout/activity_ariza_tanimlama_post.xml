@@ -7,7 +7,7 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:orientation="vertical"
-    tools:context="com.example.ext.asansor.Activities.ArizaTanimlamaPostActivity">
+    tools:context="com.dev.ext.asansor.Activities.ArizaTanimlamaPostActivity">
 
 
     <TextView

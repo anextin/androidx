@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#2c3e50"
     android:layout_height="match_parent"
-    tools:context="com.example.ext.asansor.Activities.BekleyenArizalarActivity">
+    tools:context="com.dev.ext.asansor.Activities.BekleyenArizalarActivity">
 
     <TextView
         android:layout_width="match_parent"
